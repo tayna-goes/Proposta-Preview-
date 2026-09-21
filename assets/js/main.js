@@ -10,6 +10,162 @@ $(function(){
   }
   updateClock(); setInterval(updateClock, 1000);
 
+   gsap.registerPlugin(ScrollTrigger);
+
+    (function () {
+        var section = document.querySelector('[data-effect="method-steps-stack"]');
+        var cardsWrap = section.querySelector('.team-cards');
+        var cards = Array.prototype.slice.call(section.querySelectorAll('.team-card'));
+        var descriptions = Array.prototype.slice.call(section.querySelectorAll('.team-description'));
+        var counterValue = section.querySelector('.team-counter-value');
+
+        var mainTl = null;
+        var mainST = null;
+        var currentActive = 0;
+
+        function setActive(index) {
+            if (index === currentActive && cards[index].classList.contains('is-active')) {
+                return;
+            }
+
+            cards.forEach(function (card, i) {
+                card.classList.toggle('is-active', i === index);
+            });
+            descriptions.forEach(function (desc, i) {
+                desc.classList.toggle('is-active', i === index);
+            });
+
+            var newText = String(index + 1).padStart(2, '0');
+            gsap.to(counterValue, {
+                yPercent: -8,
+                opacity: 0,
+                duration: 0.12,
+                overwrite: true,
+                onComplete: function () {
+                    counterValue.textContent = newText;
+                    gsap.fromTo(
+                        counterValue,
+                        { yPercent: 8, opacity: 0 },
+                        { yPercent: 0, opacity: 1, duration: 0.18, overwrite: true }
+                    );
+                }
+            });
+
+            currentActive = index;
+        }
+
+        function setupPinnedStack() {
+            if (mainTl) {
+                mainTl.kill();
+                mainTl = null;
+            }
+            if (mainST) {
+                mainST.kill();
+                mainST = null;
+            }
+
+            gsap.set(cards, { clearProps: 'transform,opacity' });
+
+            var computed = getComputedStyle(cardsWrap);
+            var gap = parseFloat(computed.getPropertyValue('--stack-gap')) || 0;
+            var stepX = cardsWrap.offsetWidth + gap;
+            var stepY = cardsWrap.offsetHeight + gap;
+
+            var width = window.innerWidth;
+            var isMobile = width < 768;
+            var isTablet = width >= 768 && width < 1200;
+
+            var distance;
+            var enterX;
+            var enterY;
+
+            if (isMobile) {
+                distance = Math.max(window.innerHeight * 3.2, 1900);
+                enterX = stepX * 0.82;
+                enterY = stepY * 0.72;
+            } else if (isTablet) {
+                distance = Math.max(window.innerHeight * 3.4, 2400);
+                enterX = stepX;
+                enterY = stepY;
+            } else {
+                distance = Math.max(window.innerHeight * 3.6, 3200);
+                enterX = stepX;
+                enterY = stepY;
+            }
+
+            gsap.set(cards[0], { x: 0, y: 0, opacity: 1 });
+            for (var c = 1; c < cards.length; c++) {
+                gsap.set(cards[c], { x: enterX, y: enterY, opacity: 0.3 });
+            }
+            cards.forEach(function (card, i) {
+                card.style.zIndex = cards.length - i;
+            });
+            cards.forEach(function (card, i) {
+                card.classList.toggle('is-active', i === 0);
+            });
+            descriptions.forEach(function (desc, i) {
+                desc.classList.toggle('is-active', i === 0);
+            });
+            counterValue.textContent = '01';
+            currentActive = 0;
+
+            var tl = gsap.timeline({
+                scrollTrigger: {
+                    trigger: section,
+                    start: 'top top',
+                    end: '+=' + distance,
+                    pin: true,
+                    pinSpacing: true,
+                    scrub: 0.65,
+                    anticipatePin: 1,
+                    invalidateOnRefresh: true,
+                    onUpdate: function (self) {
+                        section.style.setProperty('--progress', self.progress.toFixed(4));
+                        var active = Math.min(
+                            Math.max(Math.round(self.progress * (cards.length - 1)), 0),
+                            cards.length - 1
+                        );
+                        setActive(active);
+                    }
+                }
+            });
+
+            for (var i = 0; i <= cards.length - 2; i++) {
+                tl.to(cards[i], { x: -enterX, y: -enterY, opacity: 0.3, duration: 1, ease: 'none' }, i);
+                tl.to(cards[i + 1], { x: 0, y: 0, opacity: 1, duration: 1, ease: 'none' }, i);
+            }
+
+            tl.to({}, { duration: 0.15 });
+
+            mainTl = tl;
+            mainST = tl.scrollTrigger;
+        }
+
+        setupPinnedStack();
+
+        var lastScrollY = window.scrollY;
+        var smoothedVelocity = 0;
+
+        function rafLoop() {
+            var currentScrollY = window.scrollY;
+            var velocity = currentScrollY - lastScrollY;
+            lastScrollY = currentScrollY;
+            smoothedVelocity += (velocity - smoothedVelocity) * 0.12;
+            section.style.setProperty('--scroll-velocity', smoothedVelocity.toFixed(3));
+            requestAnimationFrame(rafLoop);
+        }
+        requestAnimationFrame(rafLoop);
+
+        var resizeTimer = null;
+        window.addEventListener('resize', function () {
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(function () {
+                setupPinnedStack();
+                ScrollTrigger.refresh();
+            }, 150);
+        });
+    })();
+
   function closeMenu(){
     $('.menu-overlay').removeClass('active').attr('aria-hidden','true');
     $('body').removeClass('menu-open');
@@ -254,4 +410,33 @@ Aguardo o retorno. Obrigado(a)!`;
   updateParallax();
   revealElements();
 
+document.addEventListener('DOMContentLoaded', function () {
+        var buttons = document.querySelectorAll('.btn-choose');
+        buttons.forEach(function (btn) {
+            btn.addEventListener('click', function () {
+                var card = btn.closest('.pricing-card');
+                var tierEl = card ? card.querySelector('.plan-tier') : null;
+                var planName = tierEl ? tierEl.textContent.trim() : 'Plano';
+                console.log('Plano selecionado: ' + planName);
+            });
+        });
+    });
+
 });
+
+
+        (function () {
+            'use strict';
+            document.querySelectorAll('.faq-item').forEach(function (item) {
+                var q = item.querySelector('.faq-question');
+                q.addEventListener('click', function () {
+                    var wasOpen = item.classList.contains('open');
+                    document.querySelectorAll('.faq-item.open').forEach(function (openItem) {
+                        if (openItem !== item) openItem.classList.remove('open');
+                    });
+                    item.classList.toggle('open', !wasOpen);
+                });
+            });
+        })();
+
+
