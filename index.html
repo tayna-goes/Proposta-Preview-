@@ -4,13 +4,51 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Caio Dossi — filmmaker, piloto de drone e storymaker em Araçatuba/SP. Reels, cobertura de eventos e imagens aéreas para marcas.">
     <title>Dossi Maker | Portfólio</title>
+
+
+    <link rel="canonical" href="https://www.seudominio.com.br/">
+    <meta name="robots" content="index, follow">
+    <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="./assets/images/favicon-512.png">
+    <link rel="apple-touch-icon" href="./assets/images/apple-touch-icon.png">
+    <meta name="theme-color" content="#0b0b0c">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Dossi Maker">
+    <meta property="og:title" content="Dossi Maker | Videomaker, Drone e Storymaker">
+    <meta property="og:description" content="Reels, cobertura de eventos e imagens aéreas para marcas. Araçatuba/SP — atendimento em todo o Brasil.">
+    <meta property="og:url" content="https://caio-preview.netlify.app/">
+    <meta property="og:image" content="https://caio-preview.netlify.app/assets/images/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:locale" content="pt_BR">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Dossi Maker | Videomaker, Drone e Storymaker">
+    <meta name="twitter:description" content="Reels, cobertura de eventos e imagens aéreas para marcas. Araçatuba/SP — atendimento em todo o Brasil.">
+    <meta name="twitter:image" content="https://caio-preview.netlify.app/assets/images/og-image.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600;700;800&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/style.css">
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "LocalBusiness",
+        "name": "Dossi Maker",
+        "founder": "Caio Dossi",
+        "description": "Filmmaker, piloto de drone e storymaker. Reels, cobertura de eventos e imagens aéreas para marcas.",
+        "areaServed": "BR",
+        "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Araçatuba",
+            "addressRegion": "SP",
+            "addressCountry": "BR"
+        },
+        "telephone": "+5518988071968",
+        "priceRange": "R$1.599 - R$2.399"
+    }
+    </script>
 </head>
 
 <body>
@@ -24,14 +62,16 @@
         </nav>
         <div class="header-right">
             <span class="location">BR : <b id="clock">00:00</b></span>
-            <button class="menu-toggle" aria-label="Abrir menu"><span></span><span></span></button>
+            <button class="menu-toggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="menuOverlay">
+                <span></span><span></span>
+            </button>
         </div>
     </header>
 
-    <div class="menu-overlay" aria-hidden="true">
+    <div class="menu-overlay" id="menuOverlay" aria-hidden="true">
         <div class="menu-head">
             <span>MENU / NAVEGAÇÃO</span>
-            <button class="menu-close">FECHAR ✕</button>
+            <button class="menu-close" aria-label="Fechar menu">FECHAR ✕</button>
         </div>
         <nav class="menu-nav">
             <a href="#inicio"><small>01</small> Início</a>
@@ -45,7 +85,7 @@
 
     <main>
         <section class="hero" id="inicio">
-            <video class="hero-video" autoplay muted loop playsinline>
+            <video class="hero-video" autoplay muted loop playsinline poster="./assets/images/profile.jpg">
                 <source src="./assets/images/video_intro.mp4" type="video/mp4">
             </video>
 
@@ -58,31 +98,31 @@
                     STORYMAKER<br>
                     DIREÇÃO CRIATIVA
                 </div>
-                <!-- <p>Histórias, eventos e marcas transformados em imagens com intenção.</p> -->
             </div>
-            <div class="hero-title">
+            <h1 class="hero-title">
                 <div>DOSSI</div>
                 <div class="indent">MAKER</div>
-            </div>
+            </h1>
 
-            <!-- <div class="hero-bottom"><span>01</span><span>( INÍCIO )</span><span>© 2026</span></div> -->
+            <div class="hero-scroll-cue" aria-hidden="true"><span></span></div>
         </section>
 
         <section class="about dark" id="sobre">
             <div class="section-label"><span>02</span><span>( SOBRE MIM )</span><span>© 2026</span></div>
             <div class="about-grid">
                 <div class="about-photo">
-                    <img src="./assets/images/caio.jpg" alt="Caio Dossi">
+                    <img src="./assets/images/caio.jpg" alt="Caio Dossi, filmmaker e piloto de drone" loading="lazy">
                 </div>
                 <div>
-                    <h2>Transformamos momentos em conteúdo que continua depois que o evento termina.</h2>
-                    <div class="about-copy">
+                    <h2 class="reveal-on-scroll">Transformamos momentos em conteúdo que continua depois que o evento
+                        termina.</h2>
+                    <div class="about-copy reveal-on-scroll">
                         <p>Sou Caio Dossi, filmmaker e criador de conteúdo audiovisual. Trabalho com Reels, eventos e
-                            imagens aéreas para marcas e
-                            empresas que precisam aparecer de um jeito mais real e interessante. <br>
+                            imagens aéreas para marcas e empresas que precisam aparecer de um jeito mais real e
+                            interessante.<br>
                             Dos bastidores aos grandes momentos — cada projeto pede um olhar diferente, e cuido dessa
                             diferença em cada entrega.<br>
-                            De Araçatuba para onde o projeto precisar chegar</p>
+                            De Araçatuba para onde o projeto precisar chegar.</p>
                     </div>
                 </div>
             </div>
@@ -90,35 +130,82 @@
 
         <section class="projects" id="trabalhos">
             <div class="section-label"><span>03</span><span>( PROJETOS )</span><span>© 2026</span></div>
-            <div class="projects-list">
-                <button class="project-row" data-project="1"><small>01</small>
-                    <div><em>PROJETO</em><strong>FILMAGENS</strong></div><span>↗</span>
+            <div class="projects-list reveal-on-scroll">
+                <button class="project-row" data-project="1" aria-haspopup="dialog">
+                    <small>01</small>
+                    <div>
+                        <em>PROJETO</em>
+                        <strong>FILMAGENS</strong>
+                    </div>
+                    <span aria-hidden="true"><i class="fa-solid fa-arrow-trend-up"></i></span>
                 </button>
-                <button class="project-row" data-project="2"><small>02</small>
-                    <div><em>PROJETO</em><strong>EVENTOS</strong></div><span>↗</span>
+                <button class="project-row" data-project="2" aria-haspopup="dialog">
+                    <small>02</small>
+                    <div>
+                        <em>PROJETO</em>
+                        <strong>EVENTOS</strong>
+                    </div>
+                    <span aria-hidden="true"><i class="fa-solid fa-arrow-trend-up"></i></span>
                 </button>
-                <button class="project-row" data-project="3"><small>03</small>
-                    <div><em>PROJETO</em><strong>MARCAS</strong></div><span>↗</span>
+                <button class="project-row" data-project="3" aria-haspopup="dialog">
+                    <small>03</small>
+                    <div>
+                        <em>PROJETO</em>
+                        <strong>MARCAS</strong>
+                    </div>
+                    <span aria-hidden="true"><i class="fa-solid fa-arrow-trend-up"></i></span>
                 </button>
-                <button class="project-row" data-project="4"><small>04</small>
-                    <div><em>PROJETO</em><strong>AÉREO</strong></div><span>↗</span>
+                <button class="project-row" data-project="4" aria-haspopup="dialog">
+                    <small>04</small>
+                    <div>
+                        <em>PROJETO</em>
+                        <strong>AÉREO</strong>
+                    </div>
+                    <span aria-hidden="true"><i class="fa-solid fa-arrow-trend-up"></i></span>
                 </button>
             </div>
         </section>
 
+        <section class="reel" id="bastidores" aria-label="Galeria de bastidores">
+            <div class="section-label"><span>04</span><span>( BASTIDORES )</span><span>© 2026</span></div>
+            <div class="reel-track-wrap">
+                <div class="reel-track">
+                    <img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=800&q=70" alt="" loading="lazy">
+                    <img src="https://images.unsplash.com/photo-1465101162946-4377e57745c3?auto=format&fit=crop&w=800&q=70" alt="" loading="lazy">
+                    <img src="https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=800&q=70" alt="" loading="lazy">
+                    <img src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=800&q=70" alt="" loading="lazy">
+                    <img src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=800&q=70" alt="" loading="lazy">
+                    <img src="https://images.unsplash.com/photo-1506157786151-b8491531f063?auto=format&fit=crop&w=800&q=70" alt="" loading="lazy">
+                    <img src="https://images.unsplash.com/photo-1501386761578-eac5c94b800a?auto=format&fit=crop&w=800&q=70" alt="" loading="lazy">
+                    <img src="https://images.unsplash.com/photo-1473968512647-3e447244af8f?auto=format&fit=crop&w=800&q=70" alt="" loading="lazy">
+                    <img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=800&q=70" alt="" loading="lazy" aria-hidden="true">
+                    <img src="https://images.unsplash.com/photo-1465101162946-4377e57745c3?auto=format&fit=crop&w=800&q=70" alt="" loading="lazy" aria-hidden="true">
+                    <img src="https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=800&q=70" alt="" loading="lazy" aria-hidden="true">
+                    <img src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=800&q=70" alt="" loading="lazy" aria-hidden="true">
+                    <img src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=800&q=70" alt="" loading="lazy" aria-hidden="true">
+                    <img src="https://images.unsplash.com/photo-1506157786151-b8491531f063?auto=format&fit=crop&w=800&q=70" alt="" loading="lazy" aria-hidden="true">
+                    <img src="https://images.unsplash.com/photo-1501386761578-eac5c94b800a?auto=format&fit=crop&w=800&q=70" alt="" loading="lazy" aria-hidden="true">
+                    <img src="https://images.unsplash.com/photo-1473968512647-3e447244af8f?auto=format&fit=crop&w=800&q=70" alt="" loading="lazy" aria-hidden="true">
+                </div>
+            </div>
+        </section>
+
         <section class="stats" id="status">
-            <div class="section-label"><span>07</span><span>( STATUS )</span><span>© 2026</span></div>
-            <div class="stats-grid">
-                <article><span class="stat-dot"></span><strong class="counter" data-target="500"
-                        data-prefix="+">+0</strong>
+            <div class="section-label"><span>05</span><span>( STATUS )</span><span>© 2026</span></div>
+            <div class="stats-grid reveal-on-scroll">
+                <article>
+                    <span class="stat-dot"></span>
+                    <strong class="counter" data-target="500"data-prefix="+">+0</strong>
                     <p>projetos realizados</p>
                 </article>
-                <article><span class="stat-dot"></span><strong class="counter" data-target="130"
-                        data-prefix="+">+0</strong>
+                <article>
+                    <span class="stat-dot"></span>
+                    <strong class="counter" data-target="130" data-prefix="+">+0</strong>
                     <p>clientes atendidos</p>
                 </article>
-                <article><span class="stat-dot"></span><strong class="counter" data-target="3"
-                        data-prefix="+">+0</strong>
+                <article>
+                    <span class="stat-dot"></span>
+                    <strong class="counter" data-target="3"data-prefix="+">+0</strong>
                     <p>anos criando</p>
                 </article>
                 <article><span class="stat-dot"></span><strong class="counter" data-target="100"
@@ -129,11 +216,12 @@
         </section>
 
         <section class="services dark" id="servicos">
-            <div class="section-label"><span>08</span><span>( SERVIÇOS )</span><span>© 2026</span></div>
-            <h2 class="services-title">Da ideia ao frame final, conteúdo com ritmo, presença e intenção.</h2>
-            <div class="service-list">
+            <div class="section-label"><span>06</span><span>( SERVIÇOS )</span><span>© 2026</span></div>
+            <h2 class="services-title reveal-on-scroll">Da ideia ao frame final, conteúdo com ritmo, presença e
+                intenção.</h2>
+            <div class="service-list reveal-on-scroll">
                 <div><small>01</small>
-                    <h3>Reels & Conteúdo Digital</h3>
+                    <h3>Reels &amp; Conteúdo Digital</h3>
                     <p>Vídeos para marcas e redes sociais.</p>
                 </div>
                 <div><small>02</small>
@@ -147,11 +235,40 @@
             </div>
         </section>
 
+        <section class="process dark" id="processo">
+            <div class="section-label"><span>07</span><span>( COMO FUNCIONA )</span><span>© 2026</span></div>
+            <div class="process-grid reveal-on-scroll">
+                <article>
+                    <small>01</small>
+                    <h3>Contato</h3>
+                    <p>Você manda sua ideia pelo WhatsApp ou preenche o formulário aqui do site.</p>
+                </article>
+                <article>
+                    <small>02</small>
+                    <h3>Briefing</h3>
+                    <p>Alinhamos data, local, roteiro e referências visuais antes de fechar.</p>
+                </article>
+                <article>
+                    <small>03</small>
+                    <h3>Captação</h3>
+                    <p>Equipe e equipamento em campo, focados em registrar cada momento.</p>
+                </article>
+                <article>
+                    <small>04</small>
+                    <h3>Entrega</h3>
+                    <p>Material revisado e entregue dentro do prazo combinado.</p>
+                </article>
+            </div>
+        </section>
+
         <section id="oferta">
             <span class="watermark" aria-hidden="true">Planos</span>
 
-            <div class="pricing-grid">
-                <article class="pricing-card" id="card-standard">
+            <div class="section-label section-label--light"><span>08</span><span>( PLANOS )</span><span>© 2026</span>
+            </div>
+
+            <div class="pricing-grid reveal-on-scroll">
+                <article class="pricing-card" id="card-silver">
                     <div>
                         <div class="card-header">
                             <div class="plan-tier">S I L V E R</div>
@@ -160,140 +277,281 @@
                         </div>
                         <ul class="feature-list">
                             <li>
-                                <span class="feature-check"><i class="fa-solid fa-circle-check"></i></span>
+                                <span class="feature-check">
+                                    <svg viewBox="0 0 12 10" aria-hidden="true">
+                                        <polyline points="1 5 4.5 8.5 11 1.5" />
+                                    </svg>
+                                </span>
                                 <span>Cobertura Cerimônia + Festa</span>
                             </li>
                             <li>
-                                <span class="feature-check"><i class="fa-solid fa-circle-check"></i></span>
+                                <span class="feature-check">
+                                    <svg viewBox="0 0 12 10" aria-hidden="true">
+                                        <polyline points="1 5 4.5 8.5 11 1.5" />
+                                    </svg>
+                                </span>
                                 <span>2 câmeras exclusivas</span>
                             </li>
                             <li>
-                                <span class="feature-check"><i class="fa-solid fa-circle-check"></i></span>
+                                <span class="feature-check">
+                                    <svg viewBox="0 0 12 10" aria-hidden="true">
+                                        <polyline points="1 5 4.5 8.5 11 1.5" />
+                                    </svg>
+                                </span>
                                 <span>Teaser Modo Cinema (até 90 seg)</span>
                             </li>
                             <li>
-                                <span class="feature-check"><i class="fa-solid fa-circle-check"></i></span>
+                                <span class="feature-check">
+                                    <svg viewBox="0 0 12 10" aria-hidden="true">
+                                        <polyline points="1 5 4.5 8.5 11 1.5" />
+                                    </svg>
+                                </span>
                                 <span>1 Reels para rede social</span>
                             </li>
                         </ul>
                     </div>
-                    <button type="button" class="btn-choose" id="btn-standard">Escolher Plano</button>
+                    <button type="button" class="btn-choose" id="btn-silver">Escolher Plano</button>
                 </article>
 
-                <article class="pricing-card" id="card-standard">
+                <article class="pricing-card" id="card-gold">
                     <div>
                         <div class="card-header">
                             <div class="plan-tier">G O L D</div>
-                            <div class="plan-price"><span class="currency">R$</span><span>1.999</span>
-                            </div>
+                            <div class="plan-price"><span class="currency">R$</span><span>1.999</span></div>
                             <p class="plan-description">Uma experiência audiovisual completa para eternizar cada
                                 detalhe.</p>
                         </div>
                         <ul class="feature-list">
                             <li>
-                                <span class="feature-check"><i class="fa-solid fa-circle-check"></i></span>
+                                <span class="feature-check">
+                                    <svg viewBox="0 0 12 10" aria-hidden="true">
+                                        <polyline points="1 5 4.5 8.5 11 1.5" />
+                                    </svg>
+                                </span>
                                 <span>Cobertura Dia da Noiva - Making Off</span>
                             </li>
                             <li>
-                                <span class="feature-check"><i class="fa-solid fa-circle-check"></i></span>
+                                <span class="feature-check">
+                                    <svg viewBox="0 0 12 10" aria-hidden="true">
+                                        <polyline points="1 5 4.5 8.5 11 1.5" />
+                                    </svg>
+                                </span>
                                 <span>Cobertura Cerimônia + Festa</span>
                             </li>
                             <li>
-                                <span class="feature-check"><i class="fa-solid fa-circle-check"></i></span>
+                                <span class="feature-check">
+                                    <svg viewBox="0 0 12 10" aria-hidden="true">
+                                        <polyline points="1 5 4.5 8.5 11 1.5" />
+                                    </svg>
+                                </span>
                                 <span>3 câmeras exclusivas</span>
                             </li>
                             <li>
-                                <span class="feature-check"><i class="fa-solid fa-circle-check"></i></span>
-                                <span>Cobertura Storymaker em tempo real (cerimônia e festa</span>
+                                <span class="feature-check">
+                                    <svg viewBox="0 0 12 10" aria-hidden="true">
+                                        <polyline points="1 5 4.5 8.5 11 1.5" />
+                                    </svg>
+                                </span>
+                                <span>Cobertura Storymaker em tempo real (cerimônia e festa)</span>
                             </li>
                             <li>
-                                <span class="feature-check"><i class="fa-solid fa-circle-check"></i></span>
+                                <span class="feature-check">
+                                    <svg viewBox="0 0 12 10" aria-hidden="true">
+                                        <polyline points="1 5 4.5 8.5 11 1.5" />
+                                    </svg>
+                                </span>
                                 <span>Imagens aéreas de drone</span>
                             </li>
                             <li>
-                                <span class="feature-check"><i class="fa-solid fa-circle-check"></i></span>
+                                <span class="feature-check">
+                                    <svg viewBox="0 0 12 10" aria-hidden="true">
+                                        <polyline points="1 5 4.5 8.5 11 1.5" />
+                                    </svg>
+                                </span>
                                 <span>Teaser Modo Cinema (até 90 seg)</span>
                             </li>
                             <li>
-                                <span class="feature-check"><i class="fa-solid fa-circle-check"></i></span>
+                                <span class="feature-check">
+                                    <svg viewBox="0 0 12 10" aria-hidden="true">
+                                        <polyline points="1 5 4.5 8.5 11 1.5" />
+                                    </svg>
+                                </span>
                                 <span>Filme Storytelling (4 a 6 min)</span>
                             </li>
                             <li>
-                                <span class="feature-check"><i class="fa-solid fa-circle-check"></i></span>
+                                <span class="feature-check">
+                                    <svg viewBox="0 0 12 10" aria-hidden="true">
+                                        <polyline points="1 5 4.5 8.5 11 1.5" />
+                                    </svg>
+                                </span>
                                 <span>2 Reels para rede social</span>
                             </li>
                         </ul>
                     </div>
-                    <button type="button" class="btn-choose" id="btn-standard">Escolher Plano</button>
+                    <button type="button" class="btn-choose" id="btn-gold">Escolher Plano</button>
                 </article>
 
-                <article class="pricing-card pricing-card--featured" id="card-pro">
+                <article class="pricing-card pricing-card--featured" id="card-black">
+                    <span class="plan-badge">★ MAIS ESCOLHIDO</span>
                     <div>
                         <div class="card-header">
                             <div class="plan-tier">B L A C K</div>
                             <div class="plan-price"><span class="currency">R$</span><span>2.399</span></div>
-                            <p class="plan-description">Para estúdios, agências e criadores profissionais que trabalham
-                                com
-                                marcas.</p>
+                            <p class="plan-description">Para estúdios, agências e criadores profissionais que
+                                trabalham com marcas.</p>
                         </div>
                         <ul class="feature-list">
                             <li>
-                                <span class="feature-check"><i class="fa-solid fa-circle-check"></i></span>
+                                <span class="feature-check">
+                                    <svg viewBox="0 0 12 10" aria-hidden="true">
+                                        <polyline points="1 5 4.5 8.5 11 1.5" />
+                                    </svg>
+                                </span>
                                 <span>Cobertura Pré Wedding + Save The Date</span>
                             </li>
                             <li>
-                                <span class="feature-check"><i class="fa-solid fa-circle-check"></i></span>
+                                <span class="feature-check">
+                                    <svg viewBox="0 0 12 10" aria-hidden="true">
+                                        <polyline points="1 5 4.5 8.5 11 1.5" />
+                                    </svg>
+                                </span>
                                 <span>Cobertura Dia da Noiva - Making Off</span>
                             </li>
                             <li>
-                                <span class="feature-check"><i class="fa-solid fa-circle-check"></i></span>
+                                <span class="feature-check">
+                                    <svg viewBox="0 0 12 10" aria-hidden="true">
+                                        <polyline points="1 5 4.5 8.5 11 1.5" />
+                                    </svg>
+                                </span>
                                 <span>Cobertura Cerimônia + Festa</span>
                             </li>
                             <li>
-                                <span class="feature-check"><i class="fa-solid fa-circle-check"></i></span>
+                                <span class="feature-check">
+                                    <svg viewBox="0 0 12 10" aria-hidden="true">
+                                        <polyline points="1 5 4.5 8.5 11 1.5" />
+                                    </svg>
+                                </span>
                                 <span>3 câmeras exclusivas</span>
                             </li>
                             <li>
-                                <span class="feature-check"><i class="fa-solid fa-circle-check"></i></span>
-                                <span>Cobertura Storymaker em tempo real (cerimônia e festa</span>
+                                <span class="feature-check">
+                                    <svg viewBox="0 0 12 10" aria-hidden="true">
+                                        <polyline points="1 5 4.5 8.5 11 1.5" />
+                                    </svg>
+                                </span>
+                                <span>Cobertura Storymaker em tempo real (cerimônia e festa)</span>
                             </li>
                             <li>
-                                <span class="feature-check"><i class="fa-solid fa-circle-check"></i></span>
+                                <span class="feature-check">
+                                    <svg viewBox="0 0 12 10" aria-hidden="true">
+                                        <polyline points="1 5 4.5 8.5 11 1.5" />
+                                    </svg>
+                                </span>
                                 <span>Imagens aéreas de drone</span>
                             </li>
                             <li>
-                                <span class="feature-check"><i class="fa-solid fa-circle-check"></i></span>
+                                <span class="feature-check">
+                                    <svg viewBox="0 0 12 10" aria-hidden="true">
+                                        <polyline points="1 5 4.5 8.5 11 1.5" />
+                                    </svg>
+                                </span>
                                 <span>Teaser Modo Cinema (até 90 seg)</span>
                             </li>
                             <li>
-                                <span class="feature-check"><i class="fa-solid fa-circle-check"></i></span>
+                                <span class="feature-check">
+                                    <svg viewBox="0 0 12 10" aria-hidden="true">
+                                        <polyline points="1 5 4.5 8.5 11 1.5" />
+                                    </svg>
+                                </span>
                                 <span>Filme Storytelling (4 a 6 min)</span>
                             </li>
                             <li>
-                                <span class="feature-check"><i class="fa-solid fa-circle-check"></i></span>
+                                <span class="feature-check">
+                                    <svg viewBox="0 0 12 10" aria-hidden="true">
+                                        <polyline points="1 5 4.5 8.5 11 1.5" />
+                                    </svg>
+                                </span>
                                 <span>2 Reels para rede social</span>
                             </li>
                         </ul>
                     </div>
-                    <button type="button" class="btn-choose" id="btn-pro">Escolher Plano</button>
+                    <button type="button" class="btn-choose" id="btn-black">Escolher Plano</button>
                 </article>
+            </div>
+        </section>
+
+        <section class="testimonials" id="depoimentos">
+            <div class="section-label"><span>09</span><span>( DEPOIMENTOS )</span><span>© 2026</span></div>
+            <div class="testimonials-carousel reveal-on-scroll">
+                <div class="testimonials-track" id="testimonialsTrack">
+                    <article class="testimonial-card">
+                        <span class="testimonial-flag">◆ exemplo — substitua por um depoimento real</span>
+                        <p>"Escreva aqui o que o seu cliente disse sobre a experiência com a Dossi Maker — o que mais
+                            marcou, como foi o atendimento, o resultado final."</p>
+                        <div class="testimonial-author">
+                            <strong>Nome do Cliente</strong>
+                            <span>Casamento</span>
+                        </div>
+                    </article>
+                    <article class="testimonial-card">
+                        <span class="testimonial-flag">◆ exemplo — substitua por um depoimento real</span>
+                        <p>"Escreva aqui o depoimento de um cliente de evento corporativo ou de marca sobre o
+                            trabalho entregue."</p>
+                        <div class="testimonial-author">
+                            <strong>Nome do Cliente</strong>
+                            <span>Evento Corporativo</span>
+                        </div>
+                    </article>
+                    <article class="testimonial-card">
+                        <span class="testimonial-flag">◆ exemplo — substitua por um depoimento real</span>
+                        <p>"Escreva aqui um terceiro depoimento, de preferência de um tipo de projeto diferente dos
+                            outros dois."</p>
+                        <div class="testimonial-author">
+                            <strong>Nome do Cliente</strong>
+                            <span>Ensaio / Produção</span>
+                        </div>
+                    </article>
+                </div>
+                <div class="testimonials-controls">
+                    <button type="button" class="carousel-btn" id="testimonialsPrev"
+                        aria-label="Depoimento anterior">‹</button>
+                    <div class="carousel-dots" id="testimonialsDots"></div>
+                    <button type="button" class="carousel-btn" id="testimonialsNext"
+                        aria-label="Próximo depoimento">›</button>
+                </div>
             </div>
         </section>
 
         <!-- FORMULÁRIO WHATSAPP -->
         <section class="contact" id="contato">
-            <div class="section-label"><span>09</span><span>( VAMOS CONVERSAR )</span><span>© 2026</span></div>
+            <div class="section-label"><span>10</span><span>( VAMOS CONVERSAR )</span><span>© 2026</span></div>
             <div class="contact-grid">
-                <div>
+                <div class="reveal-on-scroll">
                     <h2>Vamos tirar seu projeto do papel?</h2>
                     <p>Preencha as informações e sua proposta será preparada para envio direto pelo WhatsApp.</p>
                     <div class="whatsapp-note">● Atendimento via WhatsApp</div>
                 </div>
 
-                <form id="whatsappForm" class="contact-form">
+                <form id="whatsappForm" name="whatsappForm" class="contact-form reveal-on-scroll" novalidate
+                    data-netlify="true" netlify-honeypot="botcheck">
+                    <!-- Necessário para o Netlify reconhecer o formulário no build (funciona automático, sem chave) -->
+                    <input type="hidden" name="form-name" value="whatsappForm">
+                    <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off">
+
+                    <!-- Alternativa portátil (funciona em qualquer host, não só Netlify).
+                         Chave gratuita em https://web3forms.com — cole aqui se um dia sair do Netlify. -->
+                    <input type="hidden" name="access_key" id="web3formsKey" value="COLE_SUA_CHAVE_WEB3FORMS_AQUI">
+                    <input type="hidden" name="subject" value="Novo pedido de proposta — Dossi Maker">
+
+                    <div class="field full">
+                        <label for="email">SEU E-MAIL (OPCIONAL)</label>
+                        <input id="email" name="email" type="email" placeholder="para responder sua proposta"
+                            autocomplete="email">
+                    </div>
                     <div class="field">
                         <label for="name">SEU NOME *</label>
-                        <input id="name" name="name" type="text" required placeholder="Como podemos te chamar?">
+                        <input id="name" name="name" type="text" required placeholder="Como podemos te chamar?"
+                            autocomplete="name">
                     </div>
                     <div class="field">
                         <label for="eventType">TIPO DE EVENTO / PROJETO *</label>
@@ -329,97 +587,107 @@
                         <textarea id="message" name="message" rows="4"
                             placeholder="Conte um pouco mais sobre o que você imagina..."></textarea>
                     </div>
-                    <button type="submit" class="send-button">SOLICITAR PROPOSTA NO WHATSAPP <span>↗</span></button>
+                    <button type="submit" class="send-button">SOLICITAR PROPOSTA NO WHATSAPP <span
+                            aria-hidden="true">↗</span></button>
                     <small class="form-help">Ao clicar, o WhatsApp abrirá com suas informações preenchidas.</small>
                 </form>
             </div>
         </section>
 
         <section class="page-section" id="duvidas">
-            <div class="section-header">
+            <div class="section-header reveal-on-scroll">
                 <span class="badge">Tire suas Dúvidas</span>
                 <h2 class="section-title">Perguntas <strong>frequentes</strong></h2>
             </div>
-            <div class="faq-list">
+            <div class="faq-list reveal-on-scroll">
                 <div class="faq-item">
-                    <button class="faq-question">Como funciona o orçamento?<svg viewBox="0 0 24 24">
+                    <button class="faq-question" aria-expanded="false">Como funciona o orçamento?
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
                             <polyline points="6 9 12 15 18 9" />
-                        </svg></button>
+                        </svg>
+                    </button>
                     <div class="faq-answer">
-                        <p>O valor varia de acordo com o escopo do projeto: duração da filmagem, número de diárias,
-                            equipe
-                            envolvida e complexidade da edição. Envio uma proposta personalizada após entender melhor a
-                            sua
-                            ideia.</p>
+                        <p>Os pacotes wedding já têm o valor tabelado. Valores estes que compreendem atendimento
+                            dentro da cidade de Araçatuba/SP. Outras localidades consultar os valores de
+                            deslocamento. Para outros tipos de filmagens, solicitar o orçamento pelo atendimento via
+                            WhatsApp.</p>
                     </div>
                 </div>
                 <div class="faq-item">
-                    <button class="faq-question">Quanto tempo leva para entregar o material finalizado?<svg
-                            viewBox="0 0 24 24">
+                    <button class="faq-question" aria-expanded="false">Quanto tempo leva para entregar o material?
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
                             <polyline points="6 9 12 15 18 9" />
-                        </svg></button>
+                        </svg>
+                    </button>
                     <div class="faq-answer">
-                        <p>O prazo médio de entrega é de 2 a 4 semanas após a gravação, dependendo da complexidade da
-                            edição, número de revisões e tipo de entrega (bruto, cortes curtos, versão final).</p>
+                        <p>Casamentos são 90 dias úteis — demais filmagens consultar durante o orçamento.</p>
                     </div>
                 </div>
                 <div class="faq-item">
-                    <button class="faq-question">Quantas revisões estão incluídas?<svg viewBox="0 0 24 24">
+                    <button class="faq-question" aria-expanded="false">Revisões incluídas?
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
                             <polyline points="6 9 12 15 18 9" />
-                        </svg></button>
+                        </svg>
+                    </button>
                     <div class="faq-answer">
-                        <p>Todo pacote inclui até 2 rodadas de ajustes sem custo adicional. Alterações fora do escopo
-                            original ou solicitadas após a aprovação final podem gerar custo extra.</p>
+                        <p>2 revisões por trabalho. As excedentes serão cobradas, um valor de 40% do contrato
+                            escolhido.</p>
                     </div>
                 </div>
                 <div class="faq-item">
-                    <button class="faq-question">Vocês fornecem os equipamentos e a equipe?<svg viewBox="0 0 24 24">
+                    <button class="faq-question" aria-expanded="false">Vocês fornecem os equipamentos e a equipe?
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
                             <polyline points="6 9 12 15 18 9" />
-                        </svg></button>
+                        </svg>
+                    </button>
                     <div class="faq-answer">
-                        <p>Sim. Câmeras, lentes, iluminação, áudio e, quando necessário, equipe adicional (assistente,
-                            diretor de fotografia, operador de drone) já estão incluídos no orçamento.</p>
+                        <p>Sim. Colocamos à disposição todo o equipamento e equipe específicos para cada evento — a
+                            cobertura já está incluída no orçamento.</p>
                     </div>
                 </div>
                 <div class="faq-item">
-                    <button class="faq-question">Como funcionam os direitos de uso do material?<svg viewBox="0 0 24 24">
+                    <button class="faq-question" aria-expanded="false">Como funcionam os direitos de uso do
+                        material?
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
                             <polyline points="6 9 12 15 18 9" />
-                        </svg></button>
+                        </svg>
+                    </button>
                     <div class="faq-answer">
-                        <p>Os direitos de uso comercial do vídeo final são transferidos ao cliente após a quitação do
-                            contrato. O material bruto e os arquivos de projeto permanecem sob minha responsabilidade,
-                            salvo
-                            acordo em contrário.</p>
+                        <p>O contratante cede os direitos de imagem para o contratado para fins de portfólio pessoal,
+                            para uso estritamente profissional.</p>
                     </div>
                 </div>
                 <div class="faq-item">
-                    <button class="faq-question">É necessário pagar sinal para reservar a data?<svg viewBox="0 0 24 24">
+                    <button class="faq-question" aria-expanded="false">É necessário pagar sinal para reservar a
+                        data?
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
                             <polyline points="6 9 12 15 18 9" />
-                        </svg></button>
+                        </svg>
+                    </button>
                     <div class="faq-answer">
-                        <p>Sim, um sinal de 50% é necessário para confirmar a reserva da data na agenda. O restante é
-                            pago
-                            na entrega do material finalizado.</p>
+                        <p>Sim, entrada de 40% do valor do contrato.</p>
                     </div>
                 </div>
                 <div class="faq-item">
-                    <button class="faq-question">Vocês trabalham com viagens para outras cidades?<svg
-                            viewBox="0 0 24 24">
+                    <button class="faq-question" aria-expanded="false">Vocês trabalham com viagens para outras
+                        cidades?
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
                             <polyline points="6 9 12 15 18 9" />
-                        </svg></button>
+                        </svg>
+                    </button>
                     <div class="faq-answer">
-                        <p>Sim. Diárias fora da região metropolitana têm custo adicional de deslocamento e hospedagem,
-                            calculado conforme a distância e duração do projeto.</p>
+                        <p>Sim, atendemos todo o Brasil. Diárias fora da região de Araçatuba são calculadas conforme
+                            a distância.</p>
                     </div>
                 </div>
             </div>
         </section>
 
         <section class="finish" id="finish">
-            <img class="finish-bg" src="./assets/images/profile.jpg" alt="Frame Final">
+            <img class="finish-bg" src="./assets/images/profile.jpg" alt="" aria-hidden="true">
 
             <div class="finish-overlay"></div>
-            <div class="finish-content">
+            <div class="finish-content reveal-on-scroll">
                 <span>( CONTATO )</span>
                 <h2>
                     Cada momento acontece uma vez. Nós transformamos momentos em histórias eternas.
@@ -427,14 +695,15 @@
                     <em>Você vive o momento. Nós contamos a história.</em>
                 </h2>
                 <a href="#contato" class="finish-button">
-                    CONTATO <span>↗</span>
+                    CONTATO <span aria-hidden="true">↗</span>
                 </a>
             </div>
         </section>
     </main>
 
     <!-- GALERIA -->
-    <div class="gallery-modal" id="galleryModal" aria-hidden="true">
+    <div class="gallery-modal" id="galleryModal" aria-hidden="true" role="dialog" aria-modal="true"
+        aria-labelledby="galleryTitle">
         <div class="gallery-head">
             <div><small id="galleryNumber">01</small>
                 <h2 id="galleryTitle">FILMAGENS</h2>
@@ -442,178 +711,80 @@
             <button id="galleryClose" aria-label="Fechar galeria">FECHAR ✕</button>
         </div>
         <div class="gallery-description" id="galleryDescription"></div>
+        <div class="gallery-tabs" id="galleryTabs" role="tablist"></div>
         <div class="gallery-grid" id="galleryGrid"></div>
     </div>
 
     <footer class="footer">
         <div><strong>Profissional ®</strong>
-            <p></p>
+            <p>Araçatuba/SP — atendimento em todo o Brasil</p>
         </div>
-        <div class="signature">Desenvolvido por <a href="#" target="_blank">Tayná Goes</a></div>
+        <div class="signature">Desenvolvido por <button type="button" class="signature-trigger" id="devCreditTrigger"
+                aria-haspopup="dialog">Tayná Goes</button></div>
         <button class="back-to-top">VOLTAR AO TOPO ↑</button>
     </footer>
+
+    <!-- MODAL DE CRÉDITO -->
+    <div class="dev-modal" id="devModal" aria-hidden="true" role="dialog" aria-modal="true"
+        aria-labelledby="devModalName">
+        <div class="dev-modal-backdrop" data-close></div>
+        <div class="dev-modal-card">
+            <button class="dev-modal-close" id="devModalClose" aria-label="Fechar">✕</button>
+            <div class="dev-modal-avatar">
+                <img src="./assets/images/tayna-avatar.png" alt="Tayná Goes">
+            </div>
+            <h3 id="devModalName">Tayná Goes</h3>
+            <p class="dev-modal-role">Desenvolvedora Front-end</p>
+            <p class="dev-modal-bio">Site desenvolvido com atenção a performance, UI/UX e detalhes de interação.</p>
+            <!-- TODO: troque os href="#" pelos links reais das redes sociais -->
+            <div class="dev-modal-social">
+                <a href="#" target="_blank" rel="noopener" aria-label="Instagram">
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <rect x="3" y="3" width="18" height="18" rx="5" />
+                        <circle cx="12" cy="12" r="4" />
+                        <circle cx="17.2" cy="6.8" r="1.1" fill="currentColor" stroke="none" />
+                    </svg>
+                </a>
+                <a href="#" target="_blank" rel="noopener" aria-label="LinkedIn">
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <rect x="3" y="3" width="18" height="18" rx="3" />
+                        <line x1="7.5" y1="10" x2="7.5" y2="17" />
+                        <circle cx="7.5" cy="6.8" r="0.9" fill="currentColor" stroke="none" />
+                        <path d="M11.5 17v-4.2c0-1.6 1-2.4 2.2-2.4 1.2 0 2 .8 2 2.4V17" />
+                    </svg>
+                </a>
+                <a href="#" target="_blank" rel="noopener" aria-label="WhatsApp">
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M12 3a9 9 0 0 0-7.8 13.5L3 21l4.7-1.2A9 9 0 1 0 12 3z" />
+                        <path
+                            d="M8.6 8.4c.2-.4.4-.4.6-.4h.5c.2 0 .4 0 .5.4.2.4.6 1.5.6 1.6.1.1.1.3 0 .4a2 2 0 0 1-.3.4c-.1.1-.3.3-.1.6.2.4.9 1.4 1.9 2.2 1.3 1 2 1.1 2.3.9.2-.1.5-.5.6-.7.1-.2.3-.2.5-.1.2.1 1.4.7 1.7.8.3.1.4.2.5.3 0 .1 0 .8-.3 1.3-.3.5-1.5 1-2.1 1-.6 0-1.5-.2-3.5-1.3-2.4-1.3-4-3.9-4.1-4.1-.1-.2-.9-1.3-.9-2.4 0-1.1.6-1.7.8-1.9z"
+                            fill="currentColor" stroke="none" />
+                    </svg>
+                </a>
+                <a href="mailto:tayynagoes@gmail.com" aria-label="E-mail">
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <rect x="3" y="5" width="18" height="14" rx="2" />
+                        <path d="m4 7 8 6 8-6" />
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- WHATSAPP FLUTUANTE -->
+    <a href="#" id="whatsappFloat" class="whatsapp-float" aria-label="Falar no WhatsApp" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path
+                d="M17.5 14.4c-.3-.1-1.7-.9-2-1-.3-.1-.5-.1-.7.1-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1-.3-.1-1.2-.5-2.3-1.5-.8-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5C10.1 9 9.6 7.8 9.4 7.3c-.2-.5-.4-.4-.5-.4h-.5c-.2 0-.5.1-.7.3-.2.3-.9.9-.9 2.1 0 1.2.9 2.4 1 2.6.1.2 1.8 2.8 4.4 3.9.6.3 1.1.4 1.5.6.6.2 1.2.2 1.6.1.5-.1 1.7-.7 1.9-1.3.2-.6.2-1.2.2-1.3-.1-.1-.3-.2-.5-.3z" />
+            <path
+                d="M12 2C6.5 2 2 6.5 2 12c0 1.9.5 3.7 1.5 5.3L2 22l4.8-1.5c1.5.9 3.3 1.4 5.2 1.4 5.5 0 10-4.5 10-10S17.5 2 12 2zm0 18.1c-1.7 0-3.4-.5-4.8-1.3l-.3-.2-3.2 1 1-3.2-.2-.3C3.6 14.7 3 13.4 3 12c0-4.9 4-9 9-9s9 4 9 9-4 9-9 9z" />
+        </svg>
+    </a>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="assets/js/main.js"></script>
-    <script>
-        gsap.registerPlugin(ScrollTrigger);
-
-        (function () {
-            var section = document.querySelector('[data-effect="method-steps-stack"]');
-            var cardsWrap = section.querySelector('.team-cards');
-            var cards = Array.prototype.slice.call(section.querySelectorAll('.team-card'));
-            var descriptions = Array.prototype.slice.call(section.querySelectorAll('.team-description'));
-            var counterValue = section.querySelector('.team-counter-value');
-
-            var mainTl = null;
-            var mainST = null;
-            var currentActive = 0;
-
-            function setActive(index) {
-                if (index === currentActive && cards[index].classList.contains('is-active')) {
-                    return;
-                }
-
-                cards.forEach(function (card, i) {
-                    card.classList.toggle('is-active', i === index);
-                });
-                descriptions.forEach(function (desc, i) {
-                    desc.classList.toggle('is-active', i === index);
-                });
-
-                var newText = String(index + 1).padStart(2, '0');
-                gsap.to(counterValue, {
-                    yPercent: -8,
-                    opacity: 0,
-                    duration: 0.12,
-                    overwrite: true,
-                    onComplete: function () {
-                        counterValue.textContent = newText;
-                        gsap.fromTo(
-                            counterValue,
-                            { yPercent: 8, opacity: 0 },
-                            { yPercent: 0, opacity: 1, duration: 0.18, overwrite: true }
-                        );
-                    }
-                });
-
-                currentActive = index;
-            }
-
-            function setupPinnedStack() {
-                if (mainTl) {
-                    mainTl.kill();
-                    mainTl = null;
-                }
-                if (mainST) {
-                    mainST.kill();
-                    mainST = null;
-                }
-
-                gsap.set(cards, { clearProps: 'transform,opacity' });
-
-                var computed = getComputedStyle(cardsWrap);
-                var gap = parseFloat(computed.getPropertyValue('--stack-gap')) || 0;
-                var stepX = cardsWrap.offsetWidth + gap;
-                var stepY = cardsWrap.offsetHeight + gap;
-
-                var width = window.innerWidth;
-                var isMobile = width < 768;
-                var isTablet = width >= 768 && width < 1200;
-
-                var distance;
-                var enterX;
-                var enterY;
-
-                if (isMobile) {
-                    distance = Math.max(window.innerHeight * 3.2, 1900);
-                    enterX = stepX * 0.82;
-                    enterY = stepY * 0.72;
-                } else if (isTablet) {
-                    distance = Math.max(window.innerHeight * 3.4, 2400);
-                    enterX = stepX;
-                    enterY = stepY;
-                } else {
-                    distance = Math.max(window.innerHeight * 3.6, 3200);
-                    enterX = stepX;
-                    enterY = stepY;
-                }
-
-                gsap.set(cards[0], { x: 0, y: 0, opacity: 1 });
-                for (var c = 1; c < cards.length; c++) {
-                    gsap.set(cards[c], { x: enterX, y: enterY, opacity: 0.3 });
-                }
-                cards.forEach(function (card, i) {
-                    card.style.zIndex = cards.length - i;
-                });
-                cards.forEach(function (card, i) {
-                    card.classList.toggle('is-active', i === 0);
-                });
-                descriptions.forEach(function (desc, i) {
-                    desc.classList.toggle('is-active', i === 0);
-                });
-                counterValue.textContent = '01';
-                currentActive = 0;
-
-                var tl = gsap.timeline({
-                    scrollTrigger: {
-                        trigger: section,
-                        start: 'top top',
-                        end: '+=' + distance,
-                        pin: true,
-                        pinSpacing: true,
-                        scrub: 0.65,
-                        anticipatePin: 1,
-                        invalidateOnRefresh: true,
-                        onUpdate: function (self) {
-                            section.style.setProperty('--progress', self.progress.toFixed(4));
-                            var active = Math.min(
-                                Math.max(Math.round(self.progress * (cards.length - 1)), 0),
-                                cards.length - 1
-                            );
-                            setActive(active);
-                        }
-                    }
-                });
-
-                for (var i = 0; i <= cards.length - 2; i++) {
-                    tl.to(cards[i], { x: -enterX, y: -enterY, opacity: 0.3, duration: 1, ease: 'none' }, i);
-                    tl.to(cards[i + 1], { x: 0, y: 0, opacity: 1, duration: 1, ease: 'none' }, i);
-                }
-
-                tl.to({}, { duration: 0.15 });
-
-                mainTl = tl;
-                mainST = tl.scrollTrigger;
-            }
-
-            setupPinnedStack();
-
-            var lastScrollY = window.scrollY;
-            var smoothedVelocity = 0;
-
-            function rafLoop() {
-                var currentScrollY = window.scrollY;
-                var velocity = currentScrollY - lastScrollY;
-                lastScrollY = currentScrollY;
-                smoothedVelocity += (velocity - smoothedVelocity) * 0.12;
-                section.style.setProperty('--scroll-velocity', smoothedVelocity.toFixed(3));
-                requestAnimationFrame(rafLoop);
-            }
-            requestAnimationFrame(rafLoop);
-
-            var resizeTimer = null;
-            window.addEventListener('resize', function () {
-                clearTimeout(resizeTimer);
-                resizeTimer = setTimeout(function () {
-                    setupPinnedStack();
-                    ScrollTrigger.refresh();
-                }, 150);
-            });
-        })();
-    </script>
 </body>
 
 </html>
