@@ -35,6 +35,26 @@ textarea {
     font: inherit
 }
 
+.skip-link {
+    position: absolute;
+    top: -60px;
+    left: 16px;
+    z-index: 9999;
+    background: #fff;
+    color: #0b0b0c;
+    font: 12px var(--font-mono, monospace);
+    letter-spacing: .05em;
+    text-transform: uppercase;
+    padding: 12px 20px;
+    border-radius: 8px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, .35);
+    transition: top .2s ease;
+}
+
+.skip-link:focus {
+    top: 16px;
+}
+
 button {
     cursor: pointer;
     border: 0;
@@ -287,7 +307,6 @@ section {
     font-size: 12px;
     line-height: 1.55;
     color: #fff;
-    opacity: 1;
 }
 
 .hero-meta p {
@@ -596,10 +615,10 @@ section {
     transform: translateY(-3px) scale(1.04);
 }
 
-.whatsapp-float svg {
-    width: 28px;
-    height: 28px;
-    fill: #0b0b0c;
+.whatsapp-float i {
+    font-size: 28px;
+    color: #0b0b0c;
+    line-height: 1;
 }
 
 .whatsapp-float:before {
@@ -638,9 +657,8 @@ section {
         height: 50px;
     }
 
-    .whatsapp-float svg {
-        width: 24px;
-        height: 24px;
+    .whatsapp-float i {
+        font-size: 24px;
     }
 }
 
@@ -752,6 +770,91 @@ section {
 }
 
 /* =========================================================
+   ÁREA DE ATENDIMENTO
+========================================================= */
+.coverage {
+    background: var(--bg);
+}
+
+.coverage-grid {
+    display: grid;
+    grid-template-columns: 42% 1fr;
+    gap: 6vw;
+    align-items: center;
+}
+
+.coverage-text h3 {
+    font-size: clamp(28px, 3.4vw, 44px);
+    font-weight: 500;
+    letter-spacing: -.03em;
+    line-height: 1.1;
+    margin-bottom: 20px;
+}
+
+.coverage-text p {
+    line-height: 1.7;
+    color: #55524c;
+    max-width: 460px;
+    margin-bottom: 26px;
+}
+
+.coverage-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.coverage-list li {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 0.92rem;
+}
+
+.coverage-list i {
+    flex-shrink: 0;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(11, 11, 12, 0.08);
+    font-size: 11px;
+    color: var(--black);
+}
+
+.coverage-map {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.18);
+    filter: grayscale(0.35) contrast(1.05);
+}
+
+.coverage-map iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+@media (max-width: 900px) {
+    .coverage-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .coverage-map {
+        aspect-ratio: 16 / 10;
+    }
+}
+
+/* =========================================================
    CONTATO
 ========================================================= */
 .contact {
@@ -827,6 +930,11 @@ section {
     cursor: pointer
 }
 
+.field select:disabled {
+    cursor: not-allowed;
+    opacity: .45;
+}
+
 .field textarea {
     resize: vertical;
     border: 1px solid #777;
@@ -889,6 +997,21 @@ section {
     font-size: 11px;
     color: #999;
     margin-top: 8px
+}
+
+.footer-link {
+    display: inline-block;
+    font-size: 11px;
+    color: #999;
+    margin-top: 6px;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    transition: color .2s ease;
+}
+
+.footer-link:hover,
+.footer-link:focus-visible {
+    color: #fff;
 }
 
 .signature {
@@ -1016,6 +1139,39 @@ section {
 /* =========================================================
    CURSOR PERSONALIZADO (desktop / ponteiro fino apenas)
 ========================================================= */
+/* Esconde o cursor nativo só quando o JS confirma ponteiro fino E a
+   bolinha customizada está de fato visível (mesmo breakpoint de 800px
+   usado abaixo pra esconder .cursor) — evita ficar sem cursor nenhum
+   em telas estreitas ou se o JS não carregar. */
+@media (min-width: 801px) {
+
+    body.has-custom-cursor,
+    body.has-custom-cursor a,
+    body.has-custom-cursor button,
+    body.has-custom-cursor input,
+    body.has-custom-cursor select,
+    body.has-custom-cursor textarea,
+    body.has-custom-cursor * {
+        cursor: none !important;
+    }
+
+    /* Com o menu/modal aberto, a bolinha customizada some (opacity:0 abaixo),
+       então devolve o cursor nativo pra não ficar sem nenhum indicador. */
+    body.has-custom-cursor.menu-open,
+    body.has-custom-cursor.menu-open *,
+    body.has-custom-cursor.modal-open,
+    body.has-custom-cursor.modal-open * {
+        cursor: auto !important;
+    }
+
+    body.has-custom-cursor.menu-open a,
+    body.has-custom-cursor.menu-open button,
+    body.has-custom-cursor.modal-open a,
+    body.has-custom-cursor.modal-open button {
+        cursor: pointer !important;
+    }
+}
+
 .cursor {
     position: fixed;
     top: 0;
@@ -1270,8 +1426,54 @@ body.modal-open .cursor {
    DEPOIMENTOS
 ========================================================= */
 .testimonials {
-    background: var(--bg);
+    background: var(--surface-dark);
+    background-image:
+        radial-gradient(circle at 15% 20%, rgba(56, 189, 248, 0.10), transparent 45%),
+        radial-gradient(circle at 90% 75%, rgba(56, 189, 248, 0.07), transparent 40%);
+    color: var(--white);
     padding-top: 100px;
+    padding-bottom: 100px;
+}
+
+.testimonials .section-label {
+    border-color: #363636;
+}
+
+.google-reviews-badge {
+    position: relative;
+    z-index: 3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: fit-content;
+    max-width: 100%;
+    margin: 0 auto 40px;
+    padding: 12px 22px;
+    border-radius: 9999px;
+    border: 1px solid var(--border-dark);
+    background: var(--surface-card);
+    color: #fff;
+    font-size: 0.85rem;
+    transition: border-color .2s ease, transform .2s ease;
+}
+
+.google-reviews-badge:hover,
+.google-reviews-badge:focus-visible {
+    border-color: rgba(255, 255, 255, .4);
+    transform: translateY(-2px);
+}
+
+.google-reviews-badge i.fa-brands.fa-google {
+    color: #fff;
+    font-size: 16px;
+}
+
+.google-reviews-stars {
+    display: inline-flex;
+    gap: 2px;
+    color: #fbbf24;
+    font-size: 11px;
 }
 
 .testimonials-carousel {
@@ -1296,13 +1498,15 @@ body.modal-open .cursor {
 .testimonial-card {
     flex: 0 0 100%;
     scroll-snap-align: start;
-    border: 1px solid var(--line);
-    border-radius: 4px;
+    border: 1px solid var(--border-dark);
+    border-radius: 16px;
     padding: 34px 30px;
     display: flex;
     flex-direction: column;
     gap: 20px;
-    background: rgba(255, 255, 255, .4);
+    background: var(--surface-card);
+    backdrop-filter: blur(28px) saturate(170%);
+    -webkit-backdrop-filter: blur(28px) saturate(170%);
 }
 
 .testimonials-controls {
@@ -1317,21 +1521,21 @@ body.modal-open .cursor {
     width: 42px;
     height: 42px;
     border-radius: 50%;
-    border: 1px solid var(--line);
+    border: 1px solid var(--border-dark);
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 20px;
     line-height: 1;
-    color: var(--black);
+    color: var(--white);
     transition: background .2s ease, color .2s ease, border-color .2s ease;
 }
 
 .carousel-btn:hover,
 .carousel-btn:focus-visible {
-    background: var(--black);
-    color: var(--white);
-    border-color: var(--black);
+    background: var(--accent);
+    color: #071926;
+    border-color: var(--accent);
 }
 
 .carousel-dots {
@@ -1343,12 +1547,12 @@ body.modal-open .cursor {
     width: 8px;
     height: 8px;
     border-radius: 50%;
-    background: var(--line);
+    background: var(--border-dark);
     transition: background .25s ease, transform .25s ease;
 }
 
 .carousel-dots button.is-active {
-    background: var(--black);
+    background: var(--accent);
     transform: scale(1.3);
 }
 
@@ -1357,9 +1561,9 @@ body.modal-open .cursor {
     align-self: flex-start;
     font: 9px var(--font-mono);
     letter-spacing: .04em;
-    color: #a15b00;
-    background: rgba(217, 143, 0, .12);
-    border: 1px solid rgba(217, 143, 0, .3);
+    color: #ffc766;
+    background: rgba(217, 143, 0, .16);
+    border: 1px solid rgba(217, 143, 0, .4);
     border-radius: 999px;
     padding: 5px 10px;
 }
@@ -1367,7 +1571,7 @@ body.modal-open .cursor {
 .testimonial-card p {
     font-size: 15px;
     line-height: 1.65;
-    color: #2b2b2b;
+    color: rgba(255, 255, 255, 0.85);
     flex-grow: 1;
 }
 
@@ -1376,17 +1580,18 @@ body.modal-open .cursor {
     flex-direction: column;
     gap: 3px;
     padding-top: 16px;
-    border-top: 1px solid var(--line);
+    border-top: 1px solid var(--border-dark);
 }
 
 .testimonial-author strong {
     font-size: 14px;
     letter-spacing: -.01em;
+    color: #fff;
 }
 
 .testimonial-author span {
     font: 10px var(--font-mono);
-    color: #777;
+    color: var(--text-muted);
     text-transform: uppercase;
     letter-spacing: .04em;
 }
@@ -1542,14 +1747,9 @@ body.modal-open .cursor {
     transform: translateY(-2px);
 }
 
-.dev-modal-social svg {
-    width: 17px;
-    height: 17px;
-    fill: none;
-    stroke: currentColor;
-    stroke-width: 1.6;
-    stroke-linecap: round;
-    stroke-linejoin: round;
+.dev-modal-social i {
+    font-size: 16px;
+    line-height: 1;
 }
 
 /* =========================================================
@@ -1736,14 +1936,9 @@ body.modal-open .cursor {
     color: #e0f2fe;
 }
 
-.feature-check svg {
-    width: 12px;
-    height: 10px;
-    fill: none;
-    stroke: currentColor;
-    stroke-width: 2;
-    stroke-linecap: round;
-    stroke-linejoin: round;
+.feature-check i {
+    font-size: 11px;
+    line-height: 1;
 }
 
 .btn-choose {
@@ -1772,6 +1967,220 @@ body.modal-open .cursor {
 
 .btn-choose:active {
     transform: translateY(0);
+}
+
+/* =========================================================
+   PLANEJAMENTO & CONDIÇÕES (abas de reajuste por ano)
+========================================================= */
+.pc-intro {
+    position: relative;
+    z-index: 3;
+    width: 100%;
+    max-width: 620px;
+    margin: 0 auto 36px;
+    text-align: center;
+}
+
+.pc-intro h3 {
+    font-family: var(--font-primary);
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: -0.01em;
+    margin-bottom: 10px;
+}
+
+.pc-intro p {
+    font-size: 0.85rem;
+    line-height: 1.5;
+    color: var(--text-muted);
+    margin-bottom: 20px;
+}
+
+.pc-tabs {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+}
+
+.pc-tab {
+    font: 12px var(--font-mono);
+    letter-spacing: .05em;
+    padding: 9px 22px;
+    border-radius: 9999px;
+    border: 1px solid var(--border-dark);
+    background: transparent;
+    color: var(--text-muted);
+    cursor: pointer;
+    transition: background .2s ease, color .2s ease, border-color .2s ease, transform .2s ease;
+}
+
+.pc-tab:hover {
+    border-color: rgba(255, 255, 255, .4);
+    color: #fff;
+}
+
+.pc-tab.is-active {
+    background: var(--accent);
+    color: #071926;
+    border-color: var(--accent);
+    box-shadow: 0 6px 18px rgba(56, 189, 248, .35);
+}
+
+.plan-increase-tag {
+    display: inline-flex;
+    align-items: center;
+    font: 11px var(--font-mono);
+    font-weight: 500;
+    letter-spacing: .03em;
+    color: var(--accent);
+    background: rgba(56, 189, 248, 0.16);
+    border: 1px solid rgba(56, 189, 248, 0.35);
+    border-radius: 9999px;
+    padding: 3px 10px;
+    margin-left: 10px;
+    vertical-align: middle;
+}
+
+.plan-increase-tag[hidden] {
+    display: none;
+}
+
+.pricing-conditions {
+    position: relative;
+    z-index: 3;
+    width: 100%;
+    max-width: 460px;
+    margin: 40px auto 0;
+}
+
+.pc-info {
+    display: flex;
+    align-items: stretch;
+    background: rgba(0, 0, 0, 0.35);
+    border: 1px solid var(--border-dark);
+    border-radius: 16px;
+    overflow: hidden;
+}
+
+.pc-info-block {
+    flex: 1;
+    padding: 18px 16px;
+    text-align: center;
+}
+
+.pc-info-block h4 {
+    font: 10px var(--font-mono);
+    letter-spacing: .08em;
+    color: var(--accent);
+    margin-bottom: 8px;
+    text-transform: uppercase;
+}
+
+.pc-info-block p {
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.85);
+}
+
+/* =========================================================
+   TABELA COMPARATIVA DOS PLANOS
+========================================================= */
+.compare-wrap {
+    position: relative;
+    z-index: 3;
+    width: 100%;
+    max-width: 900px;
+    margin: 64px auto 0;
+}
+
+.compare-title {
+    text-align: center;
+    font-family: var(--font-primary);
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: -0.01em;
+    margin-bottom: 22px;
+}
+
+.compare-scroll {
+    overflow-x: auto;
+    border: 1px solid var(--border-dark);
+    border-radius: 20px;
+    background: var(--surface-card);
+    backdrop-filter: blur(28px) saturate(170%);
+    -webkit-backdrop-filter: blur(28px) saturate(170%);
+}
+
+.compare-table {
+    width: 100%;
+    min-width: 560px;
+    border-collapse: collapse;
+}
+
+.compare-table th,
+.compare-table td {
+    padding: 14px 16px;
+    text-align: center;
+    border-bottom: 1px solid var(--border-dark);
+    font-size: 0.85rem;
+}
+
+.compare-table thead th {
+    font: 11px var(--font-mono);
+    letter-spacing: .08em;
+    color: var(--text-muted);
+    font-weight: 500;
+    text-transform: uppercase;
+    padding-top: 20px;
+}
+
+.compare-feature-col {
+    text-align: left !important;
+}
+
+.compare-featured-col {
+    color: var(--accent) !important;
+}
+
+.compare-table tbody th {
+    text-align: left;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.88);
+    font-size: 0.85rem;
+}
+
+.compare-table tbody tr:last-child th,
+.compare-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.compare-table tbody td {
+    color: #fff;
+    font-family: var(--font-mono);
+}
+
+.compare-table i {
+    color: var(--accent);
+    font-size: 13px;
+}
+
+.compare-dash {
+    color: rgba(255, 255, 255, 0.25);
+}
+
+@media (max-width: 640px) {
+    .compare-table th[scope="row"] {
+        position: sticky;
+        left: 0;
+        background: rgba(11, 11, 12, 0.92);
+        min-width: 170px;
+    }
+
+    .compare-table th[scope="col"]:not(.compare-feature-col),
+    .compare-table td {
+        min-width: 88px;
+    }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -1901,17 +2310,14 @@ body.modal-open .cursor {
     cursor: pointer;
 }
 
-.faq-question svg {
-    width: 18px;
-    height: 18px;
-    stroke: var(--accent);
-    fill: none;
-    stroke-width: 2;
+.faq-question i {
+    font-size: 16px;
+    color: var(--accent);
     flex-shrink: 0;
     transition: transform .3s ease;
 }
 
-.faq-item.open .faq-question svg {
+.faq-item.open .faq-question i {
     transform: rotate(180deg);
 }
 

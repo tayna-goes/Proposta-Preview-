@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página não encontrada | Dossi Maker</title>
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="./assets/images/favicon-512.png">
+    <link rel="apple-touch-icon" href="./assets/images/apple-touch-icon.png">
+    <meta name="theme-color" content="#0b0b0c">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+        referrerpolicy="no-referrer">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <style>
+        .not-found {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: var(--surface-dark);
+            color: var(--white);
+            padding: 40px var(--pad);
+        }
+
+        .not-found .code {
+            font-family: var(--font-primary);
+            font-weight: 800;
+            font-size: clamp(90px, 20vw, 220px);
+            line-height: 1;
+            letter-spacing: -0.04em;
+            background: linear-gradient(135deg, #fff, rgba(56, 189, 248, 0.6));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .not-found h1 {
+            font-size: clamp(18px, 2.4vw, 26px);
+            font-weight: 500;
+            margin: 12px 0 8px;
+        }
+
+        .not-found p {
+            color: var(--text-muted, rgba(255, 255, 255, .62));
+            max-width: 420px;
+            line-height: 1.6;
+            margin-bottom: 36px;
+        }
+
+        .not-found-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+            justify-content: center;
+        }
+
+        .not-found-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 26px;
+            border-radius: 9999px;
+            font: 12px var(--font-mono);
+            letter-spacing: .05em;
+            text-transform: uppercase;
+            transition: transform .2s ease, background .2s ease, border-color .2s ease;
+        }
+
+        .not-found-btn--primary {
+            background: #fff;
+            color: #0d1117;
+        }
+
+        .not-found-btn--primary:hover {
+            background: #f1f5f9;
+            transform: translateY(-2px);
+        }
+
+        .not-found-btn--ghost {
+            border: 1px solid rgba(255, 255, 255, .2);
+            color: #fff;
+        }
+
+        .not-found-btn--ghost:hover {
+            border-color: rgba(255, 255, 255, .45);
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="not-found">
+        <span class="code">404</span>
+        <h1>Essa página não existe (ou mudou de lugar)</h1>
+        <p>O link que você seguiu pode estar quebrado ou a página foi movida. Volte pro início ou fale direto no
+            WhatsApp que a gente te ajuda.</p>
+        <div class="not-found-actions">
+            <a href="./index.html" class="not-found-btn not-found-btn--primary">
+                <i class="fa-solid fa-house" aria-hidden="true"></i> Voltar ao início
+            </a>
+            <a href="https://wa.me/5518988071968" target="_blank" rel="noopener" class="not-found-btn not-found-btn--ghost">
+                <i class="fa-brands fa-whatsapp" aria-hidden="true"></i> Falar no WhatsApp
+            </a>
+        </div>
+    </div>
+</body>
+
+</html>

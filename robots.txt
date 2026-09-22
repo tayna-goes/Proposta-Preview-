@@ -1,0 +1,5 @@
+# Troque "seudominio.com.br" pelo domínio real assim que publicar na Hostgator/Hostinger.
+User-agent: *
+Allow: /
+
+Sitemap: https://www.seudominio.com.br/sitemap.xml

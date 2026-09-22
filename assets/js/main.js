@@ -16,9 +16,6 @@ $(function () {
     updateClock();
     setInterval(updateClock, 1000);
 
-    /* =======================================================
-       MENU MOBILE
-    ======================================================= */
     function closeMenu() {
         $('.menu-overlay').removeClass('active').attr('aria-hidden', 'true');
         $('.menu-toggle').attr('aria-expanded', 'false');
@@ -36,24 +33,91 @@ $(function () {
         $('html, body').animate({ scrollTop: 0 }, 600);
     });
 
-    /* =======================================================
-       GALERIA DE PROJETOS (com subseções internas)
-    ======================================================= */
-    // Pool de imagens placeholder — substitua por fotos/vídeos reais do trabalho.
+    (function setupReelCarousel() {
+        const track = document.getElementById('reelTrack');
+        if (!track) return;
+
+        const REEL_IMAGES = [
+            './assets/images/carousel/1.jpeg',
+            './assets/images/carousel/2.jpeg',
+            './assets/images/carousel/3.jpeg',
+            './assets/images/carousel/4.jpeg',
+            './assets/images/carousel/5.jpeg',
+            './assets/images/carousel/6.jpeg',
+            './assets/images/carousel/7.jpeg',
+            './assets/images/carousel/8.jpeg',
+            './assets/images/carousel/9.jpeg',
+            './assets/images/carousel/10.jpeg',
+            './assets/images/carousel/11.jpeg',
+            './assets/images/carousel/12.jpeg',
+            './assets/images/carousel/13.jpeg',
+            './assets/images/carousel/14.jpeg',
+            './assets/images/carousel/15.jpeg',
+            './assets/images/carousel/16.jpeg',
+            './assets/images/carousel/17.jpeg',
+            './assets/images/carousel/18.jpeg',
+            './assets/images/carousel/19.jpeg',
+            './assets/images/carousel/20.jpeg',
+            './assets/images/carousel/21.jpeg',
+            './assets/images/carousel/22.jpeg',
+            './assets/images/carousel/23.jpeg',
+            './assets/images/carousel/24.jpeg',
+            './assets/images/carousel/25.jpeg'
+        ];
+
+        // Fisher-Yates
+        function shuffle(arr) {
+            const a = arr.slice();
+            for (let i = a.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [a[i], a[j]] = [a[j], a[i]];
+            }
+            return a;
+        }
+
+        const shuffled = shuffle(REEL_IMAGES);
+
+        function appendSet(hidden) {
+            shuffled.forEach(function (url) {
+                const img = document.createElement('img');
+                img.src = url;
+                img.alt = '';
+                img.loading = 'lazy';
+                if (hidden) img.setAttribute('aria-hidden', 'true');
+                track.appendChild(img);
+            });
+        }
+
+        appendSet(false);
+        appendSet(true);
+    })();
+
     const IMAGE_POOL = [
-        'https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=1000&q=80',
-        'https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=1000&q=80',
-        'https://images.unsplash.com/photo-1506157786151-b8491531f063?auto=format&fit=crop&w=1000&q=80',
-        'https://images.unsplash.com/photo-1501386761578-eac5c94b800a?auto=format&fit=crop&w=1000&q=80',
-        'https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=1000&q=80',
-        'https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?auto=format&fit=crop&w=1000&q=80',
-        'https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=1000&q=80',
-        'https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1000&q=80',
-        'https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1000&q=80',
-        'https://images.unsplash.com/photo-1473968512647-3e447244af8f?auto=format&fit=crop&w=1000&q=80',
-        'https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1000&q=80',
-        'https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1000&q=80',
-        'https://images.unsplash.com/photo-1465101162946-4377e57745c3?auto=format&fit=crop&w=1000&q=80'
+        './assets/images/carousel/1.jpeg',
+        './assets/images/carousel/2.jpeg',
+        './assets/images/carousel/3.jpeg',
+        './assets/images/carousel/4.jpeg',
+        './assets/images/carousel/5.jpeg',
+        './assets/images/carousel/6.jpeg',
+        './assets/images/carousel/7.jpeg',
+        './assets/images/carousel/8.jpeg',
+        './assets/images/carousel/9.jpeg',
+        './assets/images/carousel/10.jpeg',
+        './assets/images/carousel/11.jpeg',
+        './assets/images/carousel/12.jpeg',
+        './assets/images/carousel/13.jpeg',
+        './assets/images/carousel/14.jpeg',
+        './assets/images/carousel/15.jpeg',
+        './assets/images/carousel/16.jpeg',
+        './assets/images/carousel/17.jpeg',
+        './assets/images/carousel/18.jpeg',
+        './assets/images/carousel/19.jpeg',
+        './assets/images/carousel/20.jpeg',
+        './assets/images/carousel/21.jpeg',
+        './assets/images/carousel/22.jpeg',
+        './assets/images/carousel/23.jpeg',
+        './assets/images/carousel/24.jpeg',
+        './assets/images/carousel/25.jpeg'
     ];
 
     function buildSubsections(offset) {
@@ -155,9 +219,6 @@ $(function () {
         if (e.key === 'Escape') { closeMenu(); closeGallery(); }
     });
 
-    /* =======================================================
-       CONTADORES (STATUS)
-    ======================================================= */
     let counted = false;
     function animateCounters() {
         if (counted) return;
@@ -179,10 +240,6 @@ $(function () {
     $(window).on('scroll', animateCounters);
     animateCounters();
 
-    /* =======================================================
-       FORMULÁRIO WHATSAPP
-    ======================================================= */
-    // Não deixa escolher uma data no passado.
     (function setMinEventDate() {
         const dateInput = document.getElementById('eventDate');
         if (!dateInput) return;
@@ -193,9 +250,72 @@ $(function () {
         dateInput.min = `${yyyy}-${mm}-${dd}`;
     })();
 
-    // Envia uma cópia por e-mail via Web3Forms (grátis: https://web3forms.com).
-    // Some silenciosamente se a chave ainda não foi configurada — o WhatsApp continua
-    // funcionando normalmente de qualquer forma.
+    /* =======================================================
+       PROPOSTA EM CASCATA — depende do Tipo de Evento
+       Casamento → Silver / Gold / Black (os planos)
+       Outro tipo → lista normal de serviços
+    ======================================================= */
+    const PROPOSAL_OPTIONS = {
+        casamento: ['Silver', 'Gold', 'Black'],
+        outros: ['Filmagem Completa', 'Fotografia', 'Fotos + Vídeos', 'Vídeo para Redes Sociais',
+            'Imagens Aéreas com Drone', 'Proposta Personalizada']
+    };
+
+    function populateProposalOptions(eventTypeValue) {
+        const proposalField = document.getElementById('proposal');
+        if (!proposalField) return;
+
+        proposalField.innerHTML = '';
+
+        if (!eventTypeValue) {
+            const opt = document.createElement('option');
+            opt.value = '';
+            opt.textContent = 'Selecione o tipo de evento primeiro';
+            proposalField.appendChild(opt);
+            proposalField.value = '';
+            proposalField.disabled = true;
+            return;
+        }
+
+        const placeholder = document.createElement('option');
+        placeholder.value = '';
+        placeholder.textContent = 'Selecione a proposta';
+        proposalField.appendChild(placeholder);
+
+        const isWedding = eventTypeValue === 'Casamento';
+        const list = isWedding ? PROPOSAL_OPTIONS.casamento : PROPOSAL_OPTIONS.outros;
+
+        list.forEach(function (label) {
+            const opt = document.createElement('option');
+            opt.value = label;
+            opt.textContent = isWedding ? ('Pacote ' + label) : label;
+            proposalField.appendChild(opt);
+        });
+
+        proposalField.disabled = false;
+    }
+
+    (function setupProposalCascade() {
+        const eventTypeField = document.getElementById('eventType');
+        if (!eventTypeField) return;
+        populateProposalOptions(eventTypeField.value); // estado inicial
+        eventTypeField.addEventListener('change', function () {
+            populateProposalOptions(this.value);
+        });
+    })();
+
+    function sendToNetlify(formEl) {
+        const body = new URLSearchParams(new FormData(formEl)).toString();
+        return fetch('/', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            body: body
+        }).catch(function () {
+        });
+    }
+
+    // Alternativa portátil via Web3Forms (grátis: https://web3forms.com) — útil se um
+    // dia o site sair do Netlify. Só dispara se uma chave real tiver sido configurada.
     function sendEmailCopy(fields) {
         const accessKey = document.getElementById('web3formsKey').value;
         if (!accessKey || accessKey === 'COLE_SUA_CHAVE_WEB3FORMS_AQUI') return;
@@ -216,7 +336,6 @@ $(function () {
         const $button = $form.find('.send-button');
         if ($button.prop('disabled')) return;
 
-        // Honeypot anti-spam (Web3Forms): se preenchido, é bot — ignora silenciosamente.
         if ($('input[name="botcheck"]').is(':checked')) return;
 
         const name = $('#name').val().trim();
@@ -251,6 +370,8 @@ Aguardo o retorno. Obrigado(a)!`;
 
         const url = 'https://wa.me/' + WHATSAPP_NUMBER + '?text=' + encodeURIComponent(text);
 
+        sendToNetlify($form.get(0));
+
         sendEmailCopy({
             access_key: document.getElementById('web3formsKey').value,
             subject: 'Novo pedido de proposta — Dossi Maker',
@@ -272,9 +393,6 @@ Aguardo o retorno. Obrigado(a)!`;
         }, 2200);
     });
 
-    /* =======================================================
-       CARROSSEL DE DEPOIMENTOS
-    ======================================================= */
     (function setupTestimonialsCarousel() {
         const track = document.getElementById('testimonialsTrack');
         const prevBtn = document.getElementById('testimonialsPrev');
@@ -322,9 +440,6 @@ Aguardo o retorno. Obrigado(a)!`;
         window.addEventListener('resize', updateActiveDot);
     })();
 
-    /* =======================================================
-       MODAL — DESENVOLVIDO POR
-    ======================================================= */
     (function setupDevModal() {
         const trigger = document.getElementById('devCreditTrigger');
         const modal = document.getElementById('devModal');
@@ -358,9 +473,6 @@ Aguardo o retorno. Obrigado(a)!`;
         });
     })();
 
-    /* =======================================================
-       WHATSAPP FLUTUANTE
-    ======================================================= */
     (function setupFloatingWhatsapp() {
         const floatBtn = document.getElementById('whatsappFloat');
         const hero = document.getElementById('inicio');
@@ -390,26 +502,102 @@ Aguardo o retorno. Obrigado(a)!`;
     })();
 
     /* =======================================================
-       PLANOS — seleção de plano (log + destaque)
+       PLANOS — "Escolher Plano" leva pro formulário já preenchido
+       (Tipo de Evento = Casamento, Proposta = plano escolhido)
     ======================================================= */
+    const PLAN_NAMES = { 'btn-silver': 'Silver', 'btn-gold': 'Gold', 'btn-black': 'Black' };
+
     document.querySelectorAll('.btn-choose').forEach(function (btn) {
         btn.addEventListener('click', function () {
             const card = btn.closest('.pricing-card');
-            const tierEl = card ? card.querySelector('.plan-tier') : null;
-            const planName = tierEl ? tierEl.textContent.trim() : 'Plano';
+            const planName = PLAN_NAMES[btn.id];
+
             document.querySelectorAll('.pricing-card').forEach(c => c.classList.remove('is-selected'));
             if (card) card.classList.add('is-selected');
-            const proposalField = document.getElementById('proposal');
-            if (proposalField) {
-                proposalField.value = 'Filmagem Completa';
+
+            const eventTypeField = document.getElementById('eventType');
+            if (eventTypeField) {
+                eventTypeField.value = 'Casamento';
+                populateProposalOptions('Casamento');
             }
+            const proposalField = document.getElementById('proposal');
+            if (proposalField && planName) {
+                proposalField.value = planName;
+            }
+
             document.getElementById('contato').scrollIntoView({ behavior: 'smooth', block: 'start' });
+            setTimeout(function () {
+                const nameField = document.getElementById('name');
+                if (nameField) nameField.focus();
+            }, 500);
         });
     });
 
     /* =======================================================
-       FAQ (acordeão)
+       PLANEJAMENTO & CONDIÇÕES — abas de ano atualizam o preço
+       exibido em cada card de plano (2027 = +15% / 2028 = +35%)
     ======================================================= */
+    (function setupPricingConditions() {
+        const tabsWrap = document.getElementById('pcTabs');
+        if (!tabsWrap) return;
+
+        const BASE_PRICES = {
+            silver: 1599,
+            gold: 1999,
+            black: 2399
+        };
+
+        const YEARS = {
+            '2026': { multiplier: 1, tagLabel: null },
+            '2027': { multiplier: 1.15, tagLabel: '+15%' },
+            '2028': { multiplier: 1.35, tagLabel: '+35%' }
+        };
+
+        const tabs = tabsWrap.querySelectorAll('.pc-tab');
+
+        function formatPrice(value) {
+            const hasCents = Math.round(value * 100) % 100 !== 0;
+            return value.toLocaleString('pt-BR', {
+                minimumFractionDigits: hasCents ? 2 : 0,
+                maximumFractionDigits: 2
+            });
+        }
+
+        function renderYear(year) {
+            const info = YEARS[year] || YEARS['2026'];
+
+            Object.keys(BASE_PRICES).forEach(function (slug) {
+                const priceEl = document.getElementById('price-' + slug);
+                const tagEl = document.getElementById('tag-' + slug);
+                if (!priceEl || !tagEl) return;
+
+                const price = BASE_PRICES[slug] * info.multiplier;
+                priceEl.textContent = formatPrice(price);
+
+                if (info.tagLabel) {
+                    tagEl.textContent = info.tagLabel;
+                    tagEl.hidden = false;
+                } else {
+                    tagEl.hidden = true;
+                }
+            });
+        }
+
+        tabs.forEach(function (tab) {
+            tab.addEventListener('click', function () {
+                tabs.forEach(function (t) {
+                    t.classList.remove('is-active');
+                    t.setAttribute('aria-selected', 'false');
+                });
+                tab.classList.add('is-active');
+                tab.setAttribute('aria-selected', 'true');
+                renderYear(tab.dataset.year);
+            });
+        });
+
+        renderYear('2026');
+    })();
+
     document.querySelectorAll('.faq-item').forEach(function (item) {
         const q = item.querySelector('.faq-question');
         q.addEventListener('click', function () {
@@ -425,11 +613,9 @@ Aguardo o retorno. Obrigado(a)!`;
         });
     });
 
-    /* =======================================================
-       CURSOR PERSONALIZADO (apenas desktop / ponteiro fino)
-    ======================================================= */
     const hasFinePointer = window.matchMedia('(pointer: fine)').matches;
     if (hasFinePointer) {
+        document.body.classList.add('has-custom-cursor');
         const cursor = $('<div class="cursor" aria-hidden="true"></div>');
         $('body').append(cursor);
 
@@ -462,10 +648,6 @@ Aguardo o retorno. Obrigado(a)!`;
         });
     }
 
-    /* =======================================================
-       PARALLAX + REVEAL — GSAP / ScrollTrigger
-       (respeita prefers-reduced-motion e ajusta intensidade por breakpoint)
-    ======================================================= */
     if (window.gsap && window.ScrollTrigger) {
         gsap.registerPlugin(ScrollTrigger);
 
@@ -479,7 +661,7 @@ Aguardo o retorno. Obrigado(a)!`;
                 const { reduceMotion, isMobile } = context.conditions;
 
                 if (reduceMotion) {
-                    // Sem parallax: apenas fade-in simples, sem movimento atrelado ao scroll.
+
                     gsap.utils.toArray('.reveal-on-scroll').forEach(function (el) {
                         gsap.fromTo(el, { opacity: 0 }, {
                             opacity: 1, duration: 0.6,
@@ -491,7 +673,6 @@ Aguardo o retorno. Obrigado(a)!`;
 
                 const heroStrength = isMobile ? 0.4 : 1;
 
-                // HERO — título e vídeo em profundidades diferentes
                 gsap.to('.hero-title', {
                     yPercent: 22 * heroStrength,
                     ease: 'none',
@@ -509,7 +690,6 @@ Aguardo o retorno. Obrigado(a)!`;
                     scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: 0.4 }
                 });
 
-                // SOBRE — foto com profundidade
                 gsap.fromTo('.about-photo img',
                     { yPercent: -8, scale: 1.12 },
                     {
@@ -518,7 +698,6 @@ Aguardo o retorno. Obrigado(a)!`;
                     }
                 );
 
-                // STATUS — contadores com deslocamento alternado
                 gsap.utils.toArray('.stats-grid article').forEach(function (article, i) {
                     const dir = i % 2 === 0 ? 1 : -1;
                     gsap.to(article.querySelector('.counter'), {
@@ -528,7 +707,6 @@ Aguardo o retorno. Obrigado(a)!`;
                     });
                 });
 
-                // PROJETOS — leve deriva horizontal no título de cada linha
                 gsap.utils.toArray('.project-row').forEach(function (row, i) {
                     const dir = i % 2 === 0 ? 1 : -1;
                     gsap.to(row.querySelector('strong'), {
@@ -538,7 +716,6 @@ Aguardo o retorno. Obrigado(a)!`;
                     });
                 });
 
-                // FINAL — imagem de fundo com zoom sutil ligado ao scroll
                 gsap.fromTo('.finish-bg',
                     { scale: 1.05 },
                     {
@@ -547,7 +724,68 @@ Aguardo o retorno. Obrigado(a)!`;
                     }
                 );
 
-                // REVEAL — entrada suave dos blocos de conteúdo
+                /* ---- Parallax extra entre seções (contínuo, ativa a cada scroll) ---- */
+
+                gsap.utils.toArray('.service-list > div').forEach(function (item, i) {
+                    const dir = i % 2 === 0 ? 1 : -1;
+                    gsap.to(item, {
+                        yPercent: 10 * dir * heroStrength,
+                        ease: 'none',
+                        scrollTrigger: { trigger: item, start: 'top bottom', end: 'bottom top', scrub: 0.6 }
+                    });
+                });
+
+                gsap.utils.toArray('.process-grid article').forEach(function (article, i) {
+                    const dir = i % 2 === 0 ? -1 : 1;
+                    gsap.to(article, {
+                        yPercent: 12 * dir * heroStrength,
+                        ease: 'none',
+                        scrollTrigger: { trigger: article, start: 'top bottom', end: 'bottom top', scrub: 0.6 }
+                    });
+                });
+
+                /* Anima o miolo do card (não o .pricing-card em si), pra não
+                   brigar com o transform do hover/seleção definido em CSS. */
+                gsap.utils.toArray('.pricing-card').forEach(function (card, i) {
+                    const inner = card.querySelector(':scope > div');
+                    if (!inner) return;
+                    const dir = i % 2 === 0 ? 1 : -1;
+                    gsap.to(inner, {
+                        yPercent: 5 * dir * heroStrength,
+                        ease: 'none',
+                        scrollTrigger: { trigger: card, start: 'top bottom', end: 'bottom top', scrub: 0.6 }
+                    });
+                });
+
+                gsap.utils.toArray('.testimonial-card').forEach(function (card) {
+                    gsap.fromTo(card,
+                        { yPercent: 6 },
+                        {
+                            yPercent: -6, ease: 'none',
+                            scrollTrigger: { trigger: card, start: 'top bottom', end: 'bottom top', scrub: 0.6 }
+                        }
+                    );
+                });
+
+                gsap.utils.toArray('.faq-item').forEach(function (item, i) {
+                    const dir = i % 2 === 0 ? 1 : -1;
+                    gsap.to(item, {
+                        xPercent: 3 * dir,
+                        ease: 'none',
+                        scrollTrigger: { trigger: item, start: 'top bottom', end: 'bottom top', scrub: 0.6 }
+                    });
+                });
+
+                if (document.querySelector('.coverage-map')) {
+                    gsap.fromTo('.coverage-map',
+                        { scale: 1.08 },
+                        {
+                            scale: 1, ease: 'none',
+                            scrollTrigger: { trigger: '.coverage', start: 'top bottom', end: 'bottom top', scrub: 0.5 }
+                        }
+                    );
+                }
+
                 gsap.utils.toArray('.reveal-on-scroll').forEach(function (el) {
                     gsap.fromTo(el,
                         { opacity: 0, y: 45 },
@@ -560,7 +798,6 @@ Aguardo o retorno. Obrigado(a)!`;
             }
         );
     } else {
-        // Fallback sem GSAP: garante que o conteúdo fique visível.
         document.querySelectorAll('.reveal-on-scroll').forEach(function (el) {
             el.style.opacity = 1;
         });
