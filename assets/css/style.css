@@ -287,6 +287,7 @@ section {
     font-size: 12px;
     line-height: 1.55;
     color: #fff;
+    opacity: 1;
 }
 
 .hero-meta p {
