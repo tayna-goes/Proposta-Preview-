@@ -1,0 +1,286 @@
+.testimonials {
+    position: relative;
+    background: var(--surface-dark);
+    background-image:
+        radial-gradient(circle at 15% 20%, rgba(56, 189, 248, 0.10), transparent 45%),
+        radial-gradient(circle at 90% 75%, rgba(56, 189, 248, 0.07), transparent 40%);
+    color: var(--white);
+    padding-top: 100px;
+    padding-bottom: 110px;
+    overflow: hidden;
+    touch-action: pan-y;
+    cursor: grab;
+    user-select: none;
+}
+
+.testimonials.is-dragging {
+    cursor: grabbing;
+}
+
+.testimonials:focus-visible {
+    outline: none;
+    box-shadow: inset 0 0 0 3px var(--accent);
+}
+
+.testimonials .section-label {
+    border-color: #363636;
+}
+
+.google-reviews-badge {
+    position: relative;
+    z-index: 3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: fit-content;
+    max-width: 100%;
+    margin: 0 auto 56px;
+    padding: 12px 22px;
+    border-radius: 9999px;
+    border: 1px solid var(--border-dark);
+    background: var(--surface-card);
+    color: #fff;
+    font-size: 0.85rem;
+    transition: border-color .2s ease, transform .2s ease;
+}
+
+.google-reviews-badge:hover,
+.google-reviews-badge:focus-visible {
+    border-color: rgba(255, 255, 255, .4);
+    transform: translateY(-2px);
+}
+
+.google-reviews-badge i.fa-brands.fa-google {
+    color: #fff;
+    font-size: 16px;
+}
+
+.google-reviews-stars {
+    display: inline-flex;
+    gap: 2px;
+    color: #fbbf24;
+    font-size: 11px;
+}
+
+.testimonials-container {
+    position: relative;
+    z-index: 3;
+    width: 100%;
+    max-width: 1160px;
+    margin: 0 auto;
+    padding: 0 var(--pad);
+}
+
+.testimonials-title {
+    margin: 0;
+    text-align: center;
+    font-size: clamp(34px, 5.5vw, 78px);
+    line-height: 1.08;
+    font-weight: 500;
+    letter-spacing: -.03em;
+    color: #fff;
+}
+
+.testimonials-title em {
+    font-family: Georgia, "Times New Roman", serif;
+    font-style: italic;
+    font-weight: 400;
+    color: var(--accent);
+}
+
+.testimonials-hint {
+    position: relative;
+    z-index: 3;
+    text-align: center;
+    margin: 18px 0 0;
+    font: 10px var(--font-mono);
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+}
+
+.testimonials-track {
+    position: relative;
+    z-index: 3;
+    display: flex;
+    align-items: center;
+    margin-top: 60px;
+}
+
+.testimonial-slide {
+    --slide-size: 82%;
+    position: relative;
+    min-width: var(--slide-size);
+    max-width: var(--slide-size);
+    margin-left: 20px;
+    overflow: hidden;
+    border-radius: 20px;
+    padding: 36px 20px 28px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 18px;
+    transform-origin: left center;
+    will-change: transform;
+    backface-visibility: hidden;
+    box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
+}
+
+.testimonial-slide.is-accent {
+    background: var(--white);
+    color: var(--black);
+}
+
+.testimonial-slide.is-light {
+    background: var(--white);
+    color: var(--black);
+}
+
+.quote-icon {
+    position: absolute;
+    width: auto;
+    height: 22px;
+    color: currentColor;
+    opacity: .55;
+}
+
+.quote-icon svg {
+    display: block;
+    width: auto;
+    height: 100%;
+}
+
+.quote-icon-open {
+    top: 20px;
+    right: 22px;
+}
+
+.quote-icon-close {
+    bottom: 20px;
+    left: 22px;
+    transform: rotate(180deg);
+}
+
+.testimonial-flag {
+    display: inline-block;
+    align-self: flex-start;
+    font: 9px var(--font-mono);
+    letter-spacing: .04em;
+    color: #7a4b00;
+    background: rgba(217, 143, 0, .22);
+    border: 1px solid rgba(217, 143, 0, .45);
+    border-radius: 999px;
+    padding: 5px 10px;
+}
+
+.testimonial-slide blockquote {
+    margin: 0;
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+.testimonial-author {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 3px;
+    padding-top: 18px;
+    border-top: 1px solid currentColor;
+}
+
+.is-accent .testimonial-author {
+    border-top-color: rgba(7, 25, 38, .25);
+}
+
+.is-light .testimonial-author {
+    border-top-color: rgba(11, 11, 12, .15);
+}
+
+.testimonial-author strong {
+    font-size: 14px;
+    letter-spacing: -.01em;
+}
+
+.testimonial-author span {
+    font: 10px var(--font-mono);
+    text-transform: uppercase;
+    letter-spacing: .04em;
+    opacity: .72;
+}
+
+/* Telas bem pequenas (iPhone SE e afins) — aperta um pouco mais o card */
+@media (max-width: 360px) {
+    .testimonial-slide {
+        --slide-size: 88%;
+        padding: 30px 16px 24px;
+        row-gap: 14px;
+    }
+
+    .testimonials-title {
+        font-size: 30px;
+    }
+}
+
+/* Tablets e telas maiores — card com largura fluida em vez de fixa, pra
+   não ficar minúsculo em telas grandes nem apertado em tablets */
+@media (min-width: 650px) {
+    .testimonial-slide {
+        --slide-size: clamp(340px, 30vw, 460px);
+        margin-left: calc(var(--slide-size) * -0.22);
+        padding: 54px 44px 42px;
+    }
+
+    .testimonial-slide:nth-child(odd) {
+        margin-top: -46px;
+    }
+
+    .testimonial-slide:nth-child(even) {
+        margin-top: 46px;
+    }
+
+    .quote-icon {
+        height: 28px;
+    }
+
+    .quote-icon-open {
+        top: 30px;
+        right: 32px;
+    }
+
+    .quote-icon-close {
+        bottom: 30px;
+        left: 32px;
+    }
+
+    .testimonial-slide blockquote {
+        font-size: 19px;
+        line-height: 1.55;
+    }
+}
+
+/* Telas muito largas — controla o exagero de overlap entre cards */
+@media (min-width: 1600px) {
+    .testimonial-slide {
+        --slide-size: 480px;
+    }
+
+    .testimonial-slide:nth-child(odd) {
+        margin-top: -58px;
+    }
+
+    .testimonial-slide:nth-child(even) {
+        margin-top: 58px;
+    }
+}
+
+/* Respeita quem pediu menos movimento no sistema: sem stagger vertical
+   (menos "salto" visual), o JS já para o auto-scroll nesse caso */
+@media (prefers-reduced-motion: reduce) {
+
+    .testimonial-slide:nth-child(odd),
+    .testimonial-slide:nth-child(even) {
+        margin-top: 0;
+    }
+}

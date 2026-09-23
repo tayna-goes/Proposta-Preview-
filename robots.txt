@@ -1,5 +1,5 @@
-# Troque "seudominio.com.br" pelo domínio real assim que publicar na Hostgator/Hostinger.
 User-agent: *
 Allow: /
+Disallow: /404.html
 
-Sitemap: https://www.seudominio.com.br/sitemap.xml
+Sitemap: https://caio-preview.netlify.app/sitemap.xml

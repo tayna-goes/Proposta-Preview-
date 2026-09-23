@@ -1,0 +1,146 @@
+.signature-trigger {
+    color: #fff;
+    text-decoration: underline;
+    text-decoration-color: rgba(255, 255, 255, .35);
+    text-underline-offset: 3px;
+    transition: text-decoration-color .2s ease;
+}
+
+.signature-trigger:hover,
+.signature-trigger:focus-visible {
+    text-decoration-color: #fff;
+}
+
+.dev-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 11000;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+}
+
+.dev-modal.active {
+    display: flex;
+}
+
+.dev-modal-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(11, 11, 12, .72);
+    backdrop-filter: blur(6px);
+}
+
+.dev-modal-card {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 360px;
+    background: var(--surface-dark);
+    color: var(--white);
+    border: 1px solid var(--border-dark);
+    border-radius: 20px;
+    padding: 40px 32px 32px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    transform: translateY(14px) scale(.97);
+    opacity: 0;
+    transition: transform .3s cubic-bezier(.2, .8, .2, 1), opacity .3s ease;
+}
+
+.dev-modal.active .dev-modal-card {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+}
+
+.dev-modal-close {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    color: var(--white);
+    font-size: 12px;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background .2s ease;
+}
+
+.dev-modal-close:hover,
+.dev-modal-close:focus-visible {
+    background: rgba(255, 255, 255, .1);
+}
+
+.dev-modal-avatar {
+    width: 88px;
+    height: 88px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-bottom: 14px;
+    border: 1px solid var(--border-dark);
+}
+
+.dev-modal-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.dev-modal-card h3 {
+    font-size: 20px;
+    font-weight: 600;
+    letter-spacing: -.02em;
+}
+
+.dev-modal-role {
+    font: 10px var(--font-mono);
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 10px;
+}
+
+.dev-modal-bio {
+    font-size: 13px;
+    line-height: 1.6;
+    color: var(--text-muted);
+    max-width: 280px;
+    margin-bottom: 22px;
+}
+
+.dev-modal-social {
+    display: flex;
+    gap: 12px;
+}
+
+.dev-modal-social a {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    border: 1px solid var(--border-dark);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--white);
+    transition: background .2s ease, border-color .2s ease, transform .2s ease;
+}
+
+.dev-modal-social a:hover,
+.dev-modal-social a:focus-visible {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: #071926;
+    transform: translateY(-2px);
+}
+
+.dev-modal-social i {
+    font-size: 16px;
+    line-height: 1;
+}
+

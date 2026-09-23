@@ -1,0 +1,68 @@
+@media (min-width: 801px) {
+    body.has-custom-cursor,
+    body.has-custom-cursor a,
+    body.has-custom-cursor button,
+    body.has-custom-cursor input,
+    body.has-custom-cursor select,
+    body.has-custom-cursor textarea,
+    body.has-custom-cursor * {
+        cursor: none !important;
+    }
+
+    body.has-custom-cursor.menu-open,
+    body.has-custom-cursor.menu-open *,
+    body.has-custom-cursor.modal-open,
+    body.has-custom-cursor.modal-open * {
+        cursor: auto !important;
+    }
+
+    body.has-custom-cursor.menu-open a,
+    body.has-custom-cursor.menu-open button,
+    body.has-custom-cursor.modal-open a,
+    body.has-custom-cursor.modal-open button {
+        cursor: pointer !important;
+    }
+}
+
+.cursor {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: #fff;
+    mix-blend-mode: difference;
+    pointer-events: none;
+    z-index: 20000;
+    transform: translate(-50%, -50%);
+    transition: width .22s ease, height .22s ease, opacity .2s ease, background .2s ease;
+    will-change: transform;
+}
+
+.cursor.is-hover {
+    width: 58px;
+    height: 58px;
+}
+
+.cursor.is-project {
+    width: 74px;
+    height: 74px;
+}
+
+.cursor.is-project:after {
+    content: "VER";
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    font: 10px var(--font-mono);
+    color: #111;
+    mix-blend-mode: normal;
+}
+
+body.menu-open .cursor,
+body.modal-open .cursor {
+    opacity: 0;
+}
+

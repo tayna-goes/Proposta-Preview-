@@ -1,0 +1,40 @@
+.hero-title>span {
+    animation: titleReveal 1s cubic-bezier(.2, .8, .2, 1) both;
+}
+
+.hero-title>span:nth-child(2) {
+    animation-delay: .12s;
+}
+
+@keyframes titleReveal {
+    from {
+        opacity: 0;
+        transform: translateY(110%);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .hero-title>span {
+        animation: none;
+    }
+}
+
+.reveal-on-scroll {
+    will-change: transform, opacity;
+}
+
+@media (max-width: 800px) {
+    .cursor {
+        display: none;
+    }
+
+    .project-row:before {
+        display: none;
+    }
+}
+

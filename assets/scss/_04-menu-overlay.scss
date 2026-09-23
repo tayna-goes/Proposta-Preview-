@@ -1,0 +1,63 @@
+.menu-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 10000;
+    background: var(--surface-dark);
+    color: var(--white);
+    padding: 28px var(--pad);
+    display: flex;
+    flex-direction: column;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transform: translateY(-10px);
+    transition: .35s
+}
+
+.menu-overlay.active {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: none
+}
+
+.menu-head {
+    display: flex;
+    justify-content: space-between;
+    font: 11px var(--font-mono)
+}
+
+.menu-close {
+    color: #fff
+}
+
+.menu-nav {
+    margin: auto 0
+}
+
+.menu-nav a {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    font-size: clamp(42px, 8vw, 110px);
+    letter-spacing: -.06em;
+    border-bottom: 1px solid #2d2d2d;
+    padding: 14px 0;
+    transition: padding-left .25s ease, color .25s ease;
+}
+
+.menu-nav a:hover,
+.menu-nav a:focus-visible {
+    padding-left: 14px;
+    color: var(--accent);
+}
+
+.menu-nav small {
+    font: 11px var(--font-mono)
+}
+
+.menu-footer {
+    font: 10px var(--font-mono);
+    color: #999
+}
+

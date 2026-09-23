@@ -1,0 +1,97 @@
+.hero {
+    min-height: 100vh;
+    padding-top: 150px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    overflow: hidden;
+}
+
+.hero-meta {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin-bottom: 75px;
+    font-size: 12px;
+    line-height: 1.55;
+    color: #fff;
+}
+
+.hero-meta p {
+    max-width: 370px;
+    justify-self: end;
+    color: #fff;
+}
+
+.hero-title {
+    margin: 0;
+    font-size: clamp(90px, 17vw, 290px);
+    font-weight: 700;
+    letter-spacing: -.095em;
+    line-height: .9;
+    color: #fff;
+    will-change: transform;
+}
+
+.hero-title>span {
+    display: block;
+}
+
+.hero-title .indent {
+    padding-left: 12vw
+}
+
+.hero-video {
+    filter: grayscale(100%);
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    z-index: -2;
+    will-change: transform;
+}
+
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: linear-gradient(180deg, rgba(0, 0, 0, .1) 0%, rgba(0, 0, 0, .55) 100%);
+}
+
+.hero-scroll-cue {
+    position: absolute;
+    bottom: 28px;
+    left: var(--pad);
+    width: 1px;
+    height: 44px;
+    background: rgba(255, 255, 255, .35);
+    overflow: hidden;
+}
+
+.hero-scroll-cue span {
+    display: block;
+    width: 100%;
+    height: 40%;
+    background: #fff;
+    animation: scrollCue 1.8s ease-in-out infinite;
+}
+
+@keyframes scrollCue {
+    0% {
+        transform: translateY(-100%)
+    }
+
+    100% {
+        transform: translateY(250%)
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .hero-scroll-cue span {
+        animation: none;
+        height: 100%;
+    }
+}
+

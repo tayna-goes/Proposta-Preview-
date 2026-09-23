@@ -1,11 +1,8 @@
 $(function () {
     'use strict';
 
-    const WHATSAPP_NUMBER = "5518988071968"; // IMPORTANTE: altere o número aqui se necessário.
+    const WHATSAPP_NUMBER = "5518988071968";
 
-    /* =======================================================
-       RELÓGIO (BR)
-    ======================================================= */
     function updateClock() {
         const now = new Date();
         $('#clock').text(new Intl.DateTimeFormat('pt-BR', {
@@ -32,6 +29,7 @@ $(function () {
     $('.back-to-top').on('click', function () {
         $('html, body').animate({ scrollTop: 0 }, 600);
     });
+
 
     (function setupReelCarousel() {
         const track = document.getElementById('reelTrack');
@@ -65,7 +63,6 @@ $(function () {
             './assets/images/carousel/25.jpeg'
         ];
 
-        // Fisher-Yates
         function shuffle(arr) {
             const a = arr.slice();
             for (let i = a.length - 1; i > 0; i--) {
@@ -248,17 +245,122 @@ $(function () {
         const mm = String(today.getMonth() + 1).padStart(2, '0');
         const dd = String(today.getDate()).padStart(2, '0');
         dateInput.min = `${yyyy}-${mm}-${dd}`;
+        const maxDate = new Date(today);
+        maxDate.setFullYear(maxDate.getFullYear() + 3);
+        dateInput.max = `${maxDate.getFullYear()}-${String(maxDate.getMonth() + 1).padStart(2, '0')}-${String(maxDate.getDate()).padStart(2, '0')}`;
     })();
 
-    /* =======================================================
-       PROPOSTA EM CASCATA — depende do Tipo de Evento
-       Casamento → Silver / Gold / Black (os planos)
-       Outro tipo → lista normal de serviços
-    ======================================================= */
+
+    const formLoadedAt = Date.now();
+    (function stampLoadTime() {
+        const el = document.getElementById('loadedAt');
+        if (el) el.value = String(formLoadedAt);
+    })();
+
+
+    (function setupPhoneMask() {
+        const phoneInput = document.getElementById('phone');
+        if (!phoneInput) return;
+
+        function maskPhone(value) {
+            let digits = value.replace(/\D/g, '').slice(0, 11);
+            if (digits.length === 0) return '';
+            if (digits.length <= 2) return '(' + digits;
+            if (digits.length <= 6) return '(' + digits.slice(0, 2) + ') ' + digits.slice(2);
+            if (digits.length <= 10) {
+                return '(' + digits.slice(0, 2) + ') ' + digits.slice(2, 6) + '-' + digits.slice(6);
+            }
+            return '(' + digits.slice(0, 2) + ') ' + digits.slice(2, 7) + '-' + digits.slice(7);
+        }
+
+        phoneInput.addEventListener('input', function () {
+            const cursorWasAtEnd = phoneInput.selectionEnd === phoneInput.value.length;
+            phoneInput.value = maskPhone(phoneInput.value);
+            if (cursorWasAtEnd) {
+                phoneInput.selectionStart = phoneInput.selectionEnd = phoneInput.value.length;
+            }
+        });
+        phoneInput.addEventListener('paste', function () {
+            setTimeout(function () { phoneInput.value = maskPhone(phoneInput.value); }, 0);
+        });
+    })();
+
+
+    const FORM_VALIDATORS = {
+        name: function (value) {
+            const v = value.trim();
+            if (!v) return 'Digite seu nome.';
+            if (v.length < 3) return 'Nome muito curto.';
+            if (!/^[A-Za-zÀ-ÖØ-öø-ÿ' ]{3,80}$/.test(v)) return 'Use apenas letras e espaços.';
+            if (!/[A-Za-zÀ-ÖØ-öø-ÿ]{2,}/.test(v)) return 'Digite um nome válido.';
+            return '';
+        },
+        phone: function (value) {
+            const digits = value.replace(/\D/g, '');
+            if (!digits) return 'Informe seu WhatsApp.';
+            if (digits.length < 10 || digits.length > 11) return 'Telefone incompleto. Ex: (18) 99999-9999.';
+            if (/^(\d)\1+$/.test(digits)) return 'Telefone inválido.';
+            return '';
+        },
+        email: function (value) {
+            const v = value.trim();
+            if (!v) return '';
+            const ok = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v);
+            return ok ? '' : 'E-mail inválido.';
+        },
+        eventType: function (value) {
+            return value ? '' : 'Selecione o tipo de evento.';
+        },
+        eventDate: function (value, input) {
+            if (!value) return 'Escolha uma data.';
+            const min = input.min;
+            const max = input.max;
+            if (min && value < min) return 'A data precisa ser a partir de hoje.';
+            if (max && value > max) return 'Data muito distante. Fale direto pelo WhatsApp.';
+            return '';
+        },
+        proposal: function (value) {
+            return value ? '' : 'Selecione a proposta desejada.';
+        }
+    };
+
+    function showFieldError(fieldName, message) {
+        const $field = $('#' + fieldName).closest('.field');
+        const $error = $('#err-' + fieldName);
+        if (message) {
+            $field.addClass('has-error');
+            $error.text(message);
+        } else {
+            $field.removeClass('has-error');
+            $error.text('');
+        }
+    }
+
+    function validateField(fieldName) {
+        const validator = FORM_VALIDATORS[fieldName];
+        if (!validator) return true;
+        const input = document.getElementById(fieldName);
+        if (!input) return true;
+        const message = validator(input.value, input);
+        showFieldError(fieldName, message);
+        return !message;
+    }
+
+    (function setupLiveValidation() {
+        Object.keys(FORM_VALIDATORS).forEach(function (fieldName) {
+            const input = document.getElementById(fieldName);
+            if (!input) return;
+            input.addEventListener('blur', function () { validateField(fieldName); });
+            input.addEventListener('input', function () {
+                if ($('#' + fieldName).closest('.field').hasClass('has-error')) validateField(fieldName);
+            });
+            input.addEventListener('change', function () { validateField(fieldName); });
+        });
+    })();
+
     const PROPOSAL_OPTIONS = {
         casamento: ['Silver', 'Gold', 'Black'],
-        outros: ['Filmagem Completa', 'Fotografia', 'Fotos + Vídeos', 'Vídeo para Redes Sociais',
-            'Imagens Aéreas com Drone', 'Proposta Personalizada']
+        outros: ['Filmagem Completa', 'Fotografia', 'Fotos + Vídeos', 'Vídeo para Redes Sociais', 'Imagens Aéreas com Drone', 'Proposta Personalizada']
     };
 
     function populateProposalOptions(eventTypeValue) {
@@ -314,8 +416,6 @@ $(function () {
         });
     }
 
-    // Alternativa portátil via Web3Forms (grátis: https://web3forms.com) — útil se um
-    // dia o site sair do Netlify. Só dispara se uma chave real tiver sido configurada.
     function sendEmailCopy(fields) {
         const accessKey = document.getElementById('web3formsKey').value;
         if (!accessKey || accessKey === 'COLE_SUA_CHAVE_WEB3FORMS_AQUI') return;
@@ -325,8 +425,11 @@ $(function () {
             headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
             body: JSON.stringify(fields)
         }).catch(function () {
-            // Falha silenciosa: o pedido já segue pelo WhatsApp de qualquer forma.
         });
+    }
+
+    function sanitizeSingleLine(value) {
+        return value.replace(/[\r\n]+/g, ' ').trim();
     }
 
     $('#whatsappForm').on('submit', function (e) {
@@ -335,40 +438,72 @@ $(function () {
         const $form = $(this);
         const $button = $form.find('.send-button');
         if ($button.prop('disabled')) return;
+        if ($('#botcheck').val()) return;
+        if (Date.now() - formLoadedAt < 2000) return;
 
-        if ($('input[name="botcheck"]').is(':checked')) return;
+        const fieldsToValidate = ['name', 'phone', 'email', 'eventType', 'eventDate', 'proposal'];
+        let firstInvalid = null;
+        let allValid = true;
+        fieldsToValidate.forEach(function (fieldName) {
+            const ok = validateField(fieldName);
+            if (!ok) {
+                allValid = false;
+                if (!firstInvalid) firstInvalid = fieldName;
+            }
+        });
 
-        const name = $('#name').val().trim();
-        const email = $('#email').val().trim();
+        if (!allValid) {
+            const el = document.getElementById(firstInvalid);
+            if (el) { el.focus(); el.scrollIntoView({ behavior: 'smooth', block: 'center' }); }
+            return;
+        }
+
+        const name = sanitizeSingleLine($('#name').val());
+        const phoneRaw = $('#phone').val();
+        const phone = sanitizeSingleLine(phoneRaw);
+        const email = sanitizeSingleLine($('#email').val());
         const eventType = $('#eventType').val();
         const date = $('#eventDate').val();
         const proposal = $('#proposal').val();
-        const message = $('#message').val().trim();
+        const message = $('#message').val().trim().slice(0, 600);
 
-        if (!name || !eventType || !date || !proposal) {
-            alert('Preencha todos os campos obrigatórios.');
-            return;
-        }
+        const formattedDate = new Date(date + 'T12:00:00').toLocaleDateString('pt-BR', { weekday: 'long', day: '2-digit', month: 'long', year: 'numeric' });
+        const emojis = {
+            wave: String.fromCodePoint(0x1F44B),
+            smile: String.fromCodePoint(0x1F60A),
+            clipboard: String.fromCodePoint(0x1F4CB),
+            person: String.fromCodePoint(0x1F464),
+            phone: String.fromCodePoint(0x1F4F1),
+            party: String.fromCodePoint(0x1F389),
+            calendar: String.fromCodePoint(0x1F4C5),
+            money: String.fromCodePoint(0x1F4B0),
+            note: String.fromCodePoint(0x1F4DD),
+            sparkle: String.fromCodePoint(0x2728),
+            pray: String.fromCodePoint(0x1F64F)
+        };
 
-        const todayStr = document.getElementById('eventDate').min;
-        if (todayStr && date < todayStr) {
-            alert('Escolha uma data a partir de hoje.');
-            return;
-        }
+const text = `${emojis.wave} Olá, Caio Dossi! Tudo bem?
 
-        const formattedDate = new Date(date + 'T12:00:00').toLocaleDateString('pt-BR');
-        const text =
-            `Olá! Gostaria de solicitar uma proposta.
+Vim pelo site e gostaria de solicitar uma proposta. ${emojis.smile}
 
-*Nome:* ${name}
-*Tipo de evento/projeto:* ${eventType}
-*Data do evento:* ${formattedDate}
-*Proposta desejada:* ${proposal}
-${message ? `*Mais detalhes:* ${message}` : ''}
+${emojis.clipboard} *Dados da solicitação*
 
-Aguardo o retorno. Obrigado(a)!`;
+${emojis.person} *Nome:* ${name}
+${emojis.phone} *WhatsApp:* ${phone}
+${emojis.party} *Tipo de evento/projeto:* ${eventType}
+${emojis.calendar} *Data do evento:* ${formattedDate}
+${emojis.money} *Proposta desejada:* ${proposal}${message ? `
 
-        const url = 'https://wa.me/' + WHATSAPP_NUMBER + '?text=' + encodeURIComponent(text);
+${emojis.note} *Mais detalhes:*
+${message}` : ''}
+
+${emojis.sparkle} Fico no aguardo do retorno com os próximos passos.
+
+Obrigado(a)! ${emojis.pray}`;
+
+const whatsappUrl = `https://wa.me/5518988071968?text=${encodeURIComponent(text)}`;
+
+window.open(whatsappUrl, '_blank');
 
         sendToNetlify($form.get(0));
 
@@ -376,6 +511,7 @@ Aguardo o retorno. Obrigado(a)!`;
             access_key: document.getElementById('web3formsKey').value,
             subject: 'Novo pedido de proposta — Dossi Maker',
             name: name,
+            phone: phone,
             email: email || 'não informado',
             'Tipo de evento': eventType,
             'Data do evento': formattedDate,
@@ -385,60 +521,207 @@ Aguardo o retorno. Obrigado(a)!`;
 
         const originalHtml = $button.html();
         $button.prop('disabled', true).addClass('is-sending').html('ABRINDO WHATSAPP... <span>↗</span>');
-
         window.open(url, '_blank', 'noopener');
 
         setTimeout(function () {
             $button.prop('disabled', false).removeClass('is-sending').html(originalHtml);
+            $form.get(0).reset();
+            fieldsToValidate.forEach(function (fieldName) { showFieldError(fieldName, ''); });
+            populateProposalOptions('');
         }, 2200);
     });
 
-    (function setupTestimonialsCarousel() {
-        const track = document.getElementById('testimonialsTrack');
-        const prevBtn = document.getElementById('testimonialsPrev');
-        const nextBtn = document.getElementById('testimonialsNext');
-        const dotsWrap = document.getElementById('testimonialsDots');
-        if (!track || !prevBtn || !nextBtn || !dotsWrap) return;
 
-        const cards = Array.prototype.slice.call(track.children);
-        if (!cards.length) return;
+    function initTestimonialsDragSlider(root) {
+        root = root || document;
+        const sections = root.querySelectorAll('[data-effect="testimonials-drag-slider"]');
 
-        cards.forEach(function (_, i) {
-            const dot = document.createElement('button');
-            dot.type = 'button';
-            dot.setAttribute('aria-label', 'Ir para o depoimento ' + (i + 1));
-            if (i === 0) dot.classList.add('is-active');
-            dot.addEventListener('click', function () { goTo(i); });
-            dotsWrap.appendChild(dot);
-        });
-        const dots = Array.prototype.slice.call(dotsWrap.children);
+        sections.forEach(function (section) {
+            const track = section.querySelector('[data-testimonials-track]');
+            if (!track) return;
 
-        function currentIndex() {
-            return Math.round(track.scrollLeft / track.clientWidth);
-        }
+            const originals = Array.prototype.slice.call(track.querySelectorAll('[data-testimonial-slide]'));
+            if (!originals.length) return;
 
-        function goTo(i) {
-            const clamped = Math.max(0, Math.min(cards.length - 1, i));
-            track.scrollTo({ left: clamped * track.clientWidth, behavior: 'smooth' });
-        }
-
-        function updateActiveDot() {
-            const idx = currentIndex();
-            dots.forEach(function (d, i) { d.classList.toggle('is-active', i === idx); });
-        }
-
-        prevBtn.addEventListener('click', function () { goTo(currentIndex() - 1); });
-        nextBtn.addEventListener('click', function () { goTo(currentIndex() + 1); });
-
-        let scrollTicking = false;
-        track.addEventListener('scroll', function () {
-            if (!scrollTicking) {
-                requestAnimationFrame(function () { updateActiveDot(); scrollTicking = false; });
-                scrollTicking = true;
+            let i = 0;
+            while (track.querySelectorAll('[data-testimonial-slide]').length < 10) {
+                const clone = originals[i % originals.length].cloneNode(true);
+                clone.setAttribute('data-cloned-slide', 'true');
+                track.appendChild(clone);
+                i++;
             }
+
+            let items = [];
+            let layers = [0, 0, 0];
+            let current = 0;
+            let lastTime = performance.now();
+            let active = false;
+            let resizing = false;
+            let dragging = false;
+            let dragStartScroll = 0;
+            let pointerStartX = 0;
+            let pointerStartY = 0;
+            let totalMove = 0;
+            let rafId = null;
+
+            const reduceMotionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+            let reducedMotion = reduceMotionQuery.matches;
+            if (reduceMotionQuery.addEventListener) {
+                reduceMotionQuery.addEventListener('change', function (e) { reducedMotion = e.matches; });
+            }
+
+            function speedMultiplier() {
+                return window.matchMedia('(min-width: 650px)').matches ? 2 : 3.5;
+            }
+
+            function setup() {
+                resizing = true;
+                const slides = Array.prototype.slice.call(track.querySelectorAll('[data-testimonial-slide]'));
+                let offset = 0;
+                items = slides.map(function (el, idx) {
+                    const width = el.getBoundingClientRect().width;
+                    const gap = parseFloat(getComputedStyle(el).marginLeft) || 0;
+                    const start = offset + gap;
+                    const end = start + width;
+                    offset = end;
+                    return {
+                        el: el,
+                        layer: idx % 3,
+                        start: start,
+                        end: end,
+                        width: width,
+                        rotation: (idx % 2 === 0 ? -1 : 1) * (Math.random() * 3 + 2)
+                    };
+                });
+                const maxOffset = offset;
+                requestAnimationFrame(function () { resizing = false; });
+                return maxOffset;
+            }
+
+            let maxOffset = setup();
+
+            function render() {
+                if (resizing || !items.length) return;
+                items.forEach(function (item) {
+                    let x = gsap.utils.wrap(-(maxOffset - item.end), item.end, layers[item.layer]);
+                    const start = -item.width - 40;
+                    const end = maxOffset + 40;
+                    if (x < start || x > end) {
+                        item.el.style.visibility = 'hidden';
+                        return;
+                    }
+                    item.el.style.visibility = '';
+                    const velocityOffset = Math.round((layers[0] - current) * 1000) / 1000;
+                    const rawTilt = velocityOffset * 0.03;
+                    const tilt = Math.sign(rawTilt) * 10 * (1 - Math.exp(-Math.abs(rawTilt) / 10));
+                    item.el.style.transform = 'translate3d(' + (-x) + 'px,0,0) rotate(' + (item.rotation + tilt) + 'deg)';
+                });
+            }
+
+            function tick(time) {
+                rafId = requestAnimationFrame(tick);
+                const ratio = Math.max(0.25, Math.min(4, (time - lastTime) / 16.6667));
+                lastTime = time;
+                if (active && !dragging && !reducedMotion) current += 0.5 * ratio;
+                layers[0] += (current - layers[0]) * 0.09 * ratio;
+                layers[1] += (current - layers[1]) * 0.10 * ratio;
+                layers[2] += (current - layers[2]) * 0.11 * ratio;
+                render();
+            }
+            rafId = requestAnimationFrame(tick);
+
+            section.addEventListener('wheel', function (e) {
+                if (!active) return;
+                current += e.deltaY * 0.5;
+            }, { passive: true });
+
+            function pointerDown(e) {
+                const point = e.touches ? e.touches[0] : e;
+                dragging = true;
+                section.classList.add('is-dragging');
+                pointerStartX = point.clientX;
+                pointerStartY = point.clientY;
+                totalMove = 0;
+                dragStartScroll = current + pointerStartX * speedMultiplier();
+            }
+
+            function pointerMove(e) {
+                if (!dragging) return;
+                const point = e.touches ? e.touches[0] : e;
+                const dx = point.clientX - pointerStartX;
+                const dy = point.clientY - pointerStartY;
+                totalMove = Math.abs(dx);
+                if (Math.abs(dx) > Math.abs(dy) && e.cancelable) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                }
+                current = dragStartScroll - point.clientX * speedMultiplier();
+            }
+
+            function pointerUp() {
+                if (!dragging) return;
+                dragging = false;
+                section.classList.remove('is-dragging');
+                if (totalMove >= 10 && items.length) {
+                    const snapPoints = items.map(function (item) { return item.start; });
+                    const wrapped = gsap.utils.wrap(0, maxOffset, current);
+                    const target = gsap.utils.snap(snapPoints, wrapped);
+                    current += target - wrapped;
+                }
+            }
+
+            section.addEventListener('mousedown', pointerDown);
+            section.addEventListener('touchstart', pointerDown, { passive: true });
+            section.addEventListener('mousemove', pointerMove, { passive: false });
+            section.addEventListener('touchmove', pointerMove, { passive: false });
+            window.addEventListener('mouseup', pointerUp);
+            window.addEventListener('touchend', pointerUp);
+
+            function moveToAdjacentSlide(direction) {
+                if (!items.length) return;
+                const wrapped = gsap.utils.wrap(0, maxOffset, current);
+                const starts = items.map(function (item) { return item.start; }).sort(function (a, b) { return a - b; });
+                let target;
+                if (direction > 0) {
+                    target = starts.find(function (p) { return p > wrapped + 1; });
+                    if (target === undefined) target = starts[0] + maxOffset;
+                } else {
+                    const reversed = starts.slice().reverse();
+                    target = reversed.find(function (p) { return p < wrapped - 1; });
+                    if (target === undefined) target = starts[starts.length - 1] - maxOffset;
+                }
+                current += target - wrapped;
+            }
+
+            section.addEventListener('keydown', function (e) {
+                if (e.key === 'ArrowRight') {
+                    e.preventDefault();
+                    moveToAdjacentSlide(1);
+                } else if (e.key === 'ArrowLeft') {
+                    e.preventDefault();
+                    moveToAdjacentSlide(-1);
+                }
+            });
+
+            if (window.ScrollTrigger) {
+                ScrollTrigger.create({
+                    trigger: section,
+                    start: 'top bottom',
+                    end: 'bottom top',
+                    onToggle: function (self) { active = self.isActive; }
+                });
+            } else {
+                active = true;
+            }
+
+            let resizeTimer;
+            window.addEventListener('resize', function () {
+                clearTimeout(resizeTimer);
+                resizeTimer = setTimeout(function () { maxOffset = setup(); }, 200);
+            });
         });
-        window.addEventListener('resize', updateActiveDot);
-    })();
+    }
+    initTestimonialsDragSlider();
 
     (function setupDevModal() {
         const trigger = document.getElementById('devCreditTrigger');
@@ -478,7 +761,7 @@ Aguardo o retorno. Obrigado(a)!`;
         const hero = document.getElementById('inicio');
         if (!floatBtn) return;
 
-        const defaultText = 'Olá! Vim pelo site e gostaria de saber mais sobre os serviços da Dossi Maker.';
+        const defaultText = 'Olá! Vim pelo site e gostaria de saber mais sobre os serviços do Dossi Maker.';
         floatBtn.href = 'https://wa.me/' + WHATSAPP_NUMBER + '?text=' + encodeURIComponent(defaultText);
 
         if (!hero) {
@@ -501,10 +784,7 @@ Aguardo o retorno. Obrigado(a)!`;
         });
     })();
 
-    /* =======================================================
-       PLANOS — "Escolher Plano" leva pro formulário já preenchido
-       (Tipo de Evento = Casamento, Proposta = plano escolhido)
-    ======================================================= */
+
     const PLAN_NAMES = { 'btn-silver': 'Silver', 'btn-gold': 'Gold', 'btn-black': 'Black' };
 
     document.querySelectorAll('.btn-choose').forEach(function (btn) {
@@ -533,10 +813,6 @@ Aguardo o retorno. Obrigado(a)!`;
         });
     });
 
-    /* =======================================================
-       PLANEJAMENTO & CONDIÇÕES — abas de ano atualizam o preço
-       exibido em cada card de plano (2027 = +15% / 2028 = +35%)
-    ======================================================= */
     (function setupPricingConditions() {
         const tabsWrap = document.getElementById('pcTabs');
         if (!tabsWrap) return;
@@ -724,8 +1000,6 @@ Aguardo o retorno. Obrigado(a)!`;
                     }
                 );
 
-                /* ---- Parallax extra entre seções (contínuo, ativa a cada scroll) ---- */
-
                 gsap.utils.toArray('.service-list > div').forEach(function (item, i) {
                     const dir = i % 2 === 0 ? 1 : -1;
                     gsap.to(item, {
@@ -744,8 +1018,6 @@ Aguardo o retorno. Obrigado(a)!`;
                     });
                 });
 
-                /* Anima o miolo do card (não o .pricing-card em si), pra não
-                   brigar com o transform do hover/seleção definido em CSS. */
                 gsap.utils.toArray('.pricing-card').forEach(function (card, i) {
                     const inner = card.querySelector(':scope > div');
                     if (!inner) return;
@@ -755,16 +1027,6 @@ Aguardo o retorno. Obrigado(a)!`;
                         ease: 'none',
                         scrollTrigger: { trigger: card, start: 'top bottom', end: 'bottom top', scrub: 0.6 }
                     });
-                });
-
-                gsap.utils.toArray('.testimonial-card').forEach(function (card) {
-                    gsap.fromTo(card,
-                        { yPercent: 6 },
-                        {
-                            yPercent: -6, ease: 'none',
-                            scrollTrigger: { trigger: card, start: 'top bottom', end: 'bottom top', scrub: 0.6 }
-                        }
-                    );
                 });
 
                 gsap.utils.toArray('.faq-item').forEach(function (item, i) {

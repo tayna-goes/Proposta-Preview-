@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,8 +7,7 @@
     <meta name="author" content="Caio Dossi — Dossi Maker">
     <meta name="keywords" content="filmmaker Araçatuba, videomaker casamento, piloto de drone, storymaker, cobertura de eventos, filmagem aérea, videomaker SP">
     <title>Dossi Maker | Videomaker, Drone e Storymaker em Araçatuba/SP</title>
-
-    <link rel="canonical" href="https://www.seudominio.com.br/">
+    <link rel="canonical" href="https://caio-preview.netlify.app/">
     <meta name="robots" content="index, follow">
     <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32.png">
     <link rel="icon" type="image/png" sizes="512x512" href="./assets/images/favicon-512.png">
@@ -34,49 +32,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
-        referrerpolicy="no-referrer">
-    <link rel="stylesheet" href="assets/css/style.css">
-
-    <!-- ============================================================
-         GOOGLE ANALYTICS 4 — desativado por padrão.
-         Pra ativar: (1) crie uma propriedade GA4 em analytics.google.com,
-         (2) troque G-XXXXXXXXXX pelo seu ID de medição (Admin > Fluxos de
-         dados) nas DUAS linhas do bloco "activate-ga4" logo abaixo,
-         (3) apague só a linha "ATIVE-ME" de abertura e a de fechamento
-         (as que têm textos "ATIVE-ME"), mantendo os <script> no meio.
-    ATIVE-ME
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-XXXXXXXXXX');
-    </script>
-    ATIVE-ME FIM
-    ============================================================ -->
-
-    <!-- ============================================================
-         META PIXEL / FACEBOOK ADS — desativado por padrão.
-         Pra ativar: (1) pegue o ID em business.facebook.com/events_manager,
-         (2) troque SEU_PIXEL_ID pelo número do seu pixel (aparece 3x
-         no bloco "activate-pixel" abaixo), (3) apague só as linhas
-         "ATIVE-ME" de abertura e fechamento, mantendo o meio.
-    ATIVE-ME
-    <script>
-      !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-      n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
-      n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
-      t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
-      document,'script','https://connect.facebook.net/en_US/fbevents.js');
-      fbq('init', 'SEU_PIXEL_ID');
-      fbq('track', 'PageView');
-    </script>
-    <noscript><img height="1" width="1" style="display:none"
-      src="https://www.facebook.com/tr?id=SEU_PIXEL_ID&ev=PageView&noscript=1" /></noscript>
-    ATIVE-ME FIM
-    ============================================================ -->
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" referrerpolicy="no-referrer">
+    <link rel="stylesheet" href="assets/css/main.css">
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
@@ -101,6 +58,7 @@
 
 <body>
     <a href="#inicio" class="skip-link">Pular para o conteúdo</a>
+    <!-- BEGIN [HEADER] ############################ -->
     <header class="header" id="header">
         <a href="#inicio" class="logo">Dossi Maker<span>®</span></a>
         <nav class="desktop-nav">
@@ -112,10 +70,12 @@
         <div class="header-right">
             <span class="location">BR : <b id="clock">00:00</b></span>
             <button class="menu-toggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="menuOverlay">
-                <span></span><span></span>
+                <span></span>
+                <span></span>
             </button>
         </div>
     </header>
+    <!-- END [HEADER] ############################## -->
 
     <div class="menu-overlay" id="menuOverlay" aria-hidden="true">
         <div class="menu-head">
@@ -132,14 +92,14 @@
         <div class="menu-footer">© 2026 — PORTFOLIO</div>
     </div>
 
+    <!-- BEGIN [MAIN] ############################## -->
     <main>
+        <!-- BEGIN [INTRO] ########################### -->
         <section class="hero" id="inicio">
             <video class="hero-video" autoplay muted loop playsinline poster="./assets/images/profile.jpg">
                 <source src="./assets/images/video_intro.mp4" type="video/mp4">
             </video>
-
             <div class="hero-overlay"></div>
-
             <div class="hero-meta">
                 <div>
                     VIDEOMAKER<br>
@@ -149,22 +109,25 @@
                 </div>
             </div>
             <h1 class="hero-title">
-                <div>DOSSI</div>
-                <div class="indent">MAKER</div>
+                <span>DOSSI</span>
+                <span class="indent">MAKER</span>
             </h1>
-
             <div class="hero-scroll-cue" aria-hidden="true"><span></span></div>
         </section>
+        <!-- END [INTRO] ############################# -->
 
+        <!-- BEGIN [ABOUT] ########################### -->
         <section class="about dark" id="sobre">
-            <div class="section-label"><span>02</span><span>( SOBRE MIM )</span><span>© 2026</span></div>
+            <header class="section-label"><span>02</span><span>( SOBRE MIM )</span><span>© 2026</span></header>
             <div class="about-grid">
                 <div class="about-photo">
                     <img src="./assets/images/caio.jpg" alt="Caio Dossi, filmmaker e piloto de drone" loading="lazy">
                 </div>
                 <div>
-                    <h2 class="reveal-on-scroll">Transformamos momentos em conteúdo que continua depois que o evento
-                        termina.</h2>
+                    <h2 class="reveal-on-scroll">
+                        Transformamos momentos em conteúdo que continua depois que o evento
+                        termina.
+                    </h2>
                     <div class="about-copy reveal-on-scroll">
                         <p>Sou Caio Dossi, filmmaker e criador de conteúdo audiovisual. Trabalho com Reels, eventos e
                             imagens aéreas para marcas e empresas que precisam aparecer de um jeito mais real e
@@ -176,73 +139,139 @@
                 </div>
             </div>
         </section>
+        <!-- END [ABOUT] ############################# -->
 
+        <!-- BEGIN [PROJECTS] ######################## -->
         <section class="projects" id="trabalhos">
-            <div class="section-label"><span>03</span><span>( PROJETOS )</span><span>© 2026</span></div>
+            <header class="section-label">
+                <span>03</span>
+                <span>( PROJETOS )</span>
+                <span>© 2026</span>
+            </header>
             <div class="projects-list reveal-on-scroll">
-                <button class="project-row" data-project="1" aria-haspopup="dialog"><small>01</small>
-                    <div><em>PROJETO</em><strong>FILMAGENS</strong></div><span aria-hidden="true"><i class="fa-solid fa-up-right-from-square"></i></span>
+                <button class="project-row" data-project="1" aria-haspopup="dialog">
+                    <small>01</small>
+                    <div>
+                        <em>PROJETO</em>
+                        <strong>FILMAGENS</strong>
+                    </div>
+                    <span aria-hidden="true">
+                        <i class="fa-solid fa-up-right-from-square"></i>
+                    </span>
                 </button>
-                <button class="project-row" data-project="2" aria-haspopup="dialog"><small>02</small>
-                    <div><em>PROJETO</em><strong>EVENTOS</strong></div><span aria-hidden="true"><i class="fa-solid fa-up-right-from-square"></i></span>
+
+                <button class="project-row" data-project="2" aria-haspopup="dialog">
+                    <small>02</small>
+                    <div>
+                        <em>PROJETO</em>
+                        <strong>EVENTOS</strong>
+                    </div>
+                    <span aria-hidden="true">
+                        <i class="fa-solid fa-up-right-from-square"></i>
+                    </span>
                 </button>
-                <button class="project-row" data-project="3" aria-haspopup="dialog"><small>03</small>
-                    <div><em>PROJETO</em><strong>MARCAS</strong></div><span aria-hidden="true"><i class="fa-solid fa-up-right-from-square"></i></span>
+
+                <button class="project-row" data-project="3" aria-haspopup="dialog">
+                    <small>03</small>
+                    <div>
+                        <em>PROJETO</em>
+                        <strong>MARCAS</strong>
+                    </div>
+                    <span aria-hidden="true">
+                        <i class="fa-solid fa-up-right-from-square"></i>
+                    </span>
                 </button>
-                <button class="project-row" data-project="4" aria-haspopup="dialog"><small>04</small>
-                    <div><em>PROJETO</em><strong>AÉREO</strong></div><span aria-hidden="true"><i class="fa-solid fa-up-right-from-square"></i></span>
+
+                <button class="project-row" data-project="4" aria-haspopup="dialog">
+                    <small>04</small>
+                    <div>
+                        <em>PROJETO</em>
+                        <strong>AÉREO</strong>
+                    </div>
+                    <span aria-hidden="true">
+                        <i class="fa-solid fa-up-right-from-square"></i>
+                    </span>
                 </button>
             </div>
         </section>
+        <!-- END [PROJECTS] ########################## -->
 
+        <!-- BEGIN [GALERY] ######################## -->
         <section class="reel" id="bastidores" aria-label="Galeria de bastidores">
-            <div class="section-label"><span>04</span><span>( BASTIDORES )</span><span>© 2026</span></div>
+            <header class="section-label">
+                <span>04</span>
+                <span>( BASTIDORES )</span>
+                <span>© 2026</span>
+            </header>
             <div class="reel-track-wrap">
-                <!-- Preenchido via JS em ordem aleatória a cada carregamento da página -->
                 <div class="reel-track" id="reelTrack"></div>
             </div>
         </section>
+        <!-- END [GALERY] ########################## -->
 
+        <!-- BEGIN [CLIENTS] ####################### -->
         <section class="stats" id="status">
-            <div class="section-label"><span>05</span><span>( STATUS )</span><span>© 2026</span></div>
+            <header class="section-label">
+                <span>05</span>
+                <span>( STATUS )</span>
+                <span>© 2026</span>
+            </header>
             <div class="stats-grid reveal-on-scroll">
-                <article><span class="stat-dot"></span><strong class="counter" data-target="500" data-prefix="+">+0</strong>
+                <article>
+                    <strong class="counter" data-target="500" data-prefix="+">+0</strong>
                     <p>projetos realizados</p>
                 </article>
-                <article><span class="stat-dot"></span><strong class="counter" data-target="130" data-prefix="+">+0</strong>
+                <article>
+                    <strong class="counter" data-target="130" data-prefix="+">+0</strong>
                     <p>clientes atendidos</p>
                 </article>
-                <article><span class="stat-dot"></span><strong class="counter" data-target="3" data-prefix="+">+0</strong>
+                <article>
+                    <strong class="counter" data-target="3" data-prefix="+">+0</strong>
                     <p>anos criando</p>
                 </article>
-                <article><span class="stat-dot"></span><strong class="counter" data-target="100" data-suffix="%">0%</strong>
+                <article>
+                    <strong class="counter" data-target="100" data-suffix="%">0%</strong>
                     <p>autoral</p>
                 </article>
             </div>
         </section>
+        <!-- END [CLIENTS] ######################## -->
 
+        <!-- BEGIN [SERVICES] ###################### -->
         <section class="services dark" id="servicos">
-            <div class="section-label"><span>06</span><span>( SERVIÇOS )</span><span>© 2026</span></div>
-            <h2 class="services-title reveal-on-scroll">Da ideia ao frame final, conteúdo com ritmo, presença e
-                intenção.</h2>
+            <header class="section-label">
+                <span>06</span>
+                <span>( SERVIÇOS )</span>
+                <span>© 2026</span>
+            </header>
+            <h2 class="services-title reveal-on-scroll">Da ideia ao frame final, conteúdo com ritmo, presença e intenção.</h2>
             <div class="service-list reveal-on-scroll">
-                <div><small>01</small>
+                <div>
+                    <small>01</small>
                     <h3>Reels &amp; Conteúdo Digital</h3>
                     <p>Vídeos para marcas e redes sociais.</p>
                 </div>
-                <div><small>02</small>
+                <div>
+                    <small>02</small>
                     <h3>Filmagem de Eventos</h3>
                     <p>Registros de experiências e grandes momentos.</p>
                 </div>
-                <div><small>03</small>
+                <div>
+                    <small>03</small>
                     <h3>Imagens Aéreas</h3>
                     <p>Captações que mostram novas perspectivas.</p>
                 </div>
             </div>
         </section>
+        <!-- END [SERVICES] ######################## -->
 
+        <!-- BEGIN [PROCESS] ####################### -->
         <section class="process dark" id="processo">
-            <div class="section-label"><span>07</span><span>( COMO FUNCIONA )</span><span>© 2026</span></div>
+            <header class="section-label">
+                <span>07</span>
+                <span>( COMO FUNCIONA )</span>
+                <span>© 2026</span>
+            </header>
             <div class="process-grid reveal-on-scroll">
                 <article>
                     <small>01</small>
@@ -266,24 +295,28 @@
                 </article>
             </div>
         </section>
+        <!-- END [PROCESS] ######################### -->
 
+        <!-- BEGIN [PACKAGES] ###################### -->
         <section id="oferta">
-            <span class="watermark" aria-hidden="true">Planos</span>
-
-            <div class="section-label section-label--light"><span>08</span><span>( PLANOS )</span><span>© 2026</span>
-            </div>
+            <span class="watermark" aria-hidden="true">Wedding</span>
+            <header class="section-label section-label--light">
+                <span>08</span>
+                <span>( PLANOS )</span>
+                <span>© 2026</span>
+            </header>
 
             <div class="pc-intro reveal-on-scroll">
+                <span class="pc-badge">
+                    Pacotes para Casamento
+                </span>
                 <h3>Planejamento &amp; Condições</h3>
-                <p>Garanta os valores atuais fechando seu contrato antecipadamente — veja como fica o investimento em
-                    cada ano.</p>
+                <p>Os valores abaixo são específicos para cobertura de <strong>CASAMENTO</strong>. Garanta os preços
+                    atuais fechando seu contrato antecipadamente — veja como fica o investimento em cada ano.</p>
                 <div class="pc-tabs" id="pcTabs" role="tablist" aria-label="Selecionar ano de contratação">
-                    <button type="button" class="pc-tab is-active" data-year="2026" role="tab"
-                        aria-selected="true">2026</button>
-                    <button type="button" class="pc-tab" data-year="2027" role="tab"
-                        aria-selected="false">2027</button>
-                    <button type="button" class="pc-tab" data-year="2028" role="tab"
-                        aria-selected="false">2028</button>
+                    <button type="button" class="pc-tab is-active" data-year="2026" role="tab" aria-selected="true">2026</button>
+                    <button type="button" class="pc-tab" data-year="2027" role="tab" aria-selected="false">2027</button>
+                    <button type="button" class="pc-tab" data-year="2028" role="tab" aria-selected="false">2028</button>
                 </div>
             </div>
 
@@ -292,36 +325,18 @@
                     <div>
                         <div class="card-header">
                             <div class="plan-tier">S I L V E R</div>
-                            <div class="plan-price"><span class="currency">R$</span><span class="plan-price-value"
-                                    id="price-silver">1.599</span><span class="plan-increase-tag" id="tag-silver"
-                                    hidden></span></div>
+                            <div class="plan-price">
+                                <span class="currency">R$</span>
+                                <span class="plan-price-value" id="price-silver">1.599</span>
+                                <span class="plan-increase-tag" id="tag-silver" hidden></span>
+                            </div>
                             <p class="plan-description">A essência do seu grande dia capturada com elegância</p>
                         </div>
                         <ul class="feature-list">
-                            <li>
-                                <span class="feature-check">
-                                    <i class="fa-solid fa-check" aria-hidden="true"></i>
-                                </span>
-                                <span>Cobertura Cerimônia + Festa</span>
-                            </li>
-                            <li>
-                                <span class="feature-check">
-                                    <i class="fa-solid fa-check" aria-hidden="true"></i>
-                                </span>
-                                <span>2 câmeras exclusivas</span>
-                            </li>
-                            <li>
-                                <span class="feature-check">
-                                    <i class="fa-solid fa-check" aria-hidden="true"></i>
-                                </span>
-                                <span>Teaser Modo Cinema (até 90 seg)</span>
-                            </li>
-                            <li>
-                                <span class="feature-check">
-                                    <i class="fa-solid fa-check" aria-hidden="true"></i>
-                                </span>
-                                <span>1 Reels para rede social</span>
-                            </li>
+                            <li>Cobertura Cerimônia + Festa</li>
+                            <li>2 câmeras exclusivas</li>
+                            <li>Teaser Modo Cinema (até 90 seg)</li>
+                            <li>1 Reels para rede social</li>
                         </ul>
                     </div>
                     <button type="button" class="btn-choose" id="btn-silver">Escolher Plano</button>
@@ -331,132 +346,49 @@
                     <div>
                         <div class="card-header">
                             <div class="plan-tier">G O L D</div>
-                            <div class="plan-price"><span class="currency">R$</span><span class="plan-price-value"
-                                    id="price-gold">1.999</span><span class="plan-increase-tag" id="tag-gold"
-                                    hidden></span></div>
-                            <p class="plan-description">Uma experiência audiovisual completa para eternizar cada
-                                detalhe.</p>
+                            <div class="plan-price">
+                                <span class="currency">R$</span>
+                                <span class="plan-price-value" id="price-gold">1.999</span>
+                                <span class="plan-increase-tag" id="tag-gold" hidden></span>
+                            </div>
+                            <p class="plan-description">Uma experiência audiovisual completa para eternizar cada detalhe.</p>
                         </div>
                         <ul class="feature-list">
-                            <li>
-                                <span class="feature-check">
-                                    <i class="fa-solid fa-check" aria-hidden="true"></i>
-                                </span>
-                                <span>Cobertura Dia da Noiva - Making Off</span>
-                            </li>
-                            <li>
-                                <span class="feature-check">
-                                    <i class="fa-solid fa-check" aria-hidden="true"></i>
-                                </span>
-                                <span>Cobertura Cerimônia + Festa</span>
-                            </li>
-                            <li>
-                                <span class="feature-check">
-                                    <i class="fa-solid fa-check" aria-hidden="true"></i>
-                                </span>
-                                <span>3 câmeras exclusivas</span>
-                            </li>
-                            <li>
-                                <span class="feature-check">
-                                    <i class="fa-solid fa-check" aria-hidden="true"></i>
-                                </span>
-                                <span>Cobertura Storymaker em tempo real (cerimônia e festa)</span>
-                            </li>
-                            <li>
-                                <span class="feature-check">
-                                    <i class="fa-solid fa-check" aria-hidden="true"></i>
-                                </span>
-                                <span>Imagens aéreas de drone</span>
-                            </li>
-                            <li>
-                                <span class="feature-check">
-                                    <i class="fa-solid fa-check" aria-hidden="true"></i>
-                                </span>
-                                <span>Teaser Modo Cinema (até 90 seg)</span>
-                            </li>
-                            <li>
-                                <span class="feature-check">
-                                    <i class="fa-solid fa-check" aria-hidden="true"></i>
-                                </span>
-                                <span>Filme Storytelling (4 a 6 min)</span>
-                            </li>
-                            <li>
-                                <span class="feature-check">
-                                    <i class="fa-solid fa-check" aria-hidden="true"></i>
-                                </span>
-                                <span>2 Reels para rede social</span>
-                            </li>
+                            <li>Cobertura Dia da Noiva - Making Off</li>
+                            <li>Cobertura Cerimônia + Festa</li>
+                            <li>3 câmeras exclusivas</li>
+                            <li>Cobertura Storymaker em tempo real (cerimônia e festa)</li>
+                            <li>Imagens aéreas de drone</li>
+                            <li>Teaser Modo Cinema (até 90 seg)</li>
+                            <li>Filme Storytelling (4 a 6 min)</li>
+                            <li>2 Reels para rede social</li>
                         </ul>
                     </div>
                     <button type="button" class="btn-choose" id="btn-gold">Escolher Plano</button>
                 </article>
 
                 <article class="pricing-card pricing-card--featured" id="card-black">
-                    <span class="plan-badge">★ MAIS ESCOLHIDO</span>
+                    <span class="plan-badge">MAIS ESCOLHIDO</span>
                     <div>
                         <div class="card-header">
                             <div class="plan-tier">B L A C K</div>
-                            <div class="plan-price"><span class="currency">R$</span><span class="plan-price-value"
-                                    id="price-black">2.399</span><span class="plan-increase-tag" id="tag-black"
-                                    hidden></span></div>
-                            <p class="plan-description">Para estúdios, agências e criadores profissionais que
-                                trabalham com marcas.</p>
+                            <div class="plan-price">
+                                <span class="currency">R$</span>
+                                <span class="plan-price-value" id="price-black">2.399</span>
+                                <span class="plan-increase-tag" id="tag-black" hidden></span>
+                            </div>
+                            <p class="plan-description">A experiência completa: cada momento do seu casamento registrado, do preparativo à festa.</p>
                         </div>
                         <ul class="feature-list">
-                            <li>
-                                <span class="feature-check">
-                                    <i class="fa-solid fa-check" aria-hidden="true"></i>
-                                </span>
-                                <span>Cobertura Pré Wedding + Save The Date</span>
-                            </li>
-                            <li>
-                                <span class="feature-check">
-                                    <i class="fa-solid fa-check" aria-hidden="true"></i>
-                                </span>
-                                <span>Cobertura Dia da Noiva - Making Off</span>
-                            </li>
-                            <li>
-                                <span class="feature-check">
-                                    <i class="fa-solid fa-check" aria-hidden="true"></i>
-                                </span>
-                                <span>Cobertura Cerimônia + Festa</span>
-                            </li>
-                            <li>
-                                <span class="feature-check">
-                                    <i class="fa-solid fa-check" aria-hidden="true"></i>
-                                </span>
-                                <span>3 câmeras exclusivas</span>
-                            </li>
-                            <li>
-                                <span class="feature-check">
-                                    <i class="fa-solid fa-check" aria-hidden="true"></i>
-                                </span>
-                                <span>Cobertura Storymaker em tempo real (cerimônia e festa)</span>
-                            </li>
-                            <li>
-                                <span class="feature-check">
-                                    <i class="fa-solid fa-check" aria-hidden="true"></i>
-                                </span>
-                                <span>Imagens aéreas de drone</span>
-                            </li>
-                            <li>
-                                <span class="feature-check">
-                                    <i class="fa-solid fa-check" aria-hidden="true"></i>
-                                </span>
-                                <span>Teaser Modo Cinema (até 90 seg)</span>
-                            </li>
-                            <li>
-                                <span class="feature-check">
-                                    <i class="fa-solid fa-check" aria-hidden="true"></i>
-                                </span>
-                                <span>Filme Storytelling (4 a 6 min)</span>
-                            </li>
-                            <li>
-                                <span class="feature-check">
-                                    <i class="fa-solid fa-check" aria-hidden="true"></i>
-                                </span>
-                                <span>2 Reels para rede social</span>
-                            </li>
+                            <li>Cobertura Pré Wedding + Save The Date</li>
+                            <li>Cobertura Dia da Noiva - Making Off</li>
+                            <li>Cobertura Cerimônia + Festa</li>
+                            <li>3 câmeras exclusivas</li>
+                            <li>Cobertura Storymaker em tempo real (cerimônia e festa)</li>
+                            <li>Imagens aéreas de drone</li>
+                            <li>Teaser Modo Cinema (até 90 seg)</li>
+                            <li>Filme Storytelling (4 a 6 min)</li>
+                            <li>2 Reels para rede social</li>
                         </ul>
                     </div>
                     <button type="button" class="btn-choose" id="btn-black">Escolher Plano</button>
@@ -470,6 +402,12 @@
                         <p>Pix · Débito · Crédito em até 12x</p>
                     </div>
                 </div>
+            </div>
+
+            <div class="pc-quote-note reveal-on-scroll">
+                <i class="fa-solid fa-circle-info" aria-hidden="true"></i>
+                <p>Não é casamento? Ensaios, eventos corporativos, institucional, imagens aéreas avulsas e outros projetos são <strong>orçados sob consulta</strong>, de acordo com o escopo do projeto.</p>
+                <a href="#contato" class="pc-quote-btn">Pedir orçamento <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
             </div>
 
             <div class="compare-wrap reveal-on-scroll">
@@ -487,21 +425,21 @@
                         <tbody>
                             <tr>
                                 <th scope="row">Pré Wedding + Save The Date</th>
-                                <td><span class="compare-dash">—</span></td>
-                                <td><span class="compare-dash">—</span></td>
-                                <td><i class="fa-solid fa-check" aria-hidden="true"></i></td>
+                                <td class="no"><span class="sr-only">Não incluso</span></td>
+                                <td class="no"><span class="sr-only">Não incluso</span></td>
+                                <td class="yes"><span class="sr-only">Incluso</span></td>
                             </tr>
                             <tr>
                                 <th scope="row">Dia da Noiva - Making Off</th>
-                                <td><span class="compare-dash">—</span></td>
-                                <td><i class="fa-solid fa-check" aria-hidden="true"></i></td>
-                                <td><i class="fa-solid fa-check" aria-hidden="true"></i></td>
+                                <td class="no"><span class="sr-only">Não incluso</span></td>
+                                <td class="yes"><span class="sr-only">Incluso</span></td>
+                                <td class="yes"><span class="sr-only">Incluso</span></td>
                             </tr>
                             <tr>
                                 <th scope="row">Cerimônia + Festa</th>
-                                <td><i class="fa-solid fa-check" aria-hidden="true"></i></td>
-                                <td><i class="fa-solid fa-check" aria-hidden="true"></i></td>
-                                <td><i class="fa-solid fa-check" aria-hidden="true"></i></td>
+                                <td class="yes"><span class="sr-only">Incluso</span></td>
+                                <td class="yes"><span class="sr-only">Incluso</span></td>
+                                <td class="yes"><span class="sr-only">Incluso</span></td>
                             </tr>
                             <tr>
                                 <th scope="row">Câmeras exclusivas</th>
@@ -511,27 +449,27 @@
                             </tr>
                             <tr>
                                 <th scope="row">Cobertura Storymaker em tempo real</th>
-                                <td><span class="compare-dash">—</span></td>
-                                <td><i class="fa-solid fa-check" aria-hidden="true"></i></td>
-                                <td><i class="fa-solid fa-check" aria-hidden="true"></i></td>
+                                <td class="no"><span class="sr-only">Não incluso</span></td>
+                                <td class="yes"><span class="sr-only">Incluso</span></td>
+                                <td class="yes"><span class="sr-only">Incluso</span></td>
                             </tr>
                             <tr>
                                 <th scope="row">Imagens aéreas de drone</th>
-                                <td><span class="compare-dash">—</span></td>
-                                <td><i class="fa-solid fa-check" aria-hidden="true"></i></td>
-                                <td><i class="fa-solid fa-check" aria-hidden="true"></i></td>
+                                <td class="no"><span class="sr-only">Não incluso</span></td>
+                                <td class="yes"><span class="sr-only">Incluso</span></td>
+                                <td class="yes"><span class="sr-only">Incluso</span></td>
                             </tr>
                             <tr>
                                 <th scope="row">Teaser Modo Cinema (até 90 seg)</th>
-                                <td><i class="fa-solid fa-check" aria-hidden="true"></i></td>
-                                <td><i class="fa-solid fa-check" aria-hidden="true"></i></td>
-                                <td><i class="fa-solid fa-check" aria-hidden="true"></i></td>
+                                <td class="yes"><span class="sr-only">Incluso</span></td>
+                                <td class="yes"><span class="sr-only">Incluso</span></td>
+                                <td class="yes"><span class="sr-only">Incluso</span></td>
                             </tr>
                             <tr>
                                 <th scope="row">Filme Storytelling (4 a 6 min)</th>
-                                <td><span class="compare-dash">—</span></td>
-                                <td><i class="fa-solid fa-check" aria-hidden="true"></i></td>
-                                <td><i class="fa-solid fa-check" aria-hidden="true"></i></td>
+                                <td class="no"><span class="sr-only">Não incluso</span></td>
+                                <td class="yes"><span class="sr-only">Incluso</span></td>
+                                <td class="yes"><span class="sr-only">Incluso</span></td>
                             </tr>
                             <tr>
                                 <th scope="row">Reels para redes sociais</th>
@@ -544,88 +482,181 @@
                 </div>
             </div>
         </section>
+        <!-- END [PACKAGES] ######################## -->
 
-        <section class="testimonials" id="depoimentos">
-            <div class="section-label"><span>09</span><span>( DEPOIMENTOS )</span><span>© 2026</span></div>
+        <!-- BEGIN [TESTIMONIALS] ################## -->
+        <section class="testimonials" id="depoimentos" data-effect="testimonials-drag-slider" tabindex="0"
+            role="region" aria-roledescription="carrossel" aria-label="Depoimentos de clientes — use as setas do teclado ou arraste para navegar">
+            <header class="section-label">
+                <span>09</span>
+                <span>( DEPOIMENTOS )</span>
+                <span>© 2026</span>
+            </header>
 
-            <!-- TODO: troque o href abaixo pelo link real do perfil Google Business da Dossi Maker
-         (Google Meu Negócio → Compartilhar perfil → "Pedir avaliações", o link termina em /reviews) -->
-            <!-- <a class="google-reviews-badge reveal-on-scroll"
-                href="https://www.google.com/maps/place/?q=place_id:COLE_O_PLACE_ID_AQUI" target="_blank"
-                rel="noopener">
+            <a class="google-reviews-badge reveal-on-scroll" href="https://www.google.com/maps/place/?q=place_id:COLE_O_PLACE_ID_AQUI" target="_blank" rel="noopener">
                 <i class="fa-brands fa-google" aria-hidden="true"></i>
                 <span class="google-reviews-stars" aria-hidden="true">
-                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
-                        class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
                 </span>
                 <span>Ver avaliações no Google</span>
-            </a>  -->
+            </a>
 
-            <div class="testimonials-carousel reveal-on-scroll">
-                <div class="testimonials-track" id="testimonialsTrack">
-                    <article class="testimonial-card">
-                        <span class="testimonial-flag">exemplo</span>
-                        <p>"Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic nobis asperiores quisquam molestiae similique ea enim consequuntur deserunt ipsum. Maxime quae vitae aut eligendi! Necessitatibus aliquam sapiente maxime architecto rerum! "</p>
-                        <div class="testimonial-author">
-                            <strong>Nome do Cliente</strong>
-                            <span>Casamento</span>
-                        </div>
-                    </article>
-                    <article class="testimonial-card">
-                        <span class="testimonial-flag">exemplo</span>
-                        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Doloremque corporis laborum, cumque aperiam voluptatibus odio, enim temporibus dignissimos explicabo excepturi quam. Officia assumenda sunt voluptatem veritatis vitae, vel similique quos. </p>
-                        <div class="testimonial-author">
-                            <strong>Nome do Cliente</strong>
-                            <span>Evento Corporativo</span>
-                        </div>
-                    </article>
-                    <article class="testimonial-card">
-                        <span class="testimonial-flag">exemplo</span>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis earum accusamus exercitationem repellendus nisi molestias, quae ullam corrupti itaque voluptatum alias beatae nesciunt, voluptatibus quasi praesentium placeat eos delectus et. </p>
-                        <div class="testimonial-author">
-                            <strong>Nome do Cliente</strong>
-                            <span>Ensaio / Produção</span>
-                        </div>
-                    </article>
-                </div>
-                <div class="testimonials-controls">
-                    <button type="button" class="carousel-btn" id="testimonialsPrev"
-                        aria-label="Depoimento anterior">‹</button>
-                    <div class="carousel-dots" id="testimonialsDots"></div>
-                    <button type="button" class="carousel-btn" id="testimonialsNext"
-                        aria-label="Próximo depoimento">›</button>
-                </div>
-            </div>l
+            <div class="testimonials-container">
+                <h3 class="testimonials-title reveal-on-scroll">O que dizem<br><em>os clientes</em></h3>
+            </div>
+            <p class="testimonials-hint reveal-on-scroll">Arraste os cards para o lado — ou role a página</p>
+
+            <div class="testimonials-track" data-testimonials-track>
+                <article class="testimonial-slide is-accent" data-testimonial-slide>
+                    <div class="quote-icon quote-icon-open" aria-hidden="true">
+                        <svg viewBox="0 0 42 30" fill="currentColor">
+                            <path
+                                d="M0 30V17.14C0 7.667 4.667 1.333 14 0l2.286 4.571C10.286 6.286 7.238 9.714 7.238 14.857H14V30H0ZM21.714 30V17.14c0-9.473 4.667-15.806 14-17.14l2.286 4.571c-6 1.715-9.048 5.143-9.048 10.286H36V30H21.714Z" />
+                        </svg>
+                    </div>
+                    <span class="testimonial-flag">exemplo</span>
+                    <blockquote>Escreva aqui o que o seu cliente disse sobre a experiência com a Dossi Maker — o que
+                        mais marcou, como foi o atendimento, o resultado final.</blockquote>
+                    <div class="testimonial-author">
+                        <strong>Nome do Cliente</strong>
+                        <span>Casamento</span>
+                    </div>
+                    <div class="quote-icon quote-icon-close" aria-hidden="true">
+                        <svg viewBox="0 0 42 30" fill="currentColor">
+                            <path
+                                d="M0 30V17.14C0 7.667 4.667 1.333 14 0l2.286 4.571C10.286 6.286 7.238 9.714 7.238 14.857H14V30H0ZM21.714 30V17.14c0-9.473 4.667-15.806 14-17.14l2.286 4.571c-6 1.715-9.048 5.143-9.048 10.286H36V30H21.714Z" />
+                        </svg>
+                    </div>
+                </article>
+
+                <article class="testimonial-slide is-light" data-testimonial-slide>
+                    <div class="quote-icon quote-icon-open" aria-hidden="true">
+                        <svg viewBox="0 0 42 30" fill="currentColor">
+                            <path
+                                d="M0 30V17.14C0 7.667 4.667 1.333 14 0l2.286 4.571C10.286 6.286 7.238 9.714 7.238 14.857H14V30H0ZM21.714 30V17.14c0-9.473 4.667-15.806 14-17.14l2.286 4.571c-6 1.715-9.048 5.143-9.048 10.286H36V30H21.714Z" />
+                        </svg>
+                    </div>
+                    <span class="testimonial-flag">◆ exemplo — substitua por um depoimento real</span>
+                    <blockquote>Escreva aqui o depoimento de um cliente de evento corporativo ou de marca sobre o
+                        trabalho entregue.</blockquote>
+                    <div class="testimonial-author">
+                        <strong>Nome do Cliente</strong>
+                        <span>Evento Corporativo</span>
+                    </div>
+                    <div class="quote-icon quote-icon-close" aria-hidden="true">
+                        <svg viewBox="0 0 42 30" fill="currentColor">
+                            <path
+                                d="M0 30V17.14C0 7.667 4.667 1.333 14 0l2.286 4.571C10.286 6.286 7.238 9.714 7.238 14.857H14V30H0ZM21.714 30V17.14c0-9.473 4.667-15.806 14-17.14l2.286 4.571c-6 1.715-9.048 5.143-9.048 10.286H36V30H21.714Z" />
+                        </svg>
+                    </div>
+                </article>
+
+                <article class="testimonial-slide is-accent" data-testimonial-slide>
+                    <div class="quote-icon quote-icon-open" aria-hidden="true">
+                        <svg viewBox="0 0 42 30" fill="currentColor">
+                            <path
+                                d="M0 30V17.14C0 7.667 4.667 1.333 14 0l2.286 4.571C10.286 6.286 7.238 9.714 7.238 14.857H14V30H0ZM21.714 30V17.14c0-9.473 4.667-15.806 14-17.14l2.286 4.571c-6 1.715-9.048 5.143-9.048 10.286H36V30H21.714Z" />
+                        </svg>
+                    </div>
+                    <span class="testimonial-flag">◆ exemplo — substitua por um depoimento real</span>
+                    <blockquote>Escreva aqui o depoimento de um cliente de conteúdo de marca, falando do resultado
+                        pras redes sociais.</blockquote>
+                    <div class="testimonial-author">
+                        <strong>Nome do Cliente</strong>
+                        <span>Conteúdo para Marca</span>
+                    </div>
+                    <div class="quote-icon quote-icon-close" aria-hidden="true">
+                        <svg viewBox="0 0 42 30" fill="currentColor">
+                            <path
+                                d="M0 30V17.14C0 7.667 4.667 1.333 14 0l2.286 4.571C10.286 6.286 7.238 9.714 7.238 14.857H14V30H0ZM21.714 30V17.14c0-9.473 4.667-15.806 14-17.14l2.286 4.571c-6 1.715-9.048 5.143-9.048 10.286H36V30H21.714Z" />
+                        </svg>
+                    </div>
+                </article>
+
+                <article class="testimonial-slide is-light" data-testimonial-slide>
+                    <div class="quote-icon quote-icon-open" aria-hidden="true">
+                        <svg viewBox="0 0 42 30" fill="currentColor">
+                            <path
+                                d="M0 30V17.14C0 7.667 4.667 1.333 14 0l2.286 4.571C10.286 6.286 7.238 9.714 7.238 14.857H14V30H0ZM21.714 30V17.14c0-9.473 4.667-15.806 14-17.14l2.286 4.571c-6 1.715-9.048 5.143-9.048 10.286H36V30H21.714Z" />
+                        </svg>
+                    </div>
+                    <span class="testimonial-flag">◆ exemplo — substitua por um depoimento real</span>
+                    <blockquote>Escreva aqui um depoimento de um ensaio ou produção audiovisual, de preferência um
+                        tipo de projeto diferente dos outros.</blockquote>
+                    <div class="testimonial-author">
+                        <strong>Nome do Cliente</strong>
+                        <span>Ensaio / Produção</span>
+                    </div>
+                    <div class="quote-icon quote-icon-close" aria-hidden="true">
+                        <svg viewBox="0 0 42 30" fill="currentColor">
+                            <path
+                                d="M0 30V17.14C0 7.667 4.667 1.333 14 0l2.286 4.571C10.286 6.286 7.238 9.714 7.238 14.857H14V30H0ZM21.714 30V17.14c0-9.473 4.667-15.806 14-17.14l2.286 4.571c-6 1.715-9.048 5.143-9.048 10.286H36V30H21.714Z" />
+                        </svg>
+                    </div>
+                </article>
+
+                <article class="testimonial-slide is-accent" data-testimonial-slide>
+                    <div class="quote-icon quote-icon-open" aria-hidden="true">
+                        <svg viewBox="0 0 42 30" fill="currentColor">
+                            <path
+                                d="M0 30V17.14C0 7.667 4.667 1.333 14 0l2.286 4.571C10.286 6.286 7.238 9.714 7.238 14.857H14V30H0ZM21.714 30V17.14c0-9.473 4.667-15.806 14-17.14l2.286 4.571c-6 1.715-9.048 5.143-9.048 10.286H36V30H21.714Z" />
+                        </svg>
+                    </div>
+                    <span class="testimonial-flag">◆ exemplo — substitua por um depoimento real</span>
+                    <blockquote>Escreva aqui o depoimento de um cliente que contratou imagens aéreas com drone,
+                        falando do resultado.</blockquote>
+                    <div class="testimonial-author">
+                        <strong>Nome do Cliente</strong>
+                        <span>Imagens Aéreas</span>
+                    </div>
+                    <div class="quote-icon quote-icon-close" aria-hidden="true">
+                        <svg viewBox="0 0 42 30" fill="currentColor">
+                            <path
+                                d="M0 30V17.14C0 7.667 4.667 1.333 14 0l2.286 4.571C10.286 6.286 7.238 9.714 7.238 14.857H14V30H0ZM21.714 30V17.14c0-9.473 4.667-15.806 14-17.14l2.286 4.571c-6 1.715-9.048 5.143-9.048 10.286H36V30H21.714Z" />
+                        </svg>
+                    </div>
+                </article>
+            </div>
         </section>
+        <!-- END [TESTIMONIALS] #################### -->
 
+        <!-- BEGIN [COVERAGE] ###################### -->
         <section class="coverage" id="cobertura">
-            <div class="section-label"><span>10</span><span>( ÁREA DE ATENDIMENTO )</span><span>© 2026</span></div>
+            <header class="section-label">
+                <span>10</span>
+                <span>( ÁREA DE ATENDIMENTO )</span>
+                <span>© 2026</span>
+            </header>
             <div class="coverage-grid reveal-on-scroll">
                 <div class="coverage-text">
-                    <h3>Onde atendo ?</h3>
+                    <h3>Onde Dossi Maker atende</h3>
                     <p>Baseado em Araçatuba/SP, com equipe e equipamento prontos pra sair de casa. Pra projetos fora
-                        da região, a diária de deslocamento é calculada conforme a distância — é só chamar no
+                        da região, a diária de deslocamento é calculada conforme a distância, é só chamar no
                         WhatsApp que a gente monta o orçamento certo pro seu endereço.</p>
                     <ul class="coverage-list">
-                        <li><i class="fa-solid fa-check" aria-hidden="true"></i> Araçatuba e região — sem taxa de
-                            deslocamento</li>
-                        <li><i class="fa-solid fa-check" aria-hidden="true"></i> Interior de São Paulo — diária
-                            calculada pela distância</li>
-                        <li><i class="fa-solid fa-check" aria-hidden="true"></i> Outros estados do Brasil — sob
-                            consulta</li>
+                        <li>Araçatuba e região — sem taxa de deslocamento</li>
+                        <li>Interior de São Paulo — diária calculada pela distância</li>
+                        <li>Outros estados do Brasil — sob consulta</li>
                     </ul>
                 </div>
                 <div class="coverage-map">
-                    <iframe title="Localização em Araçatuba/SP"
-                        src="https://www.google.com/maps?q=Ara%C3%A7atuba,SP&output=embed" loading="lazy"
-                        referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    <iframe title="Localização da Dossi Maker em Araçatuba/SP" src="https://www.google.com/maps?q=Ara%C3%A7atuba,SP&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                 </div>
             </div>
         </section>
+        <!-- END [COVERAGE] ######################## -->
 
-        <!-- FORMULÁRIO WHATSAPP -->
+        <!-- BEGIN [CONTACT] ####################### -->
         <section class="contact" id="contato">
-            <div class="section-label"><span>11</span><span>( VAMOS CONVERSAR )</span><span>© 2026</span></div>
+            <header class="section-label">
+                <span>11</span>
+                <span>( VAMOS CONVERSAR )</span>
+                <span>© 2026</span>
+            </header>
             <div class="contact-grid">
                 <div class="reveal-on-scroll">
                     <h2>Vamos tirar seu projeto do papel?</h2>
@@ -633,30 +664,33 @@
                     <div class="whatsapp-note">● Atendimento via WhatsApp</div>
                 </div>
 
-                <form id="whatsappForm" name="whatsappForm" class="contact-form reveal-on-scroll" novalidate
-                    data-netlify="true" netlify-honeypot="botcheck">
-                    <!-- Necessário para o Netlify reconhecer o formulário no build (funciona automático, sem chave) -->
+                <form id="whatsappForm" name="whatsappForm" class="contact-form reveal-on-scroll" novalidate autocomplete="on" data-netlify="true" netlify-honeypot="botcheck">
                     <input type="hidden" name="form-name" value="whatsappForm">
-                    <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off">
-
-                    <!-- Alternativa portátil (funciona em qualquer host, não só Netlify).
-                             Chave gratuita em https://web3forms.com — cole aqui se um dia sair do Netlify. -->
+                    <div class="botcheck-wrap" aria-hidden="true">
+                        <label for="botcheck">Não preencha este campo</label>
+                        <input type="text" id="botcheck" name="botcheck" tabindex="-1" autocomplete="off">
+                    </div>
+                    <input type="hidden" name="loadedAt" id="loadedAt" value="">
                     <input type="hidden" name="access_key" id="web3formsKey" value="COLE_SUA_CHAVE_WEB3FORMS_AQUI">
                     <input type="hidden" name="subject" value="Novo pedido de proposta — Dossi Maker">
-
-                    <div class="field full">
-                        <label for="email">SEU E-MAIL (OPCIONAL)</label>
-                        <input id="email" name="email" type="email" placeholder="para responder sua proposta"
-                            autocomplete="email">
-                    </div>
                     <div class="field">
                         <label for="name">SEU NOME *</label>
-                        <input id="name" name="name" type="text" required placeholder="Como podemos te chamar?"
-                            autocomplete="name">
+                        <input id="name" name="name" type="text" required minlength="3" maxlength="80" pattern="[A-Za-zÀ-ÖØ-öø-ÿ' ]{3,80}" placeholder="Como posso te chamar?" autocomplete="name" aria-describedby="err-name">
+                        <span class="field-error" id="err-name" role="alert"></span>
+                    </div>
+                    <div class="field">
+                        <label for="phone">SEU WHATSAPP *</label>
+                        <input id="phone" name="phone" type="tel" required inputmode="numeric" placeholder="(18) 99999-9999" autocomplete="tel" maxlength="15" aria-describedby="err-phone">
+                        <span class="field-error" id="err-phone" role="alert"></span>
+                    </div>
+                    <div class="field full">
+                        <label for="email">SEU E-MAIL (OPCIONAL)</label>
+                        <input id="email" name="email" type="email" maxlength="120" placeholder="para responder sua proposta" autocomplete="email" aria-describedby="err-email">
+                        <span class="field-error" id="err-email" role="alert"></span>
                     </div>
                     <div class="field">
                         <label for="eventType">TIPO DE EVENTO / PROJETO *</label>
-                        <select id="eventType" name="eventType" required>
+                        <select id="eventType" name="eventType" required aria-describedby="err-eventType">
                             <option value="">Selecione uma opção</option>
                             <option>Casamento</option>
                             <option>Aniversário</option>
@@ -666,29 +700,32 @@
                             <option>Ensaio / Produção Audiovisual</option>
                             <option>Outro</option>
                         </select>
+                        <span class="field-error" id="err-eventType" role="alert"></span>
                     </div>
                     <div class="field">
                         <label for="eventDate">DATA DO EVENTO *</label>
-                        <input id="eventDate" name="eventDate" type="date" required>
+                        <input id="eventDate" name="eventDate" type="date" required aria-describedby="err-eventDate">
+                        <span class="field-error" id="err-eventDate" role="alert"></span>
                     </div>
                     <div class="field">
                         <label for="proposal">QUAL PROPOSTA DESEJA? *</label>
-                        <select id="proposal" name="proposal" required disabled>
+                        <select id="proposal" name="proposal" required disabled aria-describedby="err-proposal">
                             <option value="">Selecione o tipo de evento primeiro</option>
                         </select>
+                        <span class="field-error" id="err-proposal" role="alert"></span>
                     </div>
                     <div class="field full">
                         <label for="message">MAIS DETALHES (OPCIONAL)</label>
-                        <textarea id="message" name="message" rows="4"
-                            placeholder="Conte um pouco mais sobre o que você imagina..."></textarea>
+                        <textarea id="message" name="message" rows="4" maxlength="600" placeholder="Conte um pouco mais sobre o que você imagina para o seu evento..."></textarea>
                     </div>
-                    <button type="submit" class="send-button">SOLICITAR PROPOSTA NO WHATSAPP <span
-                            aria-hidden="true"><i class="fa-solid fa-up-right-from-square"></i></span></button>
+                    <button type="submit" class="send-button">SOLICITAR PROPOSTA NO WHATSAPP <span aria-hidden="true"><i class="fa-solid fa-up-right-from-square"></i></span></button>
                     <small class="form-help">Ao clicar, o WhatsApp abrirá com suas informações preenchidas.</small>
                 </form>
             </div>
         </section>
+        <!-- END [CONTACT] ######################### -->
 
+        <!-- BEGIN [FAQ] ########################### -->
         <section class="page-section" id="duvidas">
             <div class="section-header reveal-on-scroll">
                 <span class="badge">Tire suas Dúvidas</span>
@@ -763,31 +800,32 @@
                 </div>
             </div>
         </section>
+        <!-- END [FAQ] ############################# -->
 
+        <!-- BEGIN [FINISH] ######################## -->
         <section class="finish" id="finish">
             <img class="finish-bg" src="./assets/images/profile.jpg" alt="" aria-hidden="true" loading="lazy">
-
             <div class="finish-overlay"></div>
             <div class="finish-content reveal-on-scroll">
                 <span>( CONTATO )</span>
                 <h2>
-                    Cada momento acontece uma vez. Nós transformamos momentos em histórias eternas.
-                    <br>
-                    <em>Você vive o momento. Nós contamos a história.</em>
+                    Cada momento acontece uma vez. Nós transformamos momentos em histórias eternas.<br><em>Você vive o momento. Nós contamos a história.</em>
                 </h2>
                 <a href="#contato" class="finish-button">
                     CONTATO <span aria-hidden="true"><i class="fa-solid fa-up-right-from-square"></i></span>
                 </a>
             </div>
         </section>
+        <!-- END [FINISH] ########################## -->
     </main>
+    <!-- END [MAIN] ################################ -->
 
-
-    <!-- GALERIA -->
+    <!-- BEGIN [GALERY] ############################ -->
     <div class="gallery-modal" id="galleryModal" aria-hidden="true" role="dialog" aria-modal="true"
         aria-labelledby="galleryTitle">
         <div class="gallery-head">
-            <div><small id="galleryNumber">01</small>
+            <div>
+                <small id="galleryNumber">01</small>
                 <h2 id="galleryTitle">FILMAGENS</h2>
             </div>
             <button id="galleryClose" aria-label="Fechar galeria">FECHAR <i class="fa-solid fa-xmark" aria-hidden="true"></i></button>
@@ -796,18 +834,22 @@
         <div class="gallery-tabs" id="galleryTabs" role="tablist"></div>
         <div class="gallery-grid" id="galleryGrid"></div>
     </div>
+    <!-- END [GALERY] ############################## -->
 
+    <!-- BEGIN [FOOTER] ############################ -->
     <footer class="footer">
         <div><strong>Profissional ®</strong>
             <p>Araçatuba/SP — atendimento em todo o Brasil</p>
             <a href="./privacidade.html" class="footer-link">Política de Privacidade</a>
         </div>
-        <div class="signature">Desenvolvido por <button type="button" class="signature-trigger" id="devCreditTrigger"
-                aria-haspopup="dialog">Tayná Goes</button></div>
+        <div class="signature">Desenvolvido por
+            <button type="button" class="signature-trigger" id="devCreditTrigger" aria-haspopup="dialog">Tayná Goes</button>
+        </div>
         <button class="back-to-top">VOLTAR AO TOPO <i class="fa-solid fa-arrow-up" aria-hidden="true"></i></button>
     </footer>
+    <!-- END [FOOTER] ############################## -->
 
-    <!-- MODAL DE CRÉDITO -->
+    <!-- BEGIN [MODAL DEVELOPER] ################### -->
     <div class="dev-modal" id="devModal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="devModalName">
         <div class="dev-modal-backdrop" data-close></div>
         <div class="dev-modal-card">
@@ -818,7 +860,7 @@
             <h3 id="devModalName">Tayná Goes</h3>
             <p class="dev-modal-role">Desenvolvedora Front-end</p>
             <p class="dev-modal-bio">Site desenvolvido com atenção a performance, UI/UX e detalhes de interação.</p>
-            <!-- TODO: troque os href="#" pelos links reais das redes sociais -->
+
             <div class="dev-modal-social">
                 <a href="#" target="_blank" rel="noopener" aria-label="Instagram">
                     <i class="fa-brands fa-instagram" aria-hidden="true"></i>
@@ -835,11 +877,13 @@
             </div>
         </div>
     </div>
+    <!-- END [MODAL DEVELOPER] ##################### -->
 
-    <!-- WHATSAPP FLUTUANTE -->
+    <!-- BEGIN [WHATSAPP FIXED] #################### -->
     <a href="#" id="whatsappFloat" class="whatsapp-float" aria-label="Falar no WhatsApp" target="_blank" rel="noopener">
         <i class="fa-brands fa-whatsapp" aria-hidden="true"></i>
     </a>
+    <!-- END [WHATSAPP FIXED] ##################### -->
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>

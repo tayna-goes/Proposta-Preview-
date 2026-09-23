@@ -1,0 +1,147 @@
+.contact {
+    background: #d8d5ce
+}
+
+.contact-grid {
+    display: grid;
+    grid-template-columns: 38% 1fr;
+    gap: 9vw
+}
+
+.contact h2 {
+    font-size: clamp(42px, 5vw, 82px);
+    line-height: .98;
+    letter-spacing: -.06em;
+    font-weight: 500;
+    text-wrap: balance;
+}
+
+.contact-grid>div p {
+    margin-top: 25px;
+    line-height: 1.7;
+    max-width: 400px
+}
+
+.whatsapp-note {
+    margin-top: 35px;
+    font: 11px var(--font-mono)
+}
+
+.contact-form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px 20px
+}
+
+.field {
+    display: flex;
+    flex-direction: column;
+    gap: 10px
+}
+
+.field.full {
+    grid-column: 1/-1
+}
+
+.field label {
+    font: 10px var(--font-mono)
+}
+
+.field input,
+.field select,
+.field textarea {
+    width: 100%;
+    border: 0;
+    border-bottom: 1px solid #555;
+    background: transparent;
+    padding: 14px 0;
+    color: var(--black);
+    outline: 0;
+    border-radius: 0;
+    transition: border-color .2s ease;
+}
+
+.field input:focus,
+.field select:focus,
+.field textarea:focus {
+    border-color: var(--black);
+}
+
+.field select {
+    cursor: pointer
+}
+
+.field select:disabled {
+    cursor: not-allowed;
+    opacity: .45;
+}
+
+.field textarea {
+    resize: vertical;
+    border: 1px solid #777;
+    padding: 13px
+}
+
+.send-button {
+    grid-column: 1/-1;
+    background: var(--black);
+    color: #fff;
+    padding: 20px 24px;
+    text-align: left;
+    display: flex;
+    justify-content: space-between;
+    transition: .25s
+}
+
+.send-button:hover,
+.send-button:focus-visible {
+    background: #25D366;
+    color: #071e12
+}
+
+.send-button:disabled,
+.send-button.is-sending {
+    opacity: .7;
+    cursor: default;
+    background: var(--black);
+    color: #fff;
+}
+
+.field input:invalid:not(:placeholder-shown) {
+    border-color: #d64545;
+}
+
+.form-help {
+    grid-column: 1/-1;
+    font-size: 10px;
+    color: #555
+}
+
+/* Honeypot: fora da tela (mais eficaz contra bots do que display:none,
+   que muitos scripts de spam já sabem ignorar) e some para leitores de tela. */
+.botcheck-wrap {
+    position: absolute;
+    left: -9999px;
+    top: -9999px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+}
+
+.field-error {
+    font-size: 11px;
+    color: #d64545;
+    min-height: 14px;
+    display: none;
+}
+
+.field.has-error input,
+.field.has-error select,
+.field.has-error textarea {
+    border-color: #d64545 !important;
+}
+
+.field.has-error .field-error {
+    display: block;
+}
+
