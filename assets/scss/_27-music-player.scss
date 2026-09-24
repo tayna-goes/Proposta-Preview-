@@ -10,7 +10,7 @@
 .music-toggle {
     position: fixed;
     right: 158px;
-    bottom: 22px;
+    bottom: 55px;
     z-index: 4000;
     width: 56px;
     height: 56px;
@@ -66,9 +66,6 @@
     display: block;
 }
 
-/* Barrinhas de "tocando", só aparecem quando o som está ativo,
-   puramente decorativas (aria-hidden), e paradas se a pessoa
-   pediu menos movimento no sistema. */
 .music-toggle .music-bars {
     position: absolute;
     inset: -6px;
@@ -103,8 +100,8 @@
 
 @media (max-width: 800px) {
     .music-toggle {
-        right: 140px;
-        bottom: 16px;
+        right: 16px;
+        bottom: 175px;
         width: 50px;
         height: 50px;
     }
