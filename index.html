@@ -683,10 +683,15 @@
                         <input id="phone" name="phone" type="tel" required inputmode="numeric" placeholder="(18) 99999-9999" autocomplete="tel" maxlength="15" aria-describedby="err-phone">
                         <span class="field-error" id="err-phone" role="alert"></span>
                     </div>
-                    <div class="field full">
+                    <div class="field">
                         <label for="email">SEU E-MAIL (OPCIONAL)</label>
                         <input id="email" name="email" type="email" maxlength="120" placeholder="para responder sua proposta" autocomplete="email" aria-describedby="err-email">
                         <span class="field-error" id="err-email" role="alert"></span>
+                    </div>
+                    <div class="field">
+                        <label for="eventDate">DATA DO EVENTO *</label>
+                        <input id="eventDate" name="eventDate" type="date" required aria-describedby="err-eventDate">
+                        <span class="field-error" id="err-eventDate" role="alert"></span>
                     </div>
                     <div class="field">
                         <label for="eventType">TIPO DE EVENTO / PROJETO *</label>
@@ -701,11 +706,6 @@
                             <option>Outro</option>
                         </select>
                         <span class="field-error" id="err-eventType" role="alert"></span>
-                    </div>
-                    <div class="field">
-                        <label for="eventDate">DATA DO EVENTO *</label>
-                        <input id="eventDate" name="eventDate" type="date" required aria-describedby="err-eventDate">
-                        <span class="field-error" id="err-eventDate" role="alert"></span>
                     </div>
                     <div class="field">
                         <label for="proposal">QUAL PROPOSTA DESEJA? *</label>
@@ -878,6 +878,21 @@
         </div>
     </div>
     <!-- END [MODAL DEVELOPER] ##################### -->
+
+    <!-- BEGIN [MUSIC] ############################# -->
+    <div id="ytMusicPlayer" aria-hidden="true"></div>
+    <button type="button" id="musicToggle" class="music-toggle" aria-label="Ativar música de fundo" aria-pressed="false">
+        <span class="music-bars" aria-hidden="true"></span>
+        <i class="fa-solid fa-volume-high icon-playing" aria-hidden="true"></i>
+        <i class="fa-solid fa-volume-xmark icon-muted" aria-hidden="true"></i>
+    </button>
+    <!-- END [MUSIC] ############################### -->
+
+    <!-- BEGIN [INSTAGRAM FIXED] #################### -->
+    <a href="#" id="instagramFloat" class="instagram-float" aria-label="Ver Instagram" target="_blank" rel="noopener">
+        <i class="fa-brands fa-instagram" aria-hidden="true"></i>
+    </a>
+    <!-- END [INSTAGRAM FIXED] ##################### -->
 
     <!-- BEGIN [WHATSAPP FIXED] #################### -->
     <a href="#" id="whatsappFloat" class="whatsapp-float" aria-label="Falar no WhatsApp" target="_blank" rel="noopener">

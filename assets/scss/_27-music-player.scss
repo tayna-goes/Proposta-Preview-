@@ -1,0 +1,115 @@
+#ytMusicPlayer {
+    position: fixed;
+    left: -9999px;
+    top: -9999px;
+    width: 2px;
+    height: 2px;
+    overflow: hidden;
+}
+
+.music-toggle {
+    position: fixed;
+    right: 158px;
+    bottom: 22px;
+    z-index: 4000;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    border: none;
+    background: var(--surface-card);
+    border: 1px solid var(--border-dark);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, .35);
+    opacity: 0;
+    transform: translateY(16px) scale(.9);
+    pointer-events: none;
+    transition: opacity .3s ease, transform .3s ease, box-shadow .25s ease, background .2s ease;
+}
+
+.music-toggle.is-visible {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    pointer-events: auto;
+}
+
+.music-toggle:hover,
+.music-toggle:focus-visible {
+    box-shadow: 0 14px 38px rgba(0, 0, 0, .45);
+    transform: translateY(-3px) scale(1.04);
+    background: var(--accent);
+}
+
+.music-toggle:hover i,
+.music-toggle:focus-visible i {
+    color: #071926;
+}
+
+.music-toggle i {
+    font-size: 20px;
+    color: var(--white);
+    line-height: 1;
+    pointer-events: none;
+}
+
+.music-toggle .icon-muted {
+    display: none;
+}
+
+.music-toggle.is-muted .icon-playing {
+    display: none;
+}
+
+.music-toggle.is-muted .icon-muted {
+    display: block;
+}
+
+/* Barrinhas de "tocando", só aparecem quando o som está ativo,
+   puramente decorativas (aria-hidden), e paradas se a pessoa
+   pediu menos movimento no sistema. */
+.music-toggle .music-bars {
+    position: absolute;
+    inset: -6px;
+    border-radius: 50%;
+    border: 1px solid rgba(56, 189, 248, .5);
+    animation: musicPulse 2.6s ease-out infinite;
+    pointer-events: none;
+}
+
+.music-toggle.is-muted .music-bars {
+    display: none;
+}
+
+@keyframes musicPulse {
+    0% {
+        transform: scale(.85);
+        opacity: .8;
+    }
+
+    100% {
+        transform: scale(1.35);
+        opacity: 0;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .music-toggle .music-bars {
+        animation: none;
+        display: none;
+    }
+}
+
+@media (max-width: 800px) {
+    .music-toggle {
+        right: 140px;
+        bottom: 16px;
+        width: 50px;
+        height: 50px;
+    }
+
+    .music-toggle i {
+        font-size: 18px;
+    }
+}

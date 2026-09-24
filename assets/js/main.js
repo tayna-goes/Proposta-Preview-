@@ -2,6 +2,13 @@ $(function () {
     'use strict';
 
     const WHATSAPP_NUMBER = "5518988071968";
+    const YOUTUBE_MUSIC_URL = 'https://www.youtube.com/watch?v=6JQrXaf4lyU&list=RD6JQrXaf4lyU&start_radio=1'; // ex: 'https://www.youtube.com/watch?v=XXXXXXXXXXX'
+
+
+
+    function isMobileDevice() {
+        return /Android|iPhone|iPad|iPod|Windows Phone/i.test(navigator.userAgent);
+    }
 
     function updateClock() {
         const now = new Date();
@@ -29,7 +36,6 @@ $(function () {
     $('.back-to-top').on('click', function () {
         $('html, body').animate({ scrollTop: 0 }, 600);
     });
-
 
     (function setupReelCarousel() {
         const track = document.getElementById('reelTrack');
@@ -250,13 +256,11 @@ $(function () {
         dateInput.max = `${maxDate.getFullYear()}-${String(maxDate.getMonth() + 1).padStart(2, '0')}-${String(maxDate.getDate()).padStart(2, '0')}`;
     })();
 
-
     const formLoadedAt = Date.now();
     (function stampLoadTime() {
         const el = document.getElementById('loadedAt');
         if (el) el.value = String(formLoadedAt);
     })();
-
 
     (function setupPhoneMask() {
         const phoneInput = document.getElementById('phone');
@@ -285,7 +289,6 @@ $(function () {
         });
     })();
 
-
     const FORM_VALIDATORS = {
         name: function (value) {
             const v = value.trim();
@@ -304,7 +307,7 @@ $(function () {
         },
         email: function (value) {
             const v = value.trim();
-            if (!v) return '';
+            if (!v) return ''; // opcional
             const ok = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v);
             return ok ? '' : 'E-mail inválido.';
         },
@@ -438,7 +441,9 @@ $(function () {
         const $form = $(this);
         const $button = $form.find('.send-button');
         if ($button.prop('disabled')) return;
+
         if ($('#botcheck').val()) return;
+
         if (Date.now() - formLoadedAt < 2000) return;
 
         const fieldsToValidate = ['name', 'phone', 'email', 'eventType', 'eventDate', 'proposal'];
@@ -468,42 +473,33 @@ $(function () {
         const message = $('#message').val().trim().slice(0, 600);
 
         const formattedDate = new Date(date + 'T12:00:00').toLocaleDateString('pt-BR', { weekday: 'long', day: '2-digit', month: 'long', year: 'numeric' });
-        const emojis = {
-            wave: String.fromCodePoint(0x1F44B),
-            smile: String.fromCodePoint(0x1F60A),
-            clipboard: String.fromCodePoint(0x1F4CB),
-            person: String.fromCodePoint(0x1F464),
-            phone: String.fromCodePoint(0x1F4F1),
-            party: String.fromCodePoint(0x1F389),
-            calendar: String.fromCodePoint(0x1F4C5),
-            money: String.fromCodePoint(0x1F4B0),
-            note: String.fromCodePoint(0x1F4DD),
-            sparkle: String.fromCodePoint(0x2728),
-            pray: String.fromCodePoint(0x1F64F)
-        };
 
-const text = `${emojis.wave} Olá, Caio Dossi! Tudo bem?
+        const useEmoji = isMobileDevice();
+        const icons = useEmoji
+            ? { title: '📋', name: '👤', phone: '📱', type: '🎉', proposal: '💰', date: '📅', notes: '📝' }
+            : { title: '★', name: '•', phone: '•', type: '•', proposal: '•', date: '•', notes: '•' };
 
-Vim pelo site e gostaria de solicitar uma proposta. ${emojis.smile}
+        const text =
+            `Olá, Caio Dossi! Tudo bem?
 
-${emojis.clipboard} *Dados da solicitação*
+Vim pelo site e gostaria de solicitar uma proposta para o meu evento.
 
-${emojis.person} *Nome:* ${name}
-${emojis.phone} *WhatsApp:* ${phone}
-${emojis.party} *Tipo de evento/projeto:* ${eventType}
-${emojis.calendar} *Data do evento:* ${formattedDate}
-${emojis.money} *Proposta desejada:* ${proposal}${message ? `
+${icons.title} *DADOS DO EVENTO*
 
-${emojis.note} *Mais detalhes:*
+${icons.name} *Nome:* ${name}
+${icons.phone} *WhatsApp:* ${phone}
+${icons.type} *Tipo de evento/projeto:* ${eventType}
+${icons.proposal} *Proposta desejada:* ${proposal}
+${icons.date} *Data do evento:* ${formattedDate}${message ? `
+
+${icons.notes} *Mais detalhes:*
 ${message}` : ''}
 
-${emojis.sparkle} Fico no aguardo do retorno com os próximos passos.
+Fico no aguardo do retorno com os próximos passos.
 
-Obrigado(a)! ${emojis.pray}`;
+Obrigado(a)!`;
 
-const whatsappUrl = `https://wa.me/5518988071968?text=${encodeURIComponent(text)}`;
-
-window.open(whatsappUrl, '_blank');
+        const url = 'https://wa.me/' + WHATSAPP_NUMBER + '?text=' + encodeURIComponent(text);
 
         sendToNetlify($form.get(0));
 
@@ -521,6 +517,7 @@ window.open(whatsappUrl, '_blank');
 
         const originalHtml = $button.html();
         $button.prop('disabled', true).addClass('is-sending').html('ABRINDO WHATSAPP... <span>↗</span>');
+
         window.open(url, '_blank', 'noopener');
 
         setTimeout(function () {
@@ -530,7 +527,6 @@ window.open(whatsappUrl, '_blank');
             populateProposalOptions('');
         }, 2200);
     });
-
 
     function initTestimonialsDragSlider(root) {
         root = root || document;
@@ -756,23 +752,28 @@ window.open(whatsappUrl, '_blank');
         });
     })();
 
-    (function setupFloatingWhatsapp() {
-        const floatBtn = document.getElementById('whatsappFloat');
+    (function setupFloatingButtons() {
+        const whatsappBtn = document.getElementById('whatsappFloat');
+        const instagramBtn = document.getElementById('instagramFloat');
         const hero = document.getElementById('inicio');
-        if (!floatBtn) return;
+        const floatBtns = [whatsappBtn, instagramBtn].filter(Boolean);
+        if (!floatBtns.length) return;
 
-        const defaultText = 'Olá! Vim pelo site e gostaria de saber mais sobre os serviços do Dossi Maker.';
-        floatBtn.href = 'https://wa.me/' + WHATSAPP_NUMBER + '?text=' + encodeURIComponent(defaultText);
+        if (whatsappBtn) {
+            const defaultText = 'Olá! Vim pelo site e gostaria de saber mais sobre os serviços da Dossi Maker.';
+            whatsappBtn.href = 'https://wa.me/' + WHATSAPP_NUMBER + '?text=' + encodeURIComponent(defaultText);
+        }
 
         if (!hero) {
-            floatBtn.classList.add('is-visible');
+            floatBtns.forEach(function (btn) { btn.classList.add('is-visible'); });
             return;
         }
 
         let ticking = false;
         function toggleVisibility() {
             const heroBottom = hero.getBoundingClientRect().bottom;
-            floatBtn.classList.toggle('is-visible', heroBottom < 0);
+            const visible = heroBottom < 0;
+            floatBtns.forEach(function (btn) { btn.classList.toggle('is-visible', visible); });
             ticking = false;
         }
         toggleVisibility();
@@ -780,6 +781,110 @@ window.open(whatsappUrl, '_blank');
             if (!ticking) {
                 requestAnimationFrame(toggleVisibility);
                 ticking = true;
+            }
+        });
+    })();
+
+     (function setupBackgroundMusic() {
+        const btn = document.getElementById('musicToggle');
+        const playerHost = document.getElementById('ytMusicPlayer');
+        if (!btn || !playerHost) return;
+
+        function extractYouTubeId(url) {
+            if (!url) return null;
+            const match = url.match(/(?:youtube\.com\/(?:watch\?v=|embed\/|shorts\/)|youtu\.be\/)([a-zA-Z0-9_-]{11})/);
+            return match ? match[1] : null;
+        }
+
+        const videoId = extractYouTubeId(YOUTUBE_MUSIC_URL);
+        if (!videoId) return; // sem link configurado ainda — botão fica escondido
+
+        const STORAGE_KEY = 'dossiMakerMusicPref'; // 'on' | 'off'
+        let ytPlayer = null;
+
+        function setPlayingUI(isPlaying) {
+            btn.classList.toggle('is-muted', !isPlaying);
+            btn.setAttribute('aria-pressed', String(isPlaying));
+            btn.setAttribute('aria-label', isPlaying ? 'Desativar música de fundo' : 'Ativar música de fundo');
+        }
+
+        function waitForFirstInteraction() {
+            const events = ['click', 'touchstart', 'keydown'];
+            function onFirstInteraction() {
+                events.forEach(function (ev) { document.removeEventListener(ev, onFirstInteraction); });
+                if (localStorage.getItem(STORAGE_KEY) === 'off') return; // pessoa já tinha mutado antes
+                if (ytPlayer && ytPlayer.unMute) {
+                    ytPlayer.unMute();
+                    ytPlayer.playVideo();
+                    setPlayingUI(true);
+                }
+            }
+            events.forEach(function (ev) { document.addEventListener(ev, onFirstInteraction, { once: true, passive: true }); });
+        }
+
+        function loadYouTubeApi(callback) {
+            if (window.YT && window.YT.Player) { callback(); return; }
+            const previous = window.onYouTubeIframeAPIReady;
+            window.onYouTubeIframeAPIReady = function () {
+                if (typeof previous === 'function') previous();
+                callback();
+            };
+            if (!document.querySelector('script[src*="youtube.com/iframe_api"]')) {
+                const tag = document.createElement('script');
+                tag.src = 'https://www.youtube.com/iframe_api';
+                document.head.appendChild(tag);
+            }
+        }
+
+        loadYouTubeApi(function () {
+            ytPlayer = new YT.Player('ytMusicPlayer', {
+                videoId: videoId,
+                playerVars: {
+                    autoplay: 1,
+                    mute: 1, // autoplay só é permitido pelo navegador se começar mudo
+                    loop: 1,
+                    playlist: videoId, // necessário pro loop funcionar com 1 vídeo só
+                    controls: 0,
+                    disablekb: 1,
+                    fs: 0,
+                    modestbranding: 1,
+                    playsinline: 1
+                },
+                events: {
+                    onReady: function (e) {
+                        e.target.playVideo();
+                        setPlayingUI(false); // começa mudo — UI reflete isso até destravar
+                        // Só mostra o botão AGORA que o player está de fato pronto
+                        // pra responder a clique. Mostrar antes disso era o bug:
+                        // clicar enquanto a API do YouTube ainda carregava (é uma
+                        // chamada de rede, leva um instante) não fazia nada, porque
+                        // "ytPlayer" ainda não existia — parecia que o áudio
+                        // simplesmente não funcionava.
+                        btn.classList.add('is-visible');
+                        if (localStorage.getItem(STORAGE_KEY) !== 'off') {
+                            waitForFirstInteraction();
+                        }
+                    },
+                    onError: function (e) {
+                        // Códigos do YouTube: 2 = ID inválido, 100 = vídeo removido/privado,
+                        // 101/150 = o dono do vídeo não permite incorporar em outros sites.
+                        console.warn('[Dossi Maker] Não deu pra carregar a música de fundo do YouTube (código ' + e.data + '). Verifique se o link em YOUTUBE_MUSIC_URL é de um vídeo público que permite incorporação.');
+                    }
+                }
+            });
+        });
+
+        btn.addEventListener('click', function () {
+            if (!ytPlayer) return; // player ainda carregando — não deveria acontecer, o botão só aparece depois de pronto
+            if (ytPlayer.isMuted()) {
+                ytPlayer.unMute();
+                ytPlayer.playVideo();
+                setPlayingUI(true);
+                localStorage.setItem(STORAGE_KEY, 'on');
+            } else {
+                ytPlayer.mute();
+                setPlayingUI(false);
+                localStorage.setItem(STORAGE_KEY, 'off');
             }
         });
     })();
