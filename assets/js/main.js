@@ -1,9 +1,9 @@
 $(function () {
     'use strict';
 
-    const WHATSAPP_NUMBER = "5518988071968";
+    const WHATSAPP_NUMBER = "5518988071968"; // IMPORTANTE: altere o número aqui se necessário.
+    const YOUTUBE_MUSIC_URL = 'https://www.youtube.com/watch?v=6JQrXaf4lyU&list=RD6JQrXaf4lyU&start_radio=1'; // ex: 'https://www.youtube.com/watch?v=XXXXXXXXXXX'
 
-    const YOUTUBE_MUSIC_URL = 'https://www.youtube.com/watch?v=6JQrXaf4lyU&list=RD6JQrXaf4lyU&start_radio=1';
     function isMobileDevice() {
         return /Android|iPhone|iPad|iPod|Windows Phone/i.test(navigator.userAgent);
     }
@@ -17,7 +17,6 @@ $(function () {
     }
     updateClock();
     setInterval(updateClock, 1000);
-
 
     function closeMenu() {
         $('.menu-overlay').removeClass('active').attr('aria-hidden', 'true');
@@ -69,6 +68,7 @@ $(function () {
             './assets/images/carousel/25.jpeg'
         ];
 
+        // Fisher-Yates
         function shuffle(arr) {
             const a = arr.slice();
             for (let i = a.length - 1; i > 0; i--) {
@@ -360,7 +360,6 @@ $(function () {
             input.addEventListener('change', function () { validateField(fieldName); });
         });
     })();
-
 
     const PROPOSAL_OPTIONS = {
         casamento: ['Silver', 'Gold', 'Black'],
@@ -808,7 +807,8 @@ Obrigado(a)!`;
         }
 
         function waitForFirstInteraction() {
-            const events = ['click', 'touchstart', 'keydown'];
+
+            const events = ['click', 'touchstart', 'keydown', 'scroll'];
             function onFirstInteraction() {
                 events.forEach(function (ev) { document.removeEventListener(ev, onFirstInteraction); });
                 if (localStorage.getItem(STORAGE_KEY) === 'off') return;
