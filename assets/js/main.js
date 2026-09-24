@@ -2,10 +2,8 @@ $(function () {
     'use strict';
 
     const WHATSAPP_NUMBER = "5518988071968";
-    const YOUTUBE_MUSIC_URL = 'https://www.youtube.com/watch?v=6JQrXaf4lyU&list=RD6JQrXaf4lyU&start_radio=1'; // ex: 'https://www.youtube.com/watch?v=XXXXXXXXXXX'
 
-
-
+    const YOUTUBE_MUSIC_URL = 'https://www.youtube.com/watch?v=6JQrXaf4lyU&list=RD6JQrXaf4lyU&start_radio=1';
     function isMobileDevice() {
         return /Android|iPhone|iPad|iPod|Windows Phone/i.test(navigator.userAgent);
     }
@@ -19,6 +17,7 @@ $(function () {
     }
     updateClock();
     setInterval(updateClock, 1000);
+
 
     function closeMenu() {
         $('.menu-overlay').removeClass('active').attr('aria-hidden', 'true');
@@ -36,6 +35,7 @@ $(function () {
     $('.back-to-top').on('click', function () {
         $('html, body').animate({ scrollTop: 0 }, 600);
     });
+
 
     (function setupReelCarousel() {
         const track = document.getElementById('reelTrack');
@@ -361,6 +361,7 @@ $(function () {
         });
     })();
 
+
     const PROPOSAL_OPTIONS = {
         casamento: ['Silver', 'Gold', 'Black'],
         outros: ['Filmagem Completa', 'Fotografia', 'Fotos + Vídeos', 'Vídeo para Redes Sociais', 'Imagens Aéreas com Drone', 'Proposta Personalizada']
@@ -443,7 +444,7 @@ $(function () {
         if ($button.prop('disabled')) return;
 
         if ($('#botcheck').val()) return;
-
+.
         if (Date.now() - formLoadedAt < 2000) return;
 
         const fieldsToValidate = ['name', 'phone', 'email', 'eventType', 'eventDate', 'proposal'];
@@ -699,13 +700,11 @@ Obrigado(a)!`;
                 }
             });
 
-            if (window.ScrollTrigger) {
-                ScrollTrigger.create({
-                    trigger: section,
-                    start: 'top bottom',
-                    end: 'bottom top',
-                    onToggle: function (self) { active = self.isActive; }
-                });
+            if ('IntersectionObserver' in window) {
+                const observer = new IntersectionObserver(function (entries) {
+                    entries.forEach(function (entry) { active = entry.isIntersecting; });
+                }, { threshold: 0.15 });
+                observer.observe(section);
             } else {
                 active = true;
             }
@@ -785,7 +784,7 @@ Obrigado(a)!`;
         });
     })();
 
-     (function setupBackgroundMusic() {
+    (function setupBackgroundMusic() {
         const btn = document.getElementById('musicToggle');
         const playerHost = document.getElementById('ytMusicPlayer');
         if (!btn || !playerHost) return;
@@ -797,9 +796,9 @@ Obrigado(a)!`;
         }
 
         const videoId = extractYouTubeId(YOUTUBE_MUSIC_URL);
-        if (!videoId) return; // sem link configurado ainda — botão fica escondido
+        if (!videoId) return;
 
-        const STORAGE_KEY = 'dossiMakerMusicPref'; // 'on' | 'off'
+        const STORAGE_KEY = 'dossiMakerMusicPref';
         let ytPlayer = null;
 
         function setPlayingUI(isPlaying) {
@@ -812,7 +811,7 @@ Obrigado(a)!`;
             const events = ['click', 'touchstart', 'keydown'];
             function onFirstInteraction() {
                 events.forEach(function (ev) { document.removeEventListener(ev, onFirstInteraction); });
-                if (localStorage.getItem(STORAGE_KEY) === 'off') return; // pessoa já tinha mutado antes
+                if (localStorage.getItem(STORAGE_KEY) === 'off') return;
                 if (ytPlayer && ytPlayer.unMute) {
                     ytPlayer.unMute();
                     ytPlayer.playVideo();
@@ -841,9 +840,9 @@ Obrigado(a)!`;
                 videoId: videoId,
                 playerVars: {
                     autoplay: 1,
-                    mute: 1, // autoplay só é permitido pelo navegador se começar mudo
+                    mute: 1,
                     loop: 1,
-                    playlist: videoId, // necessário pro loop funcionar com 1 vídeo só
+                    playlist: videoId,
                     controls: 0,
                     disablekb: 1,
                     fs: 0,
@@ -853,21 +852,13 @@ Obrigado(a)!`;
                 events: {
                     onReady: function (e) {
                         e.target.playVideo();
-                        setPlayingUI(false); // começa mudo — UI reflete isso até destravar
-                        // Só mostra o botão AGORA que o player está de fato pronto
-                        // pra responder a clique. Mostrar antes disso era o bug:
-                        // clicar enquanto a API do YouTube ainda carregava (é uma
-                        // chamada de rede, leva um instante) não fazia nada, porque
-                        // "ytPlayer" ainda não existia — parecia que o áudio
-                        // simplesmente não funcionava.
+                        setPlayingUI(false);
                         btn.classList.add('is-visible');
                         if (localStorage.getItem(STORAGE_KEY) !== 'off') {
                             waitForFirstInteraction();
                         }
                     },
                     onError: function (e) {
-                        // Códigos do YouTube: 2 = ID inválido, 100 = vídeo removido/privado,
-                        // 101/150 = o dono do vídeo não permite incorporar em outros sites.
                         console.warn('[Dossi Maker] Não deu pra carregar a música de fundo do YouTube (código ' + e.data + '). Verifique se o link em YOUTUBE_MUSIC_URL é de um vídeo público que permite incorporação.');
                     }
                 }
@@ -875,7 +866,7 @@ Obrigado(a)!`;
         });
 
         btn.addEventListener('click', function () {
-            if (!ytPlayer) return; // player ainda carregando — não deveria acontecer, o botão só aparece depois de pronto
+            if (!ytPlayer) return;
             if (ytPlayer.isMuted()) {
                 ytPlayer.unMute();
                 ytPlayer.playVideo();
@@ -888,7 +879,6 @@ Obrigado(a)!`;
             }
         });
     })();
-
 
     const PLAN_NAMES = { 'btn-silver': 'Silver', 'btn-gold': 'Gold', 'btn-black': 'Black' };
 
