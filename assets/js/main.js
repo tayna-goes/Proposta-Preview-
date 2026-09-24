@@ -444,7 +444,7 @@ $(function () {
         if ($button.prop('disabled')) return;
 
         if ($('#botcheck').val()) return;
-.
+
         if (Date.now() - formLoadedAt < 2000) return;
 
         const fieldsToValidate = ['name', 'phone', 'email', 'eventType', 'eventDate', 'proposal'];
